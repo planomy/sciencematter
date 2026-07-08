@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Year 5 Science · Unit 3 · States of Matter</title>
+<style>
+  :root{
+    --bg0:#0a121c; --bg1:#0f1828; --bg2:#152238;
+    --ink:#f4f8fc; --ink-dim:#b4c4d4; --ink-faint:#7a90a8;
+    --panel:#1a2a42; --panel2:#223350; --line:#3d5270;
+    --chip-bg:#162032;
+    --cream:#fef9e7; --cream-ink:#1e2a28;
+    --amber:#f9d45d; --amber2:#ffe082;
+    --accent:#5a9fd4; --accent2:#7eb8e8; --teal:#5a9fd4; --mint:#7eb8e8;
+    --accent-on:#152238;
+    --notice-bg:#e8f2fa; --notice-ink:#1a2d42; --notice-border:#7eb8e8;
+    /* phase accents (from Lessons-Learned inspiration) */
+    --p1:#ff5a6e; --p2:#7eb8e8; --p3:#5aa9ff; --p4:#b88bff; --p5:#ffb347;
+    --radius:18px;
+    --font: "Segoe UI", system-ui, -apple-system, Roboto, Helvetica, Arial, sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    font-family:var(--font); color:var(--ink);
+    background:var(--bg0);
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+
+  /* ---------- Stage ---------- */
+  #app{ width:100vw; height:100vh; display:flex; flex-direction:column; }
+  #stageWrap{ flex:1; display:flex; align-items:center; justify-content:center; padding:18px 18px 6px; min-height:0; }
+  .slide{
+    position:relative; width:min(1180px,100%); aspect-ratio:16/10; max-height:100%;
+    background:
+      radial-gradient(1200px 500px at 80% -10%, rgba(90,159,212,.06), transparent 60%),
+      linear-gradient(160deg,var(--bg1),var(--bg2) 60%, #101a28);
+    border:1px solid var(--line); border-radius:26px;
+    box-shadow:0 30px 80px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.04);
+    padding:26px 38px 48px; overflow:hidden; display:flex; flex-direction:column;
+  }
+
+  /* eyebrow + title */
+  .eyebrow{ display:inline-flex; align-items:center; gap:8px; align-self:flex-start;
+    background:rgba(90,159,212,.10); color:var(--accent2); border:1px solid rgba(90,159,212,.28);
+    font-weight:800; letter-spacing:.14em; text-transform:uppercase; font-size:12px;
+    padding:7px 14px; border-radius:999px; }
+  h1.title{ font-size:clamp(28px,3.6vw,46px); line-height:1.02; margin:10px 0 12px; letter-spacing:-.01em; }
+  .slide.cover h1.title{ font-size:clamp(40px,6vw,76px); }
+
+  /* generic two-column body */
+  .cols{ display:grid; grid-template-columns:1fr 1fr; gap:14px; flex:1; min-height:0; }
+  .cols.wide-left{ grid-template-columns:1.25fr .9fr; }
+  .col{ display:flex; flex-direction:column; gap:10px; min-height:0; overflow:auto; }
+  .col::-webkit-scrollbar{ width:6px; } .col::-webkit-scrollbar-thumb{ background:var(--line); border-radius:6px; }
+
+  /* cream reading card */
+  .card{ border-radius:var(--radius); padding:20px 22px; }
+  .card.cream{ background:var(--cream); color:var(--cream-ink); box-shadow:0 10px 30px rgba(0,0,0,.25); overflow:auto; }
+  .card.dark{ background:var(--panel); border:1px solid var(--line); }
+  .tag{ display:inline-block; font-weight:900; font-size:12px; letter-spacing:.1em; text-transform:uppercase;
+    background:var(--amber); color:#3a2c00; padding:5px 12px; border-radius:999px; margin-bottom:12px; }
+  .tag.read{background:var(--amber)} .tag.wow{background:#ff6b8a;color:#3a0010}
+  .tag.do{background:var(--mint);color:var(--accent-on)} .tag.try{background:#ffd766;color:#3a2c00}
+  .card h3{ font-size:clamp(18px,2vw,24px); margin-bottom:8px; }
+  .card.cream p, .card.cream li{ font-size:clamp(15px,1.45vw,19px); line-height:1.45; }
+  .notice{ margin-top:12px; background:var(--notice-bg); border-left:5px solid var(--notice-border); color:var(--notice-ink);
+    padding:10px 13px; border-radius:10px; font-size:14.5px; }
+  .notice b{color:#2d5a7b}
+
+  /* hook */
+  .hook{ background:var(--panel2); border:1px solid var(--line); border-radius:var(--radius); padding:10px 15px; }
+  .hook .lbl{ color:var(--amber2); font-weight:800; font-size:12px; letter-spacing:.08em; text-transform:uppercase; }
+  .hook p{ font-size:clamp(15px,1.5vw,20px); margin-top:5px; line-height:1.3; }
+
+  /* word power */
+  .card.dark.wp{ padding:14px 16px; }
+  .wp h4{ color:var(--ink); font-size:16px; margin-bottom:8px; }
+  .wp-grid{ display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+  .chip{ background:var(--chip-bg); border:1px solid var(--line); border-radius:11px; padding:7px 10px; }
+  .chip b{ display:block; font-size:14.5px; color:var(--mint); }
+  .chip span{ font-size:12px; color:var(--ink-dim); line-height:1.25; }
+
+  /* brain questions */
+  .brain{ background:linear-gradient(150deg,var(--panel),var(--panel2)); border:1px solid var(--line); border-radius:var(--radius); padding:12px 16px; }
+  .brain .lbl{ display:flex; align-items:center; gap:9px; color:var(--amber2); font-weight:800; letter-spacing:.06em; text-transform:uppercase; font-size:12px; margin-bottom:8px;}
+  .brain ol{ list-style:none; display:flex; flex-direction:column; gap:7px; }
+  .brain li{ display:flex; gap:10px; font-size:clamp(13.5px,1.35vw,17px); line-height:1.28; }
+  .brain .n{ flex:none; width:24px; height:24px; border-radius:50%; display:grid; place-items:center;
+    font-weight:900; font-size:13px; color:var(--accent-on); background:linear-gradient(135deg,var(--mint),var(--accent)); }
+
+  /* steps / report builder */
+  .steps{ background:var(--cream); color:var(--cream-ink); border-radius:var(--radius); padding:18px 20px; }
+  .steps .tag{margin-bottom:14px}
+  .steps .row{ display:flex; gap:14px; align-items:flex-start; padding:12px 0; border-bottom:1px dashed #d8cda6;}
+  .steps .row:last-child{border-bottom:none}
+  .steps .num{ flex:none; width:30px; height:30px; border-radius:50%; background:var(--panel2); color:var(--mint);
+    display:grid; place-items:center; font-weight:900; }
+  .steps .row b{ font-size:18px; display:block; }
+  .steps .row span{ font-size:15px; color:#4a5a54; }
+
+  /* exit check */
+  .exit{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; }
+  .exit h4{ font-size:20px; margin-bottom:12px; }
+  .exit-grid{ display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+  .echk{ display:flex; gap:10px; align-items:center; background:var(--chip-bg); border:1px solid var(--line);
+    border-radius:12px; padding:10px 12px; font-size:14.5px; }
+  .echk .bx{ flex:none; width:24px;height:24px;border-radius:7px;background:var(--mint);color:var(--accent-on);
+    display:grid;place-items:center;font-weight:900; }
+
+  /* particle diagrams */
+  .particles{ display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .pcell{ background:var(--chip-bg); border:1px solid var(--line); border-radius:14px; padding:12px; text-align:center;}
+  .pcell .box{ height:96px; border:1px dashed var(--line); border-radius:10px; position:relative; overflow:hidden; margin-bottom:8px;}
+  .pcell b{font-size:15px;color:var(--mint)} .pcell small{color:var(--ink-dim);font-size:12.5px}
+  .dot{ position:absolute; width:13px;height:13px;border-radius:50%;
+    background:radial-gradient(circle at 30% 30%, #b8d8f0, var(--accent)); }
+
+  /* images */
+  .imgframe{ border-radius:14px; overflow:hidden; border:1px solid var(--line); position:relative; background:var(--chip-bg); flex:none; }
+  .imgframe img{ display:block; width:100%; height:clamp(110px,15vh,172px); object-fit:cover; }
+  .imgframe .cap{ position:absolute; left:0; right:0; bottom:0;
+    background:linear-gradient(transparent, rgba(10,18,28,.92)); color:#e8f0f8; font-size:12.5px; padding:18px 12px 8px; font-weight:600; }
+  .imgrow{ display:grid; grid-template-columns:repeat(4,1fr); gap:9px; }
+  .imgrow .ic{ background:var(--chip-bg); border:1px solid var(--line); border-radius:11px; overflow:hidden; text-align:center; }
+  .imgrow .ic img{ width:100%; height:72px; object-fit:cover; display:block; }
+  .imgrow .ic b{ display:block; font-size:12.5px; color:var(--mint); padding:5px 3px; }
+
+  /* simple data table */
+  table.dt{ width:100%; border-collapse:collapse; font-size:15px; }
+  table.dt th, table.dt td{ border:1px solid var(--line); padding:8px 10px; text-align:left; }
+  table.dt th{ background:var(--panel2); color:var(--mint); }
+  .card.cream table.dt th{ background:#efe6c8; color:#3a2c00;}
+  .card.cream table.dt th, .card.cream table.dt td{ border-color:#d8cda6;}
+
+  /* word bank pills */
+  .bank{ display:flex; flex-wrap:wrap; gap:8px; margin:8px 0 4px;}
+  .bank span{ background:var(--chip-bg);border:1px solid var(--line);color:var(--mint);
+    padding:6px 12px;border-radius:999px;font-weight:700;font-size:14px;}
+
+  /* cover */
+  .slide.cover{ align-items:flex-start; justify-content:center; text-align:left; }
+  .cover .sub{ font-size:clamp(18px,2.2vw,26px); color:var(--ink-dim); max-width:760px; line-height:1.4;}
+  .cover .meta{ margin-top:auto; display:flex; gap:22px; flex-wrap:wrap; color:var(--ink-faint); font-weight:700; letter-spacing:.05em;}
+  .cover .pill{ background:rgba(90,159,212,.10); border:1px solid rgba(90,159,212,.25); color:var(--mint); padding:8px 16px; border-radius:999px;}
+
+  /* phase divider */
+  .slide.divider{ justify-content:center; }
+  .divider .pkr{ font-size:clamp(20px,3vw,30px); color:var(--ink-dim); font-weight:800; letter-spacing:.2em; text-transform:uppercase;}
+  .divider h1{ font-size:clamp(40px,6vw,72px); margin:10px 0 18px;}
+  .divider .goals{ display:flex; flex-direction:column; gap:12px; max-width:840px;}
+  .divider .goal{ display:flex; gap:14px; align-items:center; font-size:clamp(17px,1.9vw,22px); background:var(--panel); border:1px solid var(--line); padding:14px 18px; border-radius:14px;}
+  .divider .goal i{ flex:none; width:34px;height:34px;border-radius:10px; display:grid;place-items:center;font-style:normal;font-weight:900;color:var(--accent-on);}
+
+  /* assessment checkpoint slide */
+  .slide.checkpoint{ justify-content:center; text-align:center; align-items:center;}
+  .checkpoint h1{font-size:clamp(34px,5vw,60px)}
+  .checkpoint p{font-size:clamp(18px,2vw,24px); color:var(--ink-dim); max-width:780px; margin:14px auto 24px;}
+
+  .corner{ position:absolute; right:26px; bottom:18px; color:var(--ink-faint); font-size:12px; letter-spacing:.08em;}
+  .corner kbd{ background:var(--chip-bg);border:1px solid var(--line); border-radius:6px; padding:2px 7px; font-size:11px;}
+  .screenlbl{ position:absolute; left:38px; bottom:18px; color:var(--ink-faint); font-size:12px; letter-spacing:.12em; text-transform:uppercase;}
+  .eyebrow-r{ position:absolute; right:38px; top:30px; color:var(--ink-faint); font-size:12px; font-weight:800; letter-spacing:.14em; text-transform:uppercase;}
+
+  /* Present mode — scale slide to fill viewport (Teams / laptop share) */
+  html.presenting body,html:fullscreen body{align-items:stretch;justify-content:stretch;background:var(--bg1);}
+  html.presenting #app,html:fullscreen #app{height:100dvh;}
+  html.presenting #nav,html:fullscreen #nav{flex-shrink:0;padding:8px 10px;background:var(--bg0);border-top:1px solid var(--line);}
+  html.presenting #stageWrap,html:fullscreen #stageWrap{
+    padding:0;flex:1;min-height:0;display:flex;align-items:center;justify-content:center;overflow:hidden;
+    background:var(--bg1);
+  }
+  html.presenting .slide,html:fullscreen .slide{
+    width:1180px;height:738px;max-width:none;max-height:none;aspect-ratio:auto;flex-shrink:0;
+    border-radius:0;border:none;box-shadow:none;
+    padding:26px 38px 48px;
+    transform-origin:center center;
+  }
+  html.presenting .corner,html.presenting .screenlbl,html:fullscreen .corner,html:fullscreen .screenlbl{display:none;}
+  html.presenting .cols,html:fullscreen .cols{flex:1;min-height:0;align-items:stretch;}
+  html.presenting .col,html:fullscreen .col{height:100%;}
+  html.presenting .col > .card.cream,html.presenting .col > .steps,html.presenting .col > .brain,html.presenting .col > .hook,html.presenting .col > .imgframe,html.presenting .col > .imgrow,
+  html:fullscreen .col > .card.cream,html:fullscreen .col > .steps,html:fullscreen .col > .brain,html:fullscreen .col > .hook,html:fullscreen .col > .imgframe,html:fullscreen .col > .imgrow{
+    flex:1 1 0;min-height:0;max-height:none;overflow:auto;
+  }
+  html.presenting .col > .exit,html:fullscreen .col > .exit{flex:0 0 auto;}
+
+  /* ---------- Nav bar ---------- */
+  #nav{ display:flex; align-items:center; justify-content:center; gap:10px; padding:10px; }
+  .btn{ background:var(--panel2); color:var(--ink); border:1px solid var(--line); border-radius:999px;
+    padding:9px 16px; font-weight:700; font-size:14px; cursor:pointer; display:inline-flex; align-items:center; gap:7px; }
+  .btn:hover{ border-color:var(--mint); color:#fff;}
+  .btn.primary{ background:var(--mint); color:var(--accent-on); border-color:var(--mint);}
+  .btn.assess{ background:linear-gradient(135deg,var(--amber),#ff9d3c); color:#3a2400; border:none; font-weight:900;}
+  .btn.notes-open{border-color:var(--mint);color:#fff;box-shadow:0 0 0 1px rgba(126,184,232,.35);}
+  #counter{ font-weight:800; color:var(--ink-dim); min-width:74px; text-align:center; }
+  select#jump{ background:var(--panel2); color:var(--ink); border:1px solid var(--line); border-radius:999px; padding:9px 12px; font-size:13px; max-width:230px; }
+
+  /* ---------- Teacher notes panel ---------- */
+  #tnotes{ position:fixed; right:0; top:0; height:100%; width:min(440px,90vw); transform:translateX(100%);
+    transition:transform .28s ease; background:var(--bg1); border-left:1px solid var(--line); z-index:40;
+    box-shadow:-20px 0 60px rgba(0,0,0,.5); display:flex; flex-direction:column;}
+  #tnotes.open{ transform:none;}
+  html.presenting #tnotes,html:fullscreen #tnotes{z-index:100;height:100dvh;}
+  #tnotes header{ padding:18px 20px; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:space-between; gap:12px; flex-shrink:0;}
+  #tnotes header b{ color:var(--amber2); letter-spacing:.04em;}
+  #tnotes header .slide-label{display:block;font-size:12px;font-weight:700;color:var(--ink-faint);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;}
+  #tnotes .body{ padding:20px; overflow:auto; flex:1; min-height:0; font-size:15.5px; line-height:1.55; color:var(--ink-dim);}
+  #tnotes .body h4{color:var(--mint); margin:14px 0 6px; font-size:16px;}
+  #tnotes .body ul{margin:6px 0 6px 18px;}
+  #tnotes .body li{margin:4px 0;}
+
+  /* ---------- Assessment overlay ---------- */
+  #overlay{ position:fixed; inset:0; background:rgba(8,14,18,.84); backdrop-filter:blur(6px); z-index:60;
+    display:none; align-items:center; justify-content:center; padding:24px;}
+  #overlay.open{display:flex;}
+  .modal{ width:min(1100px,100%); height:min(88vh,820px); background:linear-gradient(160deg,var(--bg1),var(--bg2));
+    border:1px solid var(--line); border-radius:22px; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 40px 100px rgba(0,0,0,.6);}
+  .modal header{ padding:16px 22px; border-bottom:1px solid var(--line); display:flex; align-items:center; gap:14px;}
+  .modal header h2{ font-size:22px; margin-right:auto;}
+  .tabs{ display:flex; gap:8px;}
+  .tab{ background:var(--panel2); border:1px solid var(--line); color:var(--ink-dim); padding:8px 16px; border-radius:999px; cursor:pointer; font-weight:700; font-size:14px;}
+  .tab.active{ background:var(--amber); color:#3a2400; border-color:var(--amber);}
+  .modal .content{ padding:24px; overflow:auto; flex:1;}
+  .modal .content h3{ color:var(--mint); margin:18px 0 8px; font-size:20px;}
+  .modal .content h3:first-child{margin-top:0}
+  .modal .content p, .modal .content li{ font-size:16px; line-height:1.55; color:var(--ink); }
+  .modal .content ul{margin:6px 0 6px 20px}
+  .panelpane{display:none} .panelpane.active{display:block}
+  .rubric{ width:100%; border-collapse:collapse; font-size:13px; margin-top:8px;}
+  .rubric th,.rubric td{ border:1px solid var(--line); padding:8px; vertical-align:top; text-align:left;}
+  .rubric th{ background:var(--panel2); color:var(--amber2);}
+  .rubric td:first-child{ background:var(--chip-bg); color:var(--mint); font-weight:800; width:150px;}
+  .rubric .A{background:rgba(126,184,232,.06)}
+  .assess-doc .assess-open{ margin-bottom:12px; }
+  .assess-doc .assess-open a{ color:var(--amber2); font-weight:800; }
+  #pane-task.active{ display:flex; flex-direction:column; min-height:0; flex:1; }
+  .assess-pdfFrame{ flex:1; min-height:min(68vh,640px); border-radius:14px; overflow:hidden; border:1px solid var(--line); background:var(--bg0); }
+  .assess-pdfFrame iframe{ width:100%; height:100%; border:0; display:block; min-height:min(68vh,640px); }
+  .modal footer{ padding:14px 22px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center;}
+  .hint{color:var(--ink-faint); font-size:13px;}
+
+  @media (max-width:720px){
+    .cols{grid-template-columns:1fr; overflow:auto;}
+    .wp-grid,.exit-grid{grid-template-columns:1fr;}
+    select#jump{max-width:130px;}
+  }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="stageWrap"><div class="slide" id="slide"></div></div>
+  <div id="nav">
+    <button class="btn" id="prev">← Prev</button>
+    <span id="counter">1 / 1</span>
+    <select id="jump"></select>
+    <button class="btn assess" id="assessBtn">📋 Assessment</button>
+    <button class="btn" id="notesBtn">Teacher notes</button>
+    <button class="btn" id="presentBtn" title="Maximise slide for screen share (F · Esc to exit)">⛶ Present</button>
+    <button class="btn" id="next">Next →</button>
+  </div>
+</div>
+
+<!-- Teacher notes drawer -->
+<aside id="tnotes">
+  <header><div><b>Teacher Notes</b><span class="slide-label" id="tnotesTitle"></span></div>
+    <span><button class="btn" id="detachBtn">Detach ⧉</button>
+    <button class="btn" id="notesClose">✕</button></span>
+  </header>
+  <div class="body" id="tnotesBody"></div>
+</aside>
+
+<!-- Assessment overlay -->
+<div id="overlay">
+  <div class="modal">
+    <header>
+      <h2>📋 Assessment — States of Matter</h2>
+      <div class="tabs">
+        <button class="tab active" data-pane="task">Task</button>
+        <button class="tab" data-pane="guide">Marking Guide</button>
+      </div>
+    </header>
+    <div class="content">
+      <div class="panelpane active" id="pane-task"></div>
+      <div class="panelpane" id="pane-guide"></div>
+    </div>
+    <footer>
+      <span class="hint">Tip: press <b>A</b> to open/close · this opens on top of any slide</span>
+      <button class="btn primary" id="backBtn">← Back to my slide</button>
+    </footer>
+  </div>
+</div>
+
+<script>
+/* =========================================================
+   SLIDE DATA  — each entry renders one screen.
+   Block-based: a renderer turns these objects into HTML.
+   ========================================================= */
+const SLIDES = [];
+
+/* ===== Assessment overlay — official task PDF + marking guide ===== */
+const ASSESS_PDF = 'States of Matter U3 Investigation.pdf';
+const ASSESS_TASK = `
+  <div class="assess-doc">
+    <p class="assess-open"><a href="${encodeURI(ASSESS_PDF)}" target="_blank" rel="noopener">↗ Open assessment task PDF in new tab</a> — print or save</p>
+    <div class="assess-pdfFrame"><iframe src="${encodeURI(ASSESS_PDF)}" title="Assessment — States of Matter investigation"></iframe></div>
+  </div>
+`;
+const ASSESS_GUIDE = `
+  <p>Your folio of work is judged against these criteria. Aim for the <b>A</b> column!</p>
+  <table class="rubric">
+    <tr><th>Criterion</th><th class="A">A</th><th>B</th><th>C</th><th>D</th><th>E</th></tr>
+    <tr><td>Chemical sciences (classifying)</td>
+      <td class="A">reasoned classification of substances by observable properties &amp; behaviours</td>
+      <td>informed classification by properties &amp; behaviours</td>
+      <td>classification by observable properties</td>
+      <td>partial classification / observations about properties</td>
+      <td>statements about properties of substances</td></tr>
+    <tr><td>Questioning &amp; predicting</td>
+      <td class="A">poses questions &amp; makes reasoned predictions about the effect of changing variables</td>
+      <td>poses questions &amp; makes plausible predictions</td>
+      <td>poses questions &amp; predicts the effect of changing variables</td>
+      <td>guided posing of questions / predictions</td>
+      <td>directed posing of questions / predictions</td></tr>
+    <tr><td>Planning &amp; conducting</td>
+      <td class="A">plans fair tests managing risks; systematic, safe, accurate &amp; reliable use of equipment</td>
+      <td>plans investigations considering fair testing &amp; safety; safe, accurate, reliable</td>
+      <td>plans investigations; safe &amp; accurate use of equipment</td>
+      <td>partial planning; safe use of equipment</td>
+      <td>statements about methods; safe use of equipment</td></tr>
+    <tr><td>Processing &amp; analysing data</td>
+      <td class="A">follows conventions to construct tables/graphs; systematically organises data; reasoned explanation of patterns vs predictions</td>
+      <td>constructs tables/graphs; describes patterns; compares with predictions</td>
+      <td>constructs tables/graphs; identifies &amp; compares patterns with predictions</td>
+      <td>partial tables/graphs; guided identification of patterns</td>
+      <td>uses provided tables; statements about patterns</td></tr>
+    <tr><td>Evaluating</td>
+      <td class="A">thorough description of effective ways to improve the fairness of investigations</td>
+      <td>informed description of effective ways to improve fairness</td>
+      <td>describes ways to improve fairness</td>
+      <td>identifies ways to improve fairness</td>
+      <td>statements about improvements to methods</td></tr>
+  </table>
+`;
+
+/* ============================ COVER ============================ */
+SLIDES.push({ type:'cover', nav:'Cover',
+  eyebrow:'Year 5 Science · Unit 3 · BrisbaneSDE',
+  title:'States of Matter',
+  sub:'Solids, liquids and gases — and the curious in-between. Investigate how matter behaves, why ice melts, and how to think and test like a real scientist.',
+  meta:['8 weeks · 16 lessons','Part A · Week 4','Part B · Week 7','Online-ready'],
+  bg:'cover-hero.jpeg',
+  notes:`<p>Welcome screen. Use it to set the big question for the term.</p>
+    <h4>Say this</h4><p>"By the end of this unit you'll be able to classify any 'stuff' on Earth, and run your own fair scientific investigation."</p>
+    <h4>Navigation</h4><ul><li><b>← →</b> or Prev/Next move slides</li><li><b>Jump</b> menu skips to any screen</li><li><b>T</b> toggles these notes, <b>D</b> detaches them to a second window</li><li><b>A</b> or the Assessment button opens the task on top of any slide — Back returns you here</li></ul>` });
+
+/* ===================== PHASE 1 DIVIDER ===================== */
+SLIDES.push({ type:'divider', nav:'Phase 1 — Matter & Classifying',
+  eyebrow:'Phase 1 · Weeks 1–4',
+  title:'Matter & Classifying',
+  goals:[
+    'Explain that matter has mass and takes up space, and is made of particles',
+    'Describe and compare solids, liquids and gases',
+    'Classify substances by their observable properties and behaviours',
+    'Draw particle diagrams and use precise science vocabulary',
+    'Be ready to succeed in Part A (Week 4)'
+  ],
+  notes:`<p>This phase builds everything Part A rewards: <b>reasoned classification</b> by properties and behaviours.</p>
+  <h4>Marking-guide link</h4><p>Target the A-column language: "reasoned classification of substances according to their observable properties and behaviours".</p>` });
+
+/* ============================ LESSON 1 ============================ */
+SLIDES.push({ nav:'L1A — Is an empty glass empty?',
+  eyebrow:'Week 1 · Lesson 1 · Learn / Read / Notice', eyebrowR:'Lesson 1 · Screen A',
+  title:'Is an empty glass <i>really</i> empty?',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', wow:true, heading:'The invisible stuff', body:[
+    'Push an "empty" glass straight down, upside-down, into a bowl of water. The water <b>stops partway up</b> — something is already inside, pushing back. It\'s <b>air</b>! Air takes up space and has mass, even though you can\'t see it.',
+    'Everything around you — your chair, your breath, the ocean, even a star — is <b>matter</b>. And all matter is built from tiny pieces far too small to see, called <b>particles</b>.'
+  ], notice:'Matter is anything that takes up space and has mass. If it\'s "stuff", it\'s matter.'},
+    {k:'img', src:'empty-glass.jpeg', cap:'Push an upside-down glass into water — trapped air proves a gas is matter.'}],
+  right:[{k:'hook', q:'If you could shrink small enough to see air, what would a room look like?'},
+    {k:'wp', list:[{t:'matter',d:'anything with mass + takes up space'},{t:'particle',d:'a tiny building block of matter'},{t:'mass',d:'the amount of stuff in something'},{t:'volume',d:'the space something takes up'},{t:'property',d:'a feature you can observe'},{t:'evidence',d:'proof from what you observe'}]},
+    {k:'brain', q:[
+      'Does a balloon weigh more before or after you blow it up? Why?',
+      'Is a shadow matter? Is sound? How could you decide?',
+      'If everything is particles, why does a rock feel solid but air feels like nothing?'
+    ]}],
+  notes:`<h4>Hook (5 min)</h4><p>Do the upside-down glass demo (or show it). Ask: "What stopped the water?"</p>
+  <h4>Read together (10 min)</h4><p>Read the WOW card aloud. Define matter with the two-part test: mass + space.</p>
+  <h4>Brain Questions (15 min)</h4><ul><li>Balloon: it weighs <b>more</b> after — air has mass.</li><li>Shadow/sound: neither is matter (no mass/space) — great for debate.</li><li>Rock vs air: particle spacing &amp; bonding (preview of next lessons).</li></ul>
+  <h4>Online tip</h4><p>Students can do the glass-in-water test at home with a kitchen bowl.</p>` });
+
+SLIDES.push({ nav:'L1B — Matter detectives',
+  eyebrow:'Week 1 · Lesson 1 · Practise / Sort / Share', eyebrowR:'Lesson 1 · Screen B',
+  title:'Matter detectives',
+  screenlbl:'Student screen 2 of 2',
+  left:[{k:'steps', label:'Do this at home', rows:[
+    {t:'Hunt for matter', d:'Find 3 solids, 1 liquid and 1 gas you can detect around you.'},
+    {t:'Prove the gas is real', d:'You can\'t see it — so what is your evidence the gas is there?'},
+    {t:'Mass check', d:'Which item has the most mass? The least? How do you know?'},
+    {t:'Share', d:'Post your trickiest example to the class board and say why.'}
+  ]}],
+  right:[{k:'particles'},
+    {k:'exit', items:['explain that matter has mass and takes up space','give an example of a solid, liquid and gas','explain that all matter is made of particles','give evidence that air is matter']}],
+  notes:`<h4>Task (20 min)</h4><p>Students collect real examples. Accept any reasonable gas evidence (balloon, bubbles, smell, wind).</p>
+  <h4>Particle picture</h4><p>Point at the diagram: today just notice <b>packed vs spread</b>. Detail comes in Lessons 2–4.</p>
+  <h4>Exit check</h4><p>Thumbs/poll each "I can". Re-teach the air-is-matter idea if shaky.</p>` });
+
+/* ============================ LESSON 2 ============================ */
+SLIDES.push({ nav:'L2A — Why won\'t a brick change shape?',
+  eyebrow:'Week 1 · Lesson 2 · Learn / Read / Notice', eyebrowR:'Lesson 2 · Screen A',
+  title:'Why won\'t a brick change its shape?',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', heading:'Particles holding hands', body:[
+    'In a <b>solid</b>, particles are packed tightly in a fixed pattern, like oranges stacked in a crate. They can\'t travel around — they can only <b>vibrate</b> on the spot. That\'s why a solid keeps its <b>own shape</b> and its <b>own volume</b> no matter what container it\'s in.',
+    'A steel bridge, an ice cube and a grain of sand are all solids. Pour a cup of sand and it seems to "flow" — but each grain still keeps its shape. Tricky!'
+  ], notice:'Solids keep a fixed shape AND a fixed volume.'},
+    {k:'img', src:'solids.jpeg', cap:'In a solid, particles are packed in a fixed pattern — like stacked oranges.'}],
+  right:[{k:'hook', q:'Sand pours like a liquid — so is it one? How could you argue "no"?'},
+    {k:'wp', list:[{t:'solid',d:'fixed shape & fixed volume'},{t:'fixed',d:'does not change'},{t:'vibrate',d:'shake on the spot'},{t:'rigid',d:'stiff, hard to bend'},{t:'particle bond',d:'force holding particles together'},{t:'volume',d:'the space it takes up'}]},
+    {k:'brain', q:[
+      'Is old window glass a very slow liquid? People once believed it "drips". How would you test that?',
+      'Why can you walk on ice but not on water?',
+      'If solid particles only vibrate, how can a solid ever melt?'
+    ]}],
+  notes:`<h4>Core idea</h4><p>Solid = particles packed + fixed positions (vibrate only) ⇒ fixed shape &amp; volume.</p>
+  <h4>Brain answers</h4><ul><li>Glass myth: it\'s a solid; old panes are uneven from old manufacturing, not flow.</li><li>Ice supports weight because particles are locked in place.</li><li>Melting = adding heat energy lets particles break free (sets up Lesson 8).</li></ul>` });
+
+SLIDES.push({ nav:'L2B — Solid or not?',
+  eyebrow:'Week 1 · Lesson 2 · Practise / Test / Share', eyebrowR:'Lesson 2 · Screen B',
+  title:'The solid test',
+  screenlbl:'Student screen 2 of 2',
+  left:[{k:'steps', label:'Do this', rows:[
+    {t:'Shape test', d:'Place an object into your hand then into a cup. A solid keeps the SAME shape (a liquid would not).'},
+    {t:'Squeeze test', d:'Try to squash it smaller. A solid resists being compressed.'},
+    {t:'Write a rule', d:'Finish the sentence: "I know it is a solid because…"'}
+  ]}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:10px">Which is a solid?</h4>
+    <table class="dt"><tr><th>Object</th><th>Fixed shape?</th><th>Solid?</th></tr>
+    <tr><td>Wooden box</td><td>yes</td><td>✔</td></tr>
+    <tr><td>Orange juice</td><td>no</td><td>✗</td></tr>
+    <tr><td>Ice block</td><td>yes</td><td>✔</td></tr>
+    <tr><td>Helium</td><td>no</td><td>✗</td></tr></table>
+    <p style="color:var(--ink-dim);font-size:13px;margin-top:8px">These are from the Part A list — sort the rest yourself!</p></div>`},
+    {k:'exit', items:['describe how particles are arranged in a solid','explain why a solid keeps its shape','classify objects as solids using evidence','use the words fixed, vibrate, rigid']}],
+  notes:`<h4>Task</h4><p>Hands-on shape &amp; squeeze tests with home objects. The mini-table previews the Part A Q1 substance list.</p>
+  <h4>Watch for</h4><p>Powders/sand: still solids (each grain keeps shape). Great discussion.</p>` });
+
+/* ============================ LESSON 3 ============================ */
+SLIDES.push({ nav:'L3A — Why does honey pour slowly?',
+  eyebrow:'Week 2 · Lesson 3 · Learn / Read / Notice', eyebrowR:'Lesson 3 · Screen A',
+  title:'Why does honey pour so slowly?',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', heading:'Particles that slide', body:[
+    'In a <b>liquid</b>, particles are still close together, but they\'re no longer locked in place — they can <b>slide and roll</b> past each other. So a liquid <b>flows</b> and takes the shape of its container, but keeps the <b>same volume</b>. Pour 200&nbsp;mL of juice into any cup: still 200&nbsp;mL.',
+    'Some liquids flow easily (water); others ooze (honey, golden syrup). How runny a liquid is, is its <b>viscosity</b>. Warm honey is runnier than cold honey — temperature changes viscosity.'
+  ], notice:'Liquids take the shape of the container but keep the same volume.'},
+    {k:'img', src:'honey-pour.jpeg', cap:'Thick, slow-pouring honey has a high viscosity.'}],
+  right:[{k:'hook', q:'Both are liquids — so why does honey pour slower than water?'},
+    {k:'wp', list:[{t:'liquid',d:'flows; fixed volume, no fixed shape'},{t:'flow',d:'move and spread out'},{t:'viscosity',d:'how thick/runny a liquid is'},{t:'surface',d:'the top level of a liquid'},{t:'volume',d:'amount of space it fills'},{t:'temperature',d:'how hot or cold something is'}]},
+    {k:'brain', q:[
+      'Pour 250 mL of water between five cups — does the amount change? Why does it look different each time?',
+      'Could you ever make water flow uphill? What would it take?',
+      'Is tomato sauce a solid or a liquid — and why is it so hard to get out of the bottle?'
+    ]}],
+  notes:`<h4>Core idea</h4><p>Liquid = particles close but mobile ⇒ fixed volume, takes container shape.</p>
+  <h4>Brain answers</h4><ul><li>Volume conserved (250 mL stays 250 mL) — shape only changes.</li><li>Uphill: needs a force/pump/capillary action — nice prediction talk.</li><li>Sauce: high viscosity / non-Newtonian — links to Lesson 5 oobleck.</li></ul>` });
+
+SLIDES.push({ nav:'L3B — Viscosity race',
+  eyebrow:'Week 2 · Lesson 3 · Practise / Test / Share', eyebrowR:'Lesson 3 · Screen B',
+  title:'Viscosity race',
+  screenlbl:'Student screen 2 of 2',
+  left:[{k:'steps', label:'Do this (with an adult)', rows:[
+    {t:'Predict first', d:'Of water, honey and cooking oil — which will win a downhill race?'},
+    {t:'Set the track', d:'Tilt a plate or tray. Put one drop of each at the top line.'},
+    {t:'Time it', d:'Release together. Time which reaches the bottom first.'},
+    {t:'Explain', d:'Use the word viscosity to explain the result.'}
+  ]},
+    {k:'img', src:'viscosity-race.jpeg', cap:'Race drops down a tilted tray — same slope, same drop size = a fair test.'}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:10px">My prediction & result</h4>
+    <table class="dt"><tr><th>Liquid</th><th>My prediction (rank)</th><th>Actual time (s)</th></tr>
+    <tr><td>Water</td><td></td><td></td></tr><tr><td>Cooking oil</td><td></td><td></td></tr><tr><td>Honey</td><td></td><td></td></tr></table>
+    <p style="color:var(--ink-dim);font-size:13px;margin-top:8px">Predicting + timing = early practice for Part B!</p></div>`},
+    {k:'exit', items:['explain how liquid particles move','say what stays the same and what changes for a liquid','use the word viscosity correctly','make and check a prediction']}],
+  notes:`<h4>Task (25 min)</h4><p>Mini fair test — same drop size, same slope, same start line. Name those "same" things: this seeds <b>controlled variables</b> for Part B.</p>` });
+
+/* ============================ LESSON 4 ============================ */
+SLIDES.push({ nav:'L4A — Where does the fizz go?',
+  eyebrow:'Week 2 · Lesson 4 · Learn / Read / Notice', eyebrowR:'Lesson 4 · Screen A',
+  title:'Where does the fizz go?',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', wow:true, heading:'Particles set free', body:[
+    'In a <b>gas</b>, particles have lots of energy and <b>zoom around freely</b>, far apart, bouncing off everything. A gas has <b>no fixed shape and no fixed volume</b> — it spreads to fill any container completely, and can be squeezed (<b>compressed</b>) into a smaller space.',
+    'Open a fizzy drink and the "fizz" is <b>carbon dioxide</b> gas escaping. Spray perfume in one corner and soon the whole room smells it — gas particles spreading out is called <b>diffusion</b>.'
+  ], notice:'Gases spread out to fill their container and can be compressed.'},
+    {k:'img', src:'fizz.jpeg', cap:'The "fizz" is carbon dioxide gas escaping and spreading into the air.'}],
+  right:[{k:'hook', q:'You can smell dinner from another room. How did the smell travel to your nose?'},
+    {k:'wp', list:[{t:'gas',d:'no fixed shape or volume'},{t:'compress',d:'squeeze into less space'},{t:'diffusion',d:'particles spreading out'},{t:'energy',d:'what makes particles move'},{t:'pressure',d:'particles pushing on walls'},{t:'carbon dioxide',d:'the gas in fizzy drinks'}]},
+    {k:'brain', q:[
+      'Why can you squeeze lots of air into a tiny bike pump, but you can\'t squeeze water?',
+      'If a gas fills any container, how big is the "container" for the air outside?',
+      'A balloon left for a week goes soft. Where did the gas go?'
+    ]}],
+  notes:`<h4>Core idea</h4><p>Gas = high energy, far apart ⇒ fills container, compressible, diffuses.</p>
+  <h4>Brain answers</h4><ul><li>Air compresses because of big gaps between particles; liquid particles already touch.</li><li>"Container" = the atmosphere held by gravity.</li><li>Gas leaks slowly through the balloon wall (diffusion).</li></ul>` });
+
+SLIDES.push({ nav:'L4B — Catch a gas',
+  eyebrow:'Week 2 · Lesson 4 · Practise / Test / Share', eyebrowR:'Lesson 4 · Screen B',
+  title:'Catch a gas',
+  screenlbl:'Student screen 2 of 2',
+  left:[{k:'steps', label:'Do this (with an adult)', rows:[
+    {t:'Set up', d:'Put 2 tsp bicarb soda in a bottle, and vinegar in a balloon. Fit the balloon over the neck.'},
+    {t:'Mix', d:'Lift the balloon so vinegar drops in. Watch closely!'},
+    {t:'Observe', d:'What happens to the balloon? What is the evidence a gas is made?'},
+    {t:'Explain', d:'Name the gas and explain using "spread" and "fill".'}
+  ]},
+    {k:'img', src:'balloon-co2.jpeg', cap:'Bicarb + vinegar makes CO₂ gas — it inflates the balloon.'}],
+  right:[{k:'particles'},
+    {k:'exit', items:['describe how gas particles move','explain why gases compress and spread','give evidence a gas is present','name the gas made by bicarb + vinegar']}],
+  notes:`<h4>Task</h4><p>Classic bicarb + vinegar = CO₂ inflates the balloon. Safe, cheap, perfect for home.</p>
+  <h4>Link</h4><p>Reinforce the full particle picture (all three states) before classifying in Lesson 5.</p>` });
+
+/* ============================ LESSON 5 ============================ */
+SLIDES.push({ nav:'L5A — Solid, liquid… or weird?',
+  eyebrow:'Week 3 · Lesson 5 · Learn / Read / Notice', eyebrowR:'Lesson 5 · Screen A',
+  title:'Solid, liquid… or something weird?',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', wow:true, heading:'The stuff that breaks the rules', body:[
+    'Mix cornflour and water and you make <b>oobleck</b>. Punch it and it acts like a <b>solid</b>; relax your hand and it drips like a <b>liquid</b>! <b>Foam</b> (the top of a milkshake) is gas trapped inside a liquid. <b>Sand</b> is millions of tiny solids that pour like a liquid.',
+    'When something is hard to classify, scientists look at the <b>particles and behaviour</b> and ask: Does it hold a shape? Does it flow? Can it be squashed? The answers reveal the true state.'
+  ], notice:'Classify by behaviour and particles — not just by how something looks.'},
+    {k:'img', src:'oobleck.jpeg', cap:'Oobleck: acts solid when you hit it, liquid when you relax.'}],
+  right:[{k:'hook', q:'Is toothpaste a solid or a liquid? It holds a peak AND it squeezes out…'},
+    {k:'wp', list:[{t:'classify',d:'sort into groups by features'},{t:'behaviour',d:'how something acts'},{t:'oobleck',d:'cornflour + water; acts both ways'},{t:'foam',d:'gas trapped in a liquid'},{t:'evidence',d:'observations that prove your choice'},{t:'justify',d:'give reasons for your answer'}]},
+    {k:'brain', q:[
+      'Is whipped cream a solid, a liquid or a gas — or a mix? Defend your answer.',
+      'Smoke rises and spreads, but you can see it. Is smoke a gas?',
+      'Why might two scientists classify the same object differently?'
+    ]}],
+  notes:`<h4>Big skill</h4><p>This is the heart of Part A\'s A-grade: <b>reasoned</b> classification by properties AND behaviour.</p>
+  <h4>Make oobleck</h4><p>2 parts cornflour : 1 part water. Endless wonder, all at home.</p>` });
+
+SLIDES.push({ nav:'L5B — Draw the particles',
+  eyebrow:'Week 3 · Lesson 5 · Practise / Draw / Share', eyebrowR:'Lesson 5 · Screen B',
+  title:'Draw the particles (Part A practice)',
+  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  left:[{k:'particles'},
+    {k:'imgrow', title:'The Part A Q3 objects — classify each one', items:[
+      {src:'honey.jpeg', label:'Honey'},{src:'eraser.jpeg', label:'Eraser'},
+      {src:'soft-drink-bubbles.jpeg', label:'Bubbles'},{src:'sand.jpeg', label:'Sand'}]}],
+  right:[{k:'steps', label:'Do this — exactly like Part A Q3', rows:[
+    {t:'Pick the objects', d:'Honey · eraser · soft-drink bubbles · sand (the real Q3 list!).'},
+    {t:'Decide the state', d:'Use the behaviour + particle test to choose solid/liquid/gas.'},
+    {t:'List a property', d:'e.g. "flows", "keeps shape", "spreads out".'},
+    {t:'Draw the diagram', d:'Packed = solid, sliding = liquid, free & far = gas.'}
+  ]},
+    {k:'exit', items:['classify tricky materials using evidence','draw particle diagrams for each state','identify a physical property','justify a classification with a reason']}],
+  notes:`<h4>Direct rehearsal</h4><p>These are the exact Part A Q3 objects. Conference with students on their reasons — push for "because the particles…".</p>` });
+
+/* ============================ LESSON 6 ============================ */
+SLIDES.push({ nav:'L6A — The language of matter',
+  eyebrow:'Week 3 · Lesson 6 · Learn / Read / Notice', eyebrowR:'Lesson 6 · Screen A',
+  title:'The language of matter',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', heading:'Words scientists use', body:[
+    'Scientists describe matter using its <b>properties</b> — features you can observe or measure. Does it have a fixed shape? A fixed volume? Can it be poured, squashed or stretched? Strong science writing uses exact words.',
+    'Use this comparison to lock in the differences before Part A:'
+  ]},
+  {k:'html', html:`<div class="card cream"><table class="dt"><tr><th>Property</th><th>Solid</th><th>Liquid</th><th>Gas</th></tr>
+    <tr><td>Fixed shape?</td><td>Yes</td><td>No</td><td>No</td></tr>
+    <tr><td>Fixed volume?</td><td>Yes</td><td>Yes</td><td>No</td></tr>
+    <tr><td>Can it flow?</td><td>No</td><td>Yes</td><td>Yes</td></tr>
+    <tr><td>Can it be compressed?</td><td>No</td><td>Barely</td><td>Yes</td></tr></table></div>`}],
+  right:[{k:'hook', q:'Which single test best separates a gas from a liquid?'},
+    {k:'wp', list:[{t:'shape',d:'the form something takes'},{t:'volume',d:'space it fills'},{t:'melt',d:'solid → liquid (add heat)'},{t:'freeze',d:'liquid → solid (remove heat)'},{t:'heat',d:'energy that warms things'},{t:'cool',d:'to remove heat'}]},
+    {k:'brain', q:[
+      'With only a sealed syringe, how could you tell if it held gas or liquid?',
+      'Why isn\'t "it\'s hard" a good enough reason to call something a solid?',
+      'Which property is impossible for a gas to have?'
+    ]}],
+  notes:`<h4>Compare table</h4><p>This grid mirrors Part A Q2. Drill it. The "compress" row is the cleanest gas-vs-liquid separator (answers the hook).</p>` });
+
+SLIDES.push({ nav:'L6B — Vocabulary cloze',
+  eyebrow:'Week 3 · Lesson 6 · Practise / Write / Share', eyebrowR:'Lesson 6 · Screen B',
+  title:'Vocabulary cloze (Part A practice)',
+  screenlbl:'Student screen 2 of 2',
+  left:[{k:'html', html:`<div class="card cream"><span class="tag try">FILL THE GAPS</span>
+    <div class="bank"><span>heat</span><span>solids</span><span>freezer</span><span>shape</span><span>volume</span><span>cool</span><span>melts</span></div>
+    <p style="margin-top:12px">a) Liquids change their __________ when you move them to a new container.</p>
+    <p>b) __________ don\'t change shape when you move them.</p>
+    <p>c) Moving a liquid to a new glass does not change its __________.</p>
+    <p>d) When a solid gets __________ it turns into a liquid.</p>
+    <p>e) To turn a liquid into a solid, you __________ it (e.g. in the __________).</p>
+    <p>f) Ice __________ when it warms up.</p></div>`}],
+  right:[{k:'exit', items:['use matter vocabulary correctly','complete a cloze about states of matter','explain melting and freezing in words','feel ready for Part A']},
+    {k:'brain', q:[
+      'Which word in the bank could fit more than one gap? How do you decide?',
+      'Could you re-write sentence (d) using the word "particles"?',
+      'What other word could replace "freezer" and still be correct?'
+    ]}],
+  notes:`<h4>Answers</h4><p>a) shape · b) solids · c) volume · d) heat · e) cool / freezer · f) melts.</p>
+  <h4>Bridge</h4><p>Next lesson is Part A. Reassure: it\'s test conditions but everything has been practised.</p>` });
+
+/* ===================== PART A CHECKPOINT ===================== */
+SLIDES.push({ type:'checkpoint', nav:'★ Part A Assessment (Week 4)',
+  eyebrow:'Week 4 · Assessment',
+  title:'Part A — Solids, Liquids & Gases',
+  sub:'You\'re ready. Sort the substances, tick the properties, draw the particle diagrams, and finish the vocabulary. Use your science words and give reasons. Open the task to begin — press Back any time to return here.',
+  notes:`<h4>Conditions</h4><p>Test conditions, completed on the booklet pages. Part A.</p>
+  <h4>Criterion in focus</h4><p>Chemical sciences — push for <b>reasoned classification by properties &amp; behaviours</b> (A grade).</p>
+  <h4>Support</h4><p>Online students: read instructions aloud on call; allow think-time; remind them to draw all particle diagrams in Q3.</p>` });
+
+/* ===================== PHASE 2 DIVIDER ===================== */
+SLIDES.push({ type:'divider', nav:'Phase 2 — Inquiry & Investigating',
+  eyebrow:'Phase 2 · Weeks 4–7',
+  title:'Inquiry & Investigating',
+  goals:[
+    'Describe changes of state and the role of heat energy',
+    'Pose testable questions and make reasoned predictions',
+    'Plan a fair test: independent, dependent and controlled variables',
+    'Measure accurately, record safely, and graph your data',
+    'Succeed in Part B: plan, conduct and evaluate an investigation'
+  ],
+  notes:`<p>This phase trains every Science Inquiry Skill the Part B marking guide rewards.</p>
+  <h4>Criterion map</h4><ul><li>L9 → Questioning &amp; predicting</li><li>L10–11 → Planning &amp; conducting</li><li>L12 → Processing &amp; analysing</li><li>L15 → Evaluating</li></ul>` });
+
+/* ============================ LESSON 8 ============================ */
+SLIDES.push({ nav:'L8A — Ice → water → vanish?',
+  eyebrow:'Week 4 · Lesson 8 · Learn / Read / Notice', eyebrowR:'Lesson 8 · Screen A',
+  title:'What makes ice turn to water — then vanish?',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', wow:true, heading:'The energy story', body:[
+    'Add <b>heat energy</b> and particles move faster. A solid\'s particles break free and start to slide — it <b>melts</b> into a liquid. Add more heat and they escape into the air — it <b>evaporates</b> into a gas. Remove heat and it runs backwards: gas <b>condenses</b> to liquid, liquid <b>freezes</b> to solid.',
+    'The amazing part? It is the <b>same particles</b> the whole time — only their energy and arrangement change. Ice, water and steam are all just water (H₂O).'
+  ], notice:'Melting, freezing, evaporating and condensing are changes of state caused by adding or removing heat.'},
+    {k:'img', src:'melting-ice.jpeg', cap:'Heat energy frees the particles — the solid melts into liquid water.'}],
+  right:[{k:'hook', q:'Where does a puddle go on a hot day? It does not leak away…'},
+    {k:'wp', list:[{t:'melt',d:'solid → liquid (add heat)'},{t:'evaporate',d:'liquid → gas (add heat)'},{t:'condense',d:'gas → liquid (remove heat)'},{t:'freeze',d:'liquid → solid (remove heat)'},{t:'heat energy',d:'what makes particles move faster'},{t:'change of state',d:'switching between solid/liquid/gas'}]},
+    {k:'brain', q:[
+      'Dry ice turns straight from solid to gas — no liquid (sublimation). Where could that be useful?',
+      'Why do you see your breath on a cold morning but not on a warm one?',
+      'If you heat ice in a sealed jar, does its total mass change?'
+    ]}],
+  notes:`<h4>Core idea</h4><p>Heat energy drives state change; particles are conserved (mass stays the same in a sealed jar).</p>
+  <h4>Bridge to Part B</h4><p>From here, every lesson builds the ice-melting investigation. Start collecting "what could change the melting time?" ideas.</p>` });
+
+SLIDES.push({ nav:'L8B — Melt watch',
+  eyebrow:'Week 4 · Lesson 8 · Practise / Observe / Share', eyebrowR:'Lesson 8 · Screen B',
+  title:'Melt watch (warm-up for Part B)',
+  screenlbl:'Student screen 2 of 2',
+  left:[{k:'steps', label:'Do this at home', rows:[
+    {t:'Two ice cubes', d:'Place one on a plate in the sun, one in the shade.'},
+    {t:'Predict', d:'Which melts first? Roughly how much faster?'},
+    {t:'Observe & time', d:'Record the time each cube is fully melted.'},
+    {t:'Notice variables', d:'What did you keep the same? What was different?'}
+  ]},
+    {k:'img', src:'ice-sun-shade.jpeg', cap:'Same cubes, one in sun and one in shade — only the location changes.'}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:10px">Melt log</h4>
+    <table class="dt"><tr><th>Cube</th><th>Predict (min)</th><th>Actual (min)</th></tr>
+    <tr><td>Sun</td><td></td><td></td></tr><tr><td>Shade</td><td></td><td></td></tr></table>
+    <p style="color:var(--ink-dim);font-size:13px;margin-top:8px">This is a mini version of your Part B test.</p></div>`},
+    {k:'exit', items:['name the four changes of state','explain the role of heat energy','describe melting using particles','spot what changed and what stayed the same']}],
+  notes:`<h4>Task</h4><p>Low-stakes rehearsal of the real investigation. Draw out the words "same" and "different" — seeds of controlled vs independent variables.</p>` });
+
+/* ============================ LESSON 9 ============================ */
+SLIDES.push({ nav:'L9A — A question a test can answer',
+  eyebrow:'Week 5 · Lesson 9 · Learn / Read / Notice', eyebrowR:'Lesson 9 · Screen A',
+  title:'Asking a question a test can answer',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', heading:'From wonder to investigation', body:[
+    'Scientists turn a wondering into a <b>testable question</b> — one you can answer by changing ONE thing and measuring what happens. "Why is ice cool?" is interesting but hard to test. "<b>Does adding salt change how fast an ice cube melts?</b>" can be tested!',
+    'A good <b>prediction</b> (hypothesis) says what you think will happen AND gives a <b>reason</b>: "I predict the salted ice melts faster <i>because</i> salt lowers the melting point." The reason is what earns top marks.'
+  ], notice:'A testable question changes one variable and measures the effect. A strong prediction gives a reason.'}],
+  right:[{k:'hook', q:'Turn this wondering into a testable question: "Ice melts in my drink really fast."'},
+    {k:'wp', list:[{t:'testable',d:'can be answered by an experiment'},{t:'predict',d:'say what you think will happen'},{t:'hypothesis',d:'a prediction with a reason'},{t:'variable',d:'something that can change'},{t:'reason',d:'the "because" behind a prediction'},{t:'investigation',d:'a planned scientific test'}]},
+    {k:'brain', q:[
+      'Which is more testable: "Is water wet?" or "Does warm water melt ice faster?" Why?',
+      'Can a prediction turn out wrong and the experiment still be a success?',
+      'What makes a reason a GOOD reason in science?'
+    ]}],
+  notes:`<h4>Criterion</h4><p>Questioning &amp; predicting. A-grade = <b>reasoned</b> predictions about the effect of changing variables.</p>
+  <h4>Key move</h4><p>Insist on the "because…". A prediction without a reason caps the grade.</p>` });
+
+SLIDES.push({ nav:'L9B — Build your question',
+  eyebrow:'Week 5 · Lesson 9 · Practise / Write / Share', eyebrowR:'Lesson 9 · Screen B',
+  title:'Build your Part B question',
+  screenlbl:'Student screen 2 of 2',
+  left:[{k:'steps', label:'Do this', rows:[
+    {t:'Pick a variable', d:'salt? · water temperature? · sun vs shade? · wrapping? · crushed vs whole?'},
+    {t:'Write the question', d:'"Does ______ change the time it takes for an ice cube to melt?"'},
+    {t:'Predict + reason', d:'"I predict ______ because ______."'}
+  ]}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">Choose your own (all home-friendly)</h4>
+    <div class="bank"><span>salt vs none</span><span>warm vs cold surface</span><span>sun vs shade</span><span>foil wrap vs none</span><span>crushed vs whole</span></div>
+    <p style="color:var(--ink-dim);font-size:13.5px;margin-top:10px">Pick the one that excites YOU — you will run this for real in Part B.</p></div>`},
+    {k:'brain', q:[
+      'Which variable do you predict will make the BIGGEST difference? Why?',
+      'Which would be hardest to keep fair? Why?',
+      'Could two variables be linked (change together)? Give an example.'
+    ]},
+    {k:'exit', items:['write a testable question','make a prediction with a reason','identify the variable I will change','use the words hypothesis and variable']}],
+  notes:`<h4>Outcome</h4><p>Every student leaves with a chosen variable + testable question + reasoned prediction — the spine of Part B.</p>` });
+
+/* ============================ LESSON 10 ============================ */
+SLIDES.push({ nav:'L10A — What makes a test FAIR?',
+  eyebrow:'Week 5 · Lesson 10 · Learn / Read / Notice', eyebrowR:'Lesson 10 · Screen A',
+  title:'What makes a test <i>fair</i>?',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', wow:true, heading:'Change one thing, keep the rest the same', body:[
+    'A <b>fair test</b> changes only ONE thing — the <b>independent variable</b> (what you change). You measure the <b>dependent variable</b> (here, the melting time). Everything else must stay the same: the <b>controlled variables</b>. Change two things at once and you will not know which one caused the result!',
+    'To test salt fairly: every ice cube the same size, same starting temperature, same room, same surface — only the salt is different.'
+  ], notice:'Fair test = change ONE variable, measure ONE, control ALL the rest.'}],
+  right:[{k:'hook', q:'If one ice cube is bigger than the others, why does that wreck your results?'},
+    {k:'wp', list:[{t:'independent',d:'the one thing you change'},{t:'dependent',d:'the thing you measure'},{t:'controlled',d:'things kept the same'},{t:'fair test',d:'only one variable changes'},{t:'valid',d:'actually tests the question'},{t:'reliable',d:'repeats give similar results'}]},
+    {k:'brain', q:[
+      'You test sun vs shade but one cube is twice as big. Can you trust the result? Why not?',
+      'Why do scientists repeat a test several times instead of once?',
+      'Is it ever possible to control EVERY variable? What do scientists do about it?'
+    ]}],
+  notes:`<h4>Criterion</h4><p>Planning &amp; conducting. A-grade plans <b>manage risks</b> and produce <b>accurate &amp; reliable</b> data.</p>
+  <h4>Anchor</h4><p>Use the three-word frame everywhere: change / measure / keep the same.</p>` });
+
+SLIDES.push({ nav:'L10B — Plan your variables',
+  eyebrow:'Week 5 · Lesson 10 · Practise / Plan / Share', eyebrowR:'Lesson 10 · Screen B',
+  title:'Plan your variables (Part B booklet)',
+  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  left:[{k:'html', html:`<div class="card cream"><span class="tag try">FILL IN FOR YOUR TEST</span>
+    <table class="dt"><tr><th>Variable type</th><th>For my investigation</th></tr>
+    <tr><td><b>Independent</b><br><small>what I change</small></td><td></td></tr>
+    <tr><td><b>Dependent</b><br><small>what I measure</small></td><td>time to melt (min : sec)</td></tr>
+    <tr><td><b>Controlled</b><br><small>kept the same</small></td><td>(list at least 3)</td></tr></table></div>`}],
+  right:[{k:'steps', label:'Check it is fair', rows:[
+    {t:'Only one change', d:'Is just your independent variable different?'},
+    {t:'Same everything else', d:'List 3+ controlled variables (size, start temp, room, surface…).'},
+    {t:'Repeat plan', d:'Decide how many trials (3 is great) for reliability.'}
+  ]},
+    {k:'exit', items:['identify independent, dependent & controlled variables','explain why a test must be fair','list 3+ controlled variables','explain why I repeat trials']}],
+  notes:`<h4>Outcome</h4><p>A completed variables plan. Push for at least three controlled variables — directly lifts the Planning grade.</p>` });
+
+/* ============================ LESSON 11 ============================ */
+SLIDES.push({ nav:'L11A — Measure like a scientist',
+  eyebrow:'Week 6 · Lesson 11 · Learn / Read / Notice', eyebrowR:'Lesson 11 · Screen A',
+  title:'Measure it like a scientist',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', heading:'Accuracy, safety and good data', body:[
+    'Good data comes from careful measuring. Use the <b>same timer</b> and the <b>same way of deciding</b> when ice is "fully melted". Record straight into a <b>table</b> as you go — never trust your memory. Accurate, repeated measurements make your results <b>reliable</b>.',
+    'Stay safe: wipe up spills so no one slips, handle very cold ice with care, and ask an adult before using hot water. Listing safety steps is part of your marks.'
+  ], notice:'Reliable results come from accurate, repeated measurements recorded in a clear table.'}],
+  right:[{k:'hook', q:'Two people time the same ice cube and get different times. What could cause that?'},
+    {k:'wp', list:[{t:'accurate',d:'close to the true value'},{t:'reliable',d:'repeats agree with each other'},{t:'measure',d:'find a value with a tool'},{t:'units',d:'e.g. minutes & seconds'},{t:'record',d:'write data as you go'},{t:'safety',d:'steps that prevent harm'}]},
+    {k:'brain', q:[
+      'How will you decide the EXACT moment an ice cube is "fully melted"? Why does that matter?',
+      'Why is recording as you go better than remembering later?',
+      'What is one safety risk in your melting test, and how will you manage it?'
+    ]}],
+  notes:`<h4>Criterion</h4><p>Planning &amp; conducting — safe, systematic, accurate &amp; reliable use of equipment.</p>
+  <h4>Discuss</h4><p>Define "fully melted" precisely (no visible ice). Consistency = accuracy.</p>` });
+
+SLIDES.push({ nav:'L11B — Build your results table',
+  eyebrow:'Week 6 · Lesson 11 · Practise / Plan / Share', eyebrowR:'Lesson 11 · Screen B',
+  title:'Build your results table',
+  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  left:[{k:'html', html:`<div class="card cream"><span class="tag try">YOUR DATA TABLE</span>
+    <table class="dt"><tr><th>Condition</th><th>Trial 1</th><th>Trial 2</th><th>Trial 3</th><th>Average</th></tr>
+    <tr><td>(e.g. no salt)</td><td></td><td></td><td></td><td></td></tr>
+    <tr><td>(e.g. with salt)</td><td></td><td></td><td></td><td></td></tr></table>
+    <p style="color:#4a5a54;font-size:13.5px;margin-top:8px">Times in minutes : seconds. Average = add the trials ÷ how many.</p></div>`}],
+  right:[{k:'steps', label:'Make it count', rows:[
+    {t:'Clear columns', d:'Condition · Trial 1 · Trial 2 · Trial 3 · Average.'},
+    {t:'Add units', d:'Always write the units (min : sec).'},
+    {t:'Two safety steps', d:'Write 2 safety steps for your method.'}
+  ]},
+    {k:'exit', items:['design a clear results table','measure time accurately with units','plan to repeat trials for reliability','list safety steps for my method']}],
+  notes:`<h4>Outcome</h4><p>Students leave with a ready-to-use table + averaging method + safety steps — exactly what Part B requires.</p>` });
+
+/* ============================ LESSON 12 ============================ */
+SLIDES.push({ nav:'L12A — Make your data speak',
+  eyebrow:'Week 6 · Lesson 12 · Learn / Read / Notice', eyebrowR:'Lesson 12 · Screen A',
+  title:'Make your data speak',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', wow:true, heading:'A graph reveals the pattern', body:[
+    'Numbers in a table are useful, but a <b>graph</b> lets the pattern jump out. To compare conditions (salt vs no salt), a <b>bar graph</b> works best. Label both axes, add units, and give it a title. Then read the pattern: which condition melted fastest?',
+    'Top scientists do not just show data — they <b>explain</b> the pattern and <b>compare it to their prediction</b>, with a reason. That is the A-grade move.'
+  ], notice:'Build the graph using conventions (title, labelled axes, units), then describe AND explain the pattern.'}],
+  right:[{k:'hook', q:'What kind of graph best compares "salt" vs "no salt" melting times — and why?'},
+    {k:'wp', list:[{t:'data',d:'the information you collect'},{t:'bar graph',d:'bars compare separate groups'},{t:'axis',d:'a labelled side of a graph'},{t:'pattern',d:'a repeating relationship'},{t:'trend',d:'the overall direction'},{t:'explain',d:'say WHY using a reason'}]},
+    {k:'brain', q:[
+      'Could the same data tell two different stories depending on how you draw the graph?',
+      'If your result did NOT match your prediction, what should a scientist do?',
+      'What does it mean if your three trials gave very different times?'
+    ]}],
+  notes:`<h4>Criterion</h4><p>Processing &amp; analysing — conventions for tables/graphs + <b>reasoned</b> explanation of patterns vs predictions.</p>` });
+
+SLIDES.push({ nav:'L12B — Graph it & read it',
+  eyebrow:'Week 6 · Lesson 12 · Practise / Graph / Share', eyebrowR:'Lesson 12 · Screen B',
+  title:'Graph it & read the pattern',
+  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  left:[{k:'steps', label:'Graph checklist', rows:[
+    {t:'Pick the graph', d:'Bar graph to compare your conditions.'},
+    {t:'Label everything', d:'Title + both axes + units.'},
+    {t:'Plot accurately', d:'One bar per condition, height = average time.'},
+    {t:'Read the pattern', d:'"The ______ melted fastest because ______."'}
+  ]},
+    {k:'img', src:'graph-grid.jpg', cap:'Use a grid like this: label both axes, add units and a title.'}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:10px">Sentence builders</h4>
+    <p style="color:var(--ink);font-size:15.5px;line-height:1.6">• "My graph shows that ______ melted the fastest."<br>
+    • "This pattern matches / does not match my prediction because ______."<br>
+    • "A reason for this is ______."</p></div>`},
+    {k:'exit', items:['construct a graph using conventions','describe the pattern in my data','compare my result with my prediction','suggest a reason for the pattern']}],
+  notes:`<h4>Outcome</h4><p>Students can turn a table into a labelled bar graph and verbalise the pattern with a reason — rehearsal for the real write-up.</p>` });
+
+/* ===================== PART B CHECKPOINT ===================== */
+SLIDES.push({ type:'checkpoint', nav:'★ Part B Assessment (Week 7)',
+  eyebrow:'Week 7 · Assessment',
+  title:'Part B — Plan, Conduct & Evaluate',
+  sub:'Time to run YOUR investigation into what changes an ice cube\'s melting time. The next four screens walk through your booklet. Open the task any time with the Assessment button — press Back to return.',
+  notes:`<h4>Conditions</h4><p>Part B, completed in the booklet. Practical done at home with adult support where needed.</p>
+  <h4>Criteria in play</h4><p>Questioning &amp; predicting · Planning &amp; conducting · Processing &amp; analysing · Evaluating.</p>` });
+
+/* ============================ LESSON 13 (Part B) ============================ */
+SLIDES.push({ nav:'L13A — Part B: Plan',
+  eyebrow:'Week 7 · Lesson 13 · Plan your investigation', eyebrowR:'Part B · Screen A',
+  title:'Part B — Plan your investigation',
+  screenlbl:'Booklet: pages 1–5', wideLeft:true,
+  left:[{k:'steps', label:'Complete in your booklet', rows:[
+    {t:'Question', d:'"Does ______ change the time it takes an ice cube to melt?"'},
+    {t:'Prediction + reason', d:'"I predict ______ because ______."'},
+    {t:'Variables', d:'Independent (change) · Dependent (melt time) · Controlled (3+ same).'},
+    {t:'Materials & method', d:'List equipment; number your steps so anyone could copy them.'},
+    {t:'Safety', d:'Write at least two safety considerations.'}
+  ]}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">A-grade reminders</h4>
+    <p style="color:var(--ink);font-size:15px;line-height:1.6">✓ Prediction has a <b>because</b><br>✓ <b>3+ controlled</b> variables listed<br>✓ Method is <b>numbered &amp; repeatable</b><br>✓ Safety risks are <b>managed</b>, not just named</p></div>`},
+    {k:'exit', items:['write a testable question','predict with a reason','set out all three variable types','write a safe, repeatable method']}],
+  notes:`<h4>Conference focus</h4><p>Check the prediction reason and the controlled-variable list before they start the practical.</p>` });
+
+SLIDES.push({ nav:'L13B — Part B: Conduct',
+  eyebrow:'Week 7 · Lesson 13 · Conduct & record', eyebrowR:'Part B · Screen B',
+  title:'Part B — Conduct & record',
+  screenlbl:'Booklet: results table', wideLeft:true,
+  left:[{k:'steps', label:'Run your test', rows:[
+    {t:'Set up fairly', d:'Same size cubes, same start, only your variable changes.'},
+    {t:'Time each trial', d:'Use the same timer and the same "fully melted" rule.'},
+    {t:'Record as you go', d:'Write each time straight into your table.'},
+    {t:'Repeat 3 times', d:'Then calculate the average for each condition.'}
+  ]}],
+  right:[{k:'html', html:`<div class="card cream"><span class="tag try">RECORD HERE</span>
+    <table class="dt"><tr><th>Condition</th><th>T1</th><th>T2</th><th>T3</th><th>Avg</th></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    <tr><td></td><td></td><td></td><td></td><td></td></tr></table></div>`},
+    {k:'exit', items:['conduct a fair test safely','measure melting time accurately','record results in my table','repeat trials and average them']}],
+  notes:`<h4>Conduct</h4><p>If melting is slow, students can do it across the lesson or at home and bring data. Reinforce identical "fully melted" judgement.</p>` });
+
+/* ============================ LESSON 14 (Part B) ============================ */
+SLIDES.push({ nav:'L14A — Part B: Process & graph',
+  eyebrow:'Week 7 · Lesson 14 · Process your data', eyebrowR:'Part B · Screen A',
+  title:'Part B — Process & graph your data',
+  screenlbl:'Booklet: graph page', wideLeft:true,
+  left:[{k:'steps', label:'Turn data into a graph', rows:[
+    {t:'Choose the graph', d:'Bar graph comparing your conditions.'},
+    {t:'Follow conventions', d:'Title · both axes labelled · units.'},
+    {t:'Plot the averages', d:'Bar height = average melting time.'},
+    {t:'Describe the pattern', d:'"My graph shows ______ melted fastest."'}
+  ]},
+    {k:'img', src:'graph-grid.jpg', cap:'Plot your averages as bars on a grid like this.'}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">Explain like an A-grader</h4>
+    <p style="color:var(--ink);font-size:15px;line-height:1.6">• Name the pattern in your data.<br>• Compare it to your <b>prediction</b>.<br>• Give a <b>reason</b> for what you see.</p></div>`},
+    {k:'exit', items:['construct a graph using conventions','organise my data systematically','describe the pattern','compare the pattern with my prediction']}],
+  notes:`<h4>Processing</h4><p>Watch for labelled axes + units (easy marks). Push the explanation beyond "describe" to "explain with a reason".</p>` });
+
+SLIDES.push({ nav:'L14B — Part B: Evaluate & conclude',
+  eyebrow:'Week 7 · Lesson 14 · Evaluate & conclude', eyebrowR:'Part B · Screen B',
+  title:'Part B — Evaluate & conclude',
+  screenlbl:'Booklet: evaluation & conclusion', wideLeft:true,
+  left:[{k:'steps', label:'Finish strong', rows:[
+    {t:'Conclusion', d:'Answer your question using your data. Was your prediction correct?'},
+    {t:'Was it fair?', d:'What did you do well to keep it fair?'},
+    {t:'Improve it', d:'Describe ways to improve the fairness next time.'},
+    {t:'What next?', d:'What new question would you investigate now?'}
+  ]}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">Evaluation sentence starters</h4>
+    <p style="color:var(--ink);font-size:15px;line-height:1.6">• "My investigation showed that ______."<br>• "It was fair because ______."<br>• "To improve the fairness I would ______."<br>• "I now wonder what would happen if ______."</p></div>`},
+    {k:'exit', items:['write a conclusion from my data','compare my result with my prediction','describe ways to improve fairness','pose a new question to investigate']}],
+  notes:`<h4>Evaluating criterion</h4><p>A-grade = <b>thorough description of effective ways to improve fairness</b>. Encourage specific, actionable improvements (e.g. "use identical-mass cubes measured on scales").</p>` });
+
+/* ===================== PHASE 3 DIVIDER ===================== */
+SLIDES.push({ type:'divider', nav:'Phase 3 — Evaluate & Showcase',
+  eyebrow:'Phase 3 · Week 8',
+  title:'Evaluate & Showcase',
+  goals:[
+    'Judge how fair and accurate my investigation was',
+    'Describe effective ways to improve a fair test',
+    'Explore states of matter beyond solid, liquid and gas',
+    'Share my findings and reflect on my growth as a scientist'
+  ],
+  notes:`<p>Consolidation week. Lesson 15 finishes the Evaluating criterion; Lesson 16 is a wonder-fuelled wrap and showcase.</p>` });
+
+/* ============================ LESSON 15 ============================ */
+SLIDES.push({ nav:'L15A — How good was my test?',
+  eyebrow:'Week 8 · Lesson 15 · Learn / Read / Notice', eyebrowR:'Lesson 15 · Screen A',
+  title:'Great scientists are honest about flaws',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', heading:'Evaluating: how good was my test?', body:[
+    '<b>Evaluating</b> means judging how well your investigation worked and how to make it better. Real scientists are honest about weaknesses: maybe the cubes were not exactly equal, or the room warmed up. Spotting these and suggesting <b>specific fixes</b> is a sign of strong scientific thinking — and it earns the top marks.',
+    'Ask yourself: Was it fair? Were my measurements accurate? Did I repeat enough times? What single change would make the biggest improvement?'
+  ], notice:'Evaluating = describe effective, specific ways to improve the fairness and accuracy of your test.'}],
+  right:[{k:'hook', q:'If you could run your ice experiment one more time, what is the ONE thing you would change?'},
+    {k:'wp', list:[{t:'evaluate',d:'judge how well it worked'},{t:'fairness',d:'only one variable changed'},{t:'accuracy',d:'how close to the true value'},{t:'improve',d:'make better next time'},{t:'limitation',d:'a weakness in the method'},{t:'reliable',d:'repeats agree'}]},
+    {k:'brain', q:[
+      'Is an experiment a failure if your prediction turned out wrong? Why or why not?',
+      'Which is worse: one weird result, or all three trials disagreeing? Why?',
+      'How could you make your melting times even more accurate?'
+    ]}],
+  notes:`<h4>Criterion</h4><p>Evaluating — A-grade = <b>thorough description of effective ways to improve fairness</b>.</p>
+  <h4>Model it</h4><p>Contrast a vague vs specific improvement (see Screen B). Reward specificity.</p>` });
+
+SLIDES.push({ nav:'L15B — Upgrade your investigation',
+  eyebrow:'Week 8 · Lesson 15 · Practise / Reflect / Share', eyebrowR:'Lesson 15 · Screen B',
+  title:'Upgrade your investigation',
+  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  left:[{k:'steps', label:'Do this', rows:[
+    {t:'Spot a weakness', d:'Name one thing that was hard to keep fair or accurate.'},
+    {t:'Suggest a specific fix', d:'Describe exactly what you would change.'},
+    {t:'Say why it helps', d:'Explain how the fix improves fairness or accuracy.'}
+  ]}],
+  right:[{k:'html', html:`<div class="card cream"><span class="tag do">GOOD → GREAT</span>
+    <p style="margin-top:6px"><b>Good:</b> "I would make it more fair."</p>
+    <p><b>Great:</b> "I would weigh each ice cube on kitchen scales so every cube starts at exactly 20 g — this keeps size a controlled variable and makes the comparison fair."</p></div>`},
+    {k:'exit', items:['judge how fair my test was','describe specific improvements','explain why each improvement helps','reflect on what I learned']}],
+  notes:`<h4>Outcome</h4><p>Each student writes at least one specific, justified improvement — the exact skill the Evaluating A-descriptor names.</p>` });
+
+/* ============================ LESSON 16 ============================ */
+SLIDES.push({ nav:'L16A — Matter across the universe',
+  eyebrow:'Week 8 · Lesson 16 · Learn / Read / Wonder', eyebrowR:'Lesson 16 · Screen A',
+  title:'States of matter across the universe',
+  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  left:[{k:'read', wow:true, heading:'Beyond solid, liquid, gas', body:[
+    'There are more than three states! Add huge energy and a gas becomes <b>plasma</b> — the glowing state of lightning, neon signs and the Sun. Cool atoms to almost <b>absolute zero</b> and they form a Bose–Einstein condensate, where particles act as one. On Saturn\'s moon <b>Titan</b> it rains liquid methane into lakes!',
+    'You began by asking if an empty glass is really empty. Now you can classify almost any "stuff" in the universe — and test your own ideas like a real scientist.'
+  ], notice:'Solid, liquid and gas are just the beginning — curiosity keeps the science going.'},
+    {k:'img', src:'plasma.jpeg', cap:'Plasma — the glowing 4th state — powers lightning, neon signs and the Sun.'}],
+  right:[{k:'hook', q:'If the Sun is not solid, liquid or gas — then what is it?'},
+    {k:'wp', list:[{t:'plasma',d:'super-energetic 4th state'},{t:'absolute zero',d:'the coldest possible temperature'},{t:'sublimation',d:'solid → gas, skipping liquid'},{t:'state',d:'a form matter takes'},{t:'energy',d:'drives state changes'},{t:'universe',d:'everything that exists'}]},
+    {k:'brain', q:[
+      'Could there be a state of matter humans have not discovered yet? How would we know?',
+      'What would water be like on a planet much hotter or colder than Earth?',
+      'Of everything this term, what made you say WOW — and what do you still wonder?'
+    ]}],
+  notes:`<h4>Tone</h4><p>Pure wonder. No assessment pressure — let curiosity run. Connect back to Lesson 1\'s empty-glass question to show how far they have come.</p>` });
+
+SLIDES.push({ nav:'L16B — Showcase & wonder',
+  eyebrow:'Week 8 · Lesson 16 · Share / Reflect / Celebrate', eyebrowR:'Lesson 16 · Screen B',
+  title:'Showcase your science',
+  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  left:[{k:'steps', label:'Share with the class', rows:[
+    {t:'Your best moment', d:'Your coolest result, finding or "aha".'},
+    {t:'Explain the science', d:'Use at least 3 unit words correctly.'},
+    {t:'Pose a wonder', d:'One question you would love to investigate next.'}
+  ]}],
+  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">Unit in one breath</h4>
+    <p style="color:var(--ink);font-size:15px;line-height:1.7">Matter has mass &amp; takes up space → it is made of particles → particles arrange differently in <b>solids, liquids &amp; gases</b> → <b>heat energy</b> changes their state → scientists <b>question, predict, fair-test, measure, graph &amp; evaluate</b> to find out how the world works.</p></div>`},
+    {k:'exit', items:['explain states beyond solid/liquid/gas','use unit vocabulary to share my learning','reflect on my growth as a scientist','ask a new scientific question']}],
+  notes:`<h4>Celebrate</h4><p>Showcase via the class board / live call. Invite a "wonder wall" of new questions to carry into the next unit.</p>` });
+
+/* ============================ CLOSING ============================ */
+SLIDES.push({ type:'cover', nav:'Keep wondering',
+  eyebrow:'Unit 3 · Complete',
+  title:'Keep wondering.',
+  sub:'You can now classify matter, run a fair test, and explain your thinking like a scientist. The best scientists never stop asking "what if?"',
+  meta:['Question','Predict','Test','Evaluate','Wonder'],
+  notes:`<p>Closing screen. Reuse for reflection or to launch the next unit.</p>` });
+
+
+/* =========================================================
+   RENDERERS
+   ========================================================= */
+function bq(arr){ // brain questions block (3)
+  return `<div class="brain"><div class="lbl">🧠 Brain Questions — talk it out</div>
+    <ol>${arr.map((q,i)=>`<li><span class="n">${i+1}</span><span>${q}</span></li>`).join('')}</ol></div>`;
+}
+function wordpower(list){
+  return `<div class="card dark wp"><h4>Word Power</h4><div class="wp-grid">${
+    list.map(w=>`<div class="chip"><b>${w.t}</b><span>${w.d}</span></div>`).join('')}</div></div>`;
+}
+function hook(q){ return `<div class="hook"><div class="lbl">Hook question</div><p>${q}</p></div>`; }
+function readCard(r){
+  return `<div class="card cream"><span class="tag ${r.wow?'wow':'read'}">${r.label||(r.wow?'WOW · READ':'READ')}</span>
+    <h3>${r.heading}</h3>${(r.body||[]).map(p=>`<p style="margin-bottom:10px">${p}</p>`).join('')}
+    ${r.notice?`<div class="notice"><b>Notice:</b> ${r.notice}</div>`:''}</div>`;
+}
+function exitCheck(items){
+  return `<div class="exit"><h4>Exit check — I can…</h4><div class="exit-grid">${
+    items.map(i=>`<div class="echk"><span class="bx">✓</span><span>${i}</span></div>`).join('')}</div></div>`;
+}
+function steps(s){
+  return `<div class="steps"><span class="tag do">${s.label||'DO THIS'}</span>
+    ${s.rows.map((r,i)=>`<div class="row"><div class="num">${i+1}</div><div><b>${r.t}</b><span>${r.d||''}</span></div></div>`).join('')}</div>`;
+}
+function particles(){
+  function dots(kind){
+    let html=''; 
+    if(kind==='solid'){ for(let r=0;r<4;r++)for(let c=0;c<5;c++){html+=`<span class="dot" style="left:${10+c*18}%;top:${12+r*22}%"></span>`;} }
+    if(kind==='liquid'){ const pos=[[12,55],[26,40],[38,62],[52,48],[66,58],[78,42],[20,72],[44,78],[68,75],[55,30],[33,28],[80,66]];
+      pos.forEach(p=>html+=`<span class="dot" style="left:${p[0]}%;top:${p[1]}%"></span>`); }
+    if(kind==='gas'){ const pos=[[15,20],[70,15],[40,45],[85,55],[20,75],[55,80],[78,82],[33,60]];
+      pos.forEach(p=>html+=`<span class="dot" style="left:${p[0]}%;top:${p[1]}%"></span>`); }
+    return html;
+  }
+  return `<div class="card dark"><h4 style="margin-bottom:10px">Particle picture</h4><div class="particles">
+    <div class="pcell"><div class="box">${dots('solid')}</div><b>Solid</b><br><small>packed · ordered · vibrate</small></div>
+    <div class="pcell"><div class="box">${dots('liquid')}</div><b>Liquid</b><br><small>close · random · slide</small></div>
+    <div class="pcell"><div class="box">${dots('gas')}</div><b>Gas</b><br><small>far apart · fast · fly</small></div>
+  </div></div>`;
+}
+function rawHtml(h){ return h; }
+
+function renderSlide(s){
+  const el = document.getElementById('slide');
+  el.className = 'slide ' + (s.type||'lesson');
+  el.style.background = '';
+  if(s.type==='cover' && s.bg){
+    el.style.background = `linear-gradient(90deg, rgba(7,22,19,.95) 30%, rgba(7,22,19,.45) 70%, rgba(7,22,19,.25)), url('${s.bg}') right center / cover no-repeat`;
+  }
+  let html='';
+  if(s.eyebrowR) html+=`<div class="eyebrow-r">${s.eyebrowR}</div>`;
+
+  if(s.type==='cover'){
+    html += `<span class="eyebrow">${s.eyebrow||''}</span>
+      <h1 class="title">${s.title}</h1><p class="sub">${s.sub||''}</p>
+      <div class="meta">${(s.meta||[]).map(m=>`<span class="pill">${m}</span>`).join('')}</div>`;
+  }
+  else if(s.type==='divider'){
+    html += `<div class="pkr">${s.eyebrow||''}</div><h1>${s.title}</h1>
+      <div class="goals">${(s.goals||[]).map((g,i)=>`<div class="goal"><i style="background:var(--p${(i%5)+1})">${i+1}</i><span>${g}</span></div>`).join('')}</div>`;
+  }
+  else if(s.type==='checkpoint'){
+    html += `<span class="eyebrow" style="align-self:center">${s.eyebrow||''}</span>
+      <h1>${s.title}</h1><p>${s.sub||''}</p>
+      <button class="btn assess" style="padding:14px 26px;font-size:17px" onclick="openOverlay()">📋 Open assessment task</button>`;
+  }
+  else { // lesson screen
+    if(s.eyebrow) html+=`<span class="eyebrow">${s.eyebrow}</span>`;
+    html += `<h1 class="title">${s.title}</h1>`;
+    const left = (s.left||[]).map(renderBlock).join('');
+    const right = (s.right||[]).map(renderBlock).join('');
+    html += `<div class="cols ${s.wideLeft?'wide-left':''}"><div class="col">${left}</div><div class="col">${right}</div></div>`;
+  }
+  if(s.screenlbl) html+=`<div class="screenlbl">${s.screenlbl}</div>`;
+  html += `<div class="corner"><kbd>T</kbd> notes · <kbd>D</kbd> detach · <kbd>A</kbd> assessment</div>`;
+  el.innerHTML = html;
+}
+
+function renderBlock(b){
+  switch(b.k){
+    case 'read': return readCard(b);
+    case 'hook': return hook(b.q);
+    case 'wp': return wordpower(b.list);
+    case 'brain': return bq(b.q);
+    case 'steps': return steps(b);
+    case 'exit': return exitCheck(b.items);
+    case 'particles': return particles();
+    case 'img': return `<div class="imgframe"><img src="${b.src}" alt="${b.alt||''}" loading="lazy">${b.cap?`<div class="cap">${b.cap}</div>`:''}</div>`;
+    case 'imgrow': return `<div class="card dark"><h4 style="margin-bottom:8px">${b.title||''}</h4><div class="imgrow">${
+      b.items.map(it=>`<div class="ic"><img src="${it.src}" alt="${it.alt||it.label}" loading="lazy"><b>${it.label}</b></div>`).join('')}</div></div>`;
+    case 'html': return rawHtml(b.html);
+    default: return '';
+  }
+}
+
+/* =========================================================
+   NAV + STATE
+   ========================================================= */
+let idx = 0;
+function show(i){
+  idx = Math.max(0, Math.min(SLIDES.length-1, i));
+  renderSlide(SLIDES[idx]);
+  document.getElementById('counter').textContent = `${idx+1} / ${SLIDES.length}`;
+  document.getElementById('jump').value = idx;
+  if(document.getElementById('tnotes').classList.contains('open')) fillNotes();
+  updatePresentScale();
+}
+function buildJump(){
+  const sel=document.getElementById('jump'); sel.innerHTML='';
+  SLIDES.forEach((s,i)=>{ const o=document.createElement('option'); o.value=i;
+    o.textContent=`${i+1}. ${s.nav||s.title||('Slide '+(i+1))}`; sel.appendChild(o); });
+}
+function fillNotes(){
+  const s=SLIDES[idx];
+  document.getElementById('tnotesTitle').textContent=s.nav||s.title||`Slide ${idx+1}`;
+  document.getElementById('tnotesBody').innerHTML = s.notes || '<p>No notes for this screen.</p>';
+}
+function openNotes(){ document.getElementById('tnotes').classList.add('open'); document.getElementById('notesBtn').classList.add('notes-open'); fillNotes(); }
+function closeNotes(){ document.getElementById('tnotes').classList.remove('open'); document.getElementById('notesBtn').classList.remove('notes-open'); }
+function detachNotes(){
+  const s=SLIDES[idx];
+  const w=window.open('','tnotes','width=460,height=760');
+  w.document.write(`<title>Teacher Notes — ${s.nav||s.title}</title>
+    <style>body{font-family:system-ui;background:#0f1828;color:#b4c4d4;line-height:1.6;padding:22px;}
+    h2{color:#ffe082} h4{color:#7eb8e8;margin:14px 0 4px} ul{margin-left:18px} li{margin:4px 0}</style>
+    <h2>${s.nav||s.title}</h2>${s.notes||'<p>No notes.</p>'}`);
+  w.document.close();
+}
+let savedIdxForOverlay=null;
+function openOverlay(){ savedIdxForOverlay=idx; document.getElementById('overlay').classList.add('open'); }
+function closeOverlay(){ document.getElementById('overlay').classList.remove('open');
+  if(savedIdxForOverlay!=null){ show(savedIdxForOverlay); } }
+
+document.getElementById('prev').onclick=()=>show(idx-1);
+document.getElementById('next').onclick=()=>show(idx+1);
+document.getElementById('jump').onchange=e=>show(+e.target.value);
+document.getElementById('notesBtn').onclick=openNotes;
+document.getElementById('notesClose').onclick=closeNotes;
+document.getElementById('detachBtn').onclick=detachNotes;
+document.getElementById('assessBtn').onclick=()=>openOverlay();
+document.getElementById('backBtn').onclick=closeOverlay;
+
+function isPresenting(){
+  return document.documentElement.classList.contains('presenting')
+    || document.fullscreenElement || document.webkitFullscreenElement;
+}
+function setPresenting(on){ document.documentElement.classList.toggle('presenting', on); syncPresentBtn(); updatePresentScale(); }
+function updatePresentScale(){
+  const slide=document.getElementById('slide');
+  if(!isPresenting()){ slide.style.transform=''; return; }
+  const wrap=document.getElementById('stageWrap');
+  const scale=Math.min(wrap.clientWidth/1180, wrap.clientHeight/738);
+  slide.style.transform=`scale(${scale})`;
+}
+function togglePresent(){
+  if(isPresenting()){
+    setPresenting(false);
+    if(document.fullscreenElement||document.webkitFullscreenElement)
+      (document.exitFullscreen||document.webkitExitFullscreen||document.msExitFullscreen)?.call(document);
+  } else {
+    setPresenting(true);
+    const el=document.documentElement;
+    const req=el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen;
+    if(req) req.call(el).catch(()=>{});
+  }
+}
+function syncPresentBtn(){
+  document.getElementById('presentBtn').textContent = isPresenting() ? '⤢ Exit' : '⛶ Present';
+}
+function onFullscreenChange(){
+  if(!document.fullscreenElement&&!document.webkitFullscreenElement)
+    document.documentElement.classList.remove('presenting');
+  syncPresentBtn();
+  updatePresentScale();
+}
+document.getElementById('presentBtn').onclick=togglePresent;
+document.addEventListener('fullscreenchange',onFullscreenChange);
+document.addEventListener('webkitfullscreenchange',onFullscreenChange);
+window.addEventListener('resize',updatePresentScale);
+document.querySelectorAll('#overlay .tab').forEach(t=>t.onclick=()=>{
+  document.querySelectorAll('#overlay .tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('#overlay .panelpane').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active'); document.getElementById('pane-'+t.dataset.pane).classList.add('active');
+});
+document.addEventListener('keydown',e=>{
+  if(e.target.tagName==='SELECT') return;
+  if(e.key==='ArrowRight') show(idx+1);
+  else if(e.key==='ArrowLeft') show(idx-1);
+  else if(e.key.toLowerCase()==='t'){ document.getElementById('tnotes').classList.contains('open')?closeNotes():openNotes(); }
+  else if(e.key.toLowerCase()==='d') detachNotes();
+  else if(e.key.toLowerCase()==='a'){ document.getElementById('overlay').classList.contains('open')?closeOverlay():openOverlay(); }
+  else if(e.key.toLowerCase()==='f') togglePresent();
+  else if(e.key==='Escape'){
+    if(document.getElementById('tnotes').classList.contains('open')){ closeNotes(); return; }
+    if(isPresenting()){ togglePresent(); return; }
+    closeOverlay();
+  }
+});
+
+/* assessment overlay content */
+document.getElementById('pane-task').innerHTML = ASSESS_TASK;
+document.getElementById('pane-guide').innerHTML = ASSESS_GUIDE;
+
+buildJump(); show(0);
+</script>
+</body>
+</html>
