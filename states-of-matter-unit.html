@@ -1028,8 +1028,7 @@ function renderSlide(s){
 
   if(s.type==='cover'){
     html += `<span class="eyebrow">${s.eyebrow||''}</span>
-      <h1 class="title">${s.title}</h1><p class="sub">${s.sub||''}</p>
-      <div class="meta">${(s.meta||[]).map(m=>`<span class="pill">${m}</span>`).join('')}</div>`;
+      <h1 class="title">${s.title}</h1><p class="sub">${s.sub||''}</p>`;
   }
   else if(s.type==='divider'){
     html += `<div class="pkr">${s.eyebrow||''}</div><h1>${s.title}</h1>
