@@ -91,6 +91,19 @@
   .brain .n{ flex:none; width:24px; height:24px; border-radius:50%; display:grid; place-items:center;
     font-weight:900; font-size:13px; color:var(--accent-on); background:linear-gradient(135deg,var(--mint),var(--accent)); }
 
+
+  .know-card h3{font-size:17px;margin:8px 0 6px}
+  .know-list{margin:8px 0 0;padding-left:18px;font-size:14px;line-height:1.45;color:var(--ink-dim)}
+  .know-list li{margin-bottom:6px}
+  .discuss-card h3{font-size:17px}
+  .discuss-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:10px;padding:0;margin-left:0}
+  .discuss-list li{display:flex;gap:10px;font-size:14px;line-height:1.35}
+  .discuss-list .n{flex:none;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-weight:800;font-size:11px;background:var(--chip-bg);border:1px solid var(--line)}
+  .discuss-tip{margin-top:10px;font-size:13px;color:var(--ink-faint);font-style:italic}
+  .sort-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .sort-col{background:var(--chip-bg);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px}
+  .sort-col b{display:block;margin-bottom:6px;color:var(--mint);font-size:12px;letter-spacing:.06em;text-transform:uppercase}
+
   /* steps / report builder */
   .steps{ background:var(--cream); color:var(--cream-ink); border-radius:var(--radius); padding:18px 20px; }
   .steps .tag{margin-bottom:14px}
@@ -100,6 +113,26 @@
     display:grid; place-items:center; font-weight:900; }
   .steps .row b{ font-size:18px; display:block; }
   .steps .row span{ font-size:15px; color:#4a5a54; }
+
+
+  /* 15-minute demonstrable win */
+  .win15{
+    background:linear-gradient(135deg, color-mix(in srgb, var(--mint, #3d9b8f) 18%, transparent), var(--panel2, var(--panel)));
+    border:1px solid color-mix(in srgb, var(--mint, #3d9b8f) 45%, var(--line));
+    border-radius:var(--radius); padding:12px 14px; margin-bottom:2px;
+  }
+  .win15 .lbl{
+    font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--mint, #2a9d8f); margin-bottom:6px;
+  }
+  .win15 .can{
+    font-family:inherit; font-size:clamp(16px,1.9vmin,22px); font-weight:800;
+    letter-spacing:-.02em; line-height:1.25; margin:0 0 8px;
+  }
+  .win15 .prove{
+    font-size:13.5px; color:var(--ink-dim, #4a5a54); line-height:1.4; margin:0;
+  }
+  .win15 .prove b{ color:var(--ink); }
 
   /* exit check */
   .exit{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; }
@@ -350,7 +383,7 @@ SLIDES.push({ type:'cover', nav:'Cover',
   eyebrow:'Year 5 Science · Unit 3 · BrisbaneSDE',
   title:'States of Matter',
   sub:'Solids, liquids and gases — and the curious in-between. Investigate how matter behaves, why ice melts, and how to think and test like a real scientist.',
-  meta:['8 weeks · 16 lessons','Part A · Week 4','Part B · Week 7','Online-ready'],
+  meta:['8 weeks · 16 lessons · 2 per week · 2 per week','Part A · Week 4','Part B · Week 7','Online-ready'],
   bg:'cover-hero.jpeg',
   notes:`<p>Welcome screen. Use it to set the big question for the term.</p>
     <h4>Say this</h4><p>"By the end of this unit you'll be able to classify any 'stuff' on Earth, and run your own fair scientific investigation."</p>
@@ -374,13 +407,13 @@ SLIDES.push({ type:'divider', nav:'Phase 1 — Matter & Classifying',
 SLIDES.push({ nav:'L1A — Is an empty glass empty?',
   eyebrow:'Week 1 · Lesson 1 · Learn / Read / Notice', eyebrowR:'Lesson 1 · Screen A',
   title:'Is an empty glass <i>really</i> empty?',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', wow:true, heading:'The invisible stuff', body:[
     'Push an "empty" glass straight down, upside-down, into a bowl of water. The water <b>stops partway up</b> — something is already inside, pushing back. It\'s <b>air</b>! Air takes up space and has mass, even though you can\'t see it.',
     'Everything around you — your chair, your breath, the ocean, even a star — is <b>matter</b>. And all matter is built from tiny pieces far too small to see, called <b>particles</b>.'
   ], notice:'Matter is anything that takes up space and has mass. If it\'s "stuff", it\'s matter.'},
     {k:'img', src:'upside-down-glass.jpg', cap:'Push an upside-down glass into water — trapped air proves a gas is matter.'}],
-  right:[{k:'hook', q:'If you could shrink small enough to see air, what would a room look like?'},
+  right:[{k:'win15', can:'prove air is matter with one piece of evidence', prove:'Name your evidence in one sentence (balloon mass, trapped air, bubbles…).'},{k:'hook', q:'If you could shrink small enough to see air, what would a room look like?'},
     {k:'wp', list:[{t:'matter',d:'anything with mass + takes up space'},{t:'particle',d:'a tiny building block of matter'},{t:'mass',d:'the amount of stuff in something'},{t:'volume',d:'the space something takes up'},{t:'property',d:'a feature you can observe'},{t:'evidence',d:'proof from what you observe'}]},
     {k:'brain', q:[
       'Does a balloon weigh more before or after you blow it up? Why?',
@@ -395,7 +428,7 @@ SLIDES.push({ nav:'L1A — Is an empty glass empty?',
 SLIDES.push({ nav:'L1B — Matter detectives',
   eyebrow:'Week 1 · Lesson 1 · Practise / Sort / Share', eyebrowR:'Lesson 1 · Screen B',
   title:'Matter detectives',
-  screenlbl:'Student screen 2 of 2',
+  screenlbl:'Student screen 2 of 4',
   left:[{k:'steps', label:'Do this at home', rows:[
     {t:'Hunt for matter', d:'Find 3 solids, 1 liquid and 1 gas you can detect around you.'},
     {t:'Prove the gas is real', d:'You can\'t see it — so what is your evidence the gas is there?'},
@@ -408,17 +441,34 @@ SLIDES.push({ nav:'L1B — Matter detectives',
   <h4>Particle picture</h4><p>Point at the diagram: today just notice <b>packed vs spread</b>. Detail comes in Lessons 2–4.</p>
   <h4>Exit check</h4><p>Thumbs/poll each "I can". Re-teach the air-is-matter idea if shaky.</p>` });
 
+SLIDES.push({ nav:'L1C — Air vs empty — dig deeper',
+  eyebrow:'Week 1 · Lesson 1 · Explore / Stretch / Share', eyebrowR:'Lesson 1 · Screen C',
+  title:'Air vs empty — dig deeper',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'The matter test on tricky cases',points:['Matter must have <b>mass</b> (weigh something) and <b>volume</b> (take up space).','Air inside a glass, balloon or bubble passes both tests even though you cannot see it.','Steam and smell are gases — they spread to fill whatever space is available.','A vacuum chamber is not truly empty; removing air is hard and takes equipment.']},{k:'discuss',title:'Air is matter — convince a sceptic',label:'DISCUSS',tip:'Use sentence starters: My evidence is… because matter has…',prompts:['Your partner says an empty glass has nothing in it. What evidence would you show them?','Is a smell matter? Argue yes or no using mass and volume language.','Why do scuba divers carry air tanks instead of breathing water?','What is the difference between something invisible and something that is not matter?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Balloon mass test',d:'Weigh a balloon, inflate it, weigh again. Record whether mass changed and why.'},{t:'Upside-down glass',d:'Push an upside-down cup into water. Sketch where air went.'},{t:'Bubble evidence',d:'Blow one bubble. List three ways it proves gas has volume.'},{t:'Teach-back',d:'Explain to a partner why classroom air counts as matter in 40 seconds.'}]},{k:'brain',q:['Which example was hardest to classify — and what property decided it?','How is proving air is matter different from just saying air is everywhere?','What would change if students thought only visible things were matter?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L1D — Prove it to a partner',
+  eyebrow:'Week 1 · Lesson 1 · Secure / Prove / Reflect', eyebrowR:'Lesson 1 · Screen D',
+  title:'Prove it to a partner',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Prove air is matter',points:['Mass + volume = matter. Air has both even when invisible.','Strong evidence: balloon on scales, trapped air in water, bubbles with volume.','Teach someone else using one concrete classroom example.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Evidence sentence',d:'Write one sentence: I know air is matter because…'},{t:'Vocabulary check',d:'Underline mass, volume and particles in your answer.'},{t:'Partner proof',d:'Swap work — can your partner repeat your evidence aloud?'},{t:'Exit ready',d:'Complete the exit check without notes.'}]}],
+  right:[{k:'discuss',title:'Final teach-back',label:'DISCUSS',tip:'Nominate two students to model a crisp evidence sentence.',prompts:['What is your single best piece of evidence that air is matter?','How would you test whether steam from a kettle is matter?','Why is particle language useful even when we cannot see particles?','What mistake do people make when they say empty means nothing?']},{k:'exit',items:['explain that matter has mass and takes up space','give an example of a solid, liquid and gas','explain that all matter is made of particles','give evidence that air is matter']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 2 ============================ */
 SLIDES.push({ nav:'L2A — Why won\'t a brick change shape?',
   eyebrow:'Week 1 · Lesson 2 · Learn / Read / Notice', eyebrowR:'Lesson 2 · Screen A',
   title:'Why won\'t a brick change its shape?',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', heading:'Particles holding hands', body:[
     'In a <b>solid</b>, particles are packed tightly in a fixed pattern, like oranges stacked in a crate. They can\'t travel around — they can only <b>vibrate</b> on the spot. That\'s why a solid keeps its <b>own shape</b> and its <b>own volume</b> no matter what container it\'s in.',
     'A steel bridge, an ice cube and a grain of sand are all solids. Pour a cup of sand and it seems to "flow" — but each grain still keeps its shape. Tricky!'
   ], notice:'Solids keep a fixed shape AND a fixed volume.'},
     {k:'img', src:'solids.jpeg', cap:'In a solid, particles are packed in a fixed pattern — like stacked oranges.'}],
-  right:[{k:'hook', q:'Sand pours like a liquid — so is it one? How could you argue "no"?'},
+  right:[{k:'win15', can:'name two properties that make a solid a solid', prove:'Point to a solid nearby and say shape + volume in your own words.'},{k:'hook', q:'Sand pours like a liquid — so is it one? How could you argue "no"?'},
     {k:'wp', list:[{t:'solid',d:'fixed shape & fixed volume'},{t:'fixed',d:'does not change'},{t:'vibrate',d:'shake on the spot'},{t:'rigid',d:'stiff, hard to bend'},{t:'particle bond',d:'force holding particles together'},{t:'volume',d:'the space it takes up'}]},
     {k:'brain', q:[
       'Is old window glass a very slow liquid? People once believed it "drips". How would you test that?',
@@ -431,7 +481,7 @@ SLIDES.push({ nav:'L2A — Why won\'t a brick change shape?',
 SLIDES.push({ nav:'L2B — Solid or not?',
   eyebrow:'Week 1 · Lesson 2 · Practise / Test / Share', eyebrowR:'Lesson 2 · Screen B',
   title:'The solid test',
-  screenlbl:'Student screen 2 of 2',
+  screenlbl:'Student screen 2 of 4',
   left:[{k:'steps', label:'Do this', rows:[
     {t:'Shape test', d:'Place an object into your hand then into a cup. A solid keeps the SAME shape (a liquid would not).'},
     {t:'Squeeze test', d:'Try to squash it smaller. A solid resists being compressed.'},
@@ -448,17 +498,34 @@ SLIDES.push({ nav:'L2B — Solid or not?',
   notes:`<h4>Task</h4><p>Hands-on shape &amp; squeeze tests with home objects. The mini-table previews the Part A Q1 substance list.</p>
   <h4>Watch for</h4><p>Powders/sand: still solids (each grain keeps shape). Great discussion.</p>` });
 
+SLIDES.push({ nav:'L2C — Solid properties in action',
+  eyebrow:'Week 1 · Lesson 2 · Explore / Stretch / Share', eyebrowR:'Lesson 2 · Screen C',
+  title:'Solid properties in action',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Solid properties in the real world',points:['Solids have fixed <b>shape</b> and fixed <b>volume</b> — the container does not change them.','Particles in a solid vibrate but stay in a fixed arrangement.','Most solids are hard to compress because particles are already packed tightly.','Sand flows but each grain is still a solid with its own shape.']},{k:'discuss',title:'Solid or not?',label:'DISCUSS',prompts:['Is jelly a solid or a liquid? What evidence supports your call?','A sponge changes shape when you squeeze it — is it still a solid?','Why is a pile of sand tricky for younger students to classify?','Could something be a solid and still feel soft? Give an example.']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Compress test',d:'Try squeezing a rubber, eraser and apple. Which resists most?'},{t:'Shape test',d:'Pour rice into a jar then a tray. Does each grain change shape?'},{t:'Property card',d:'Pick a classroom solid and list shape, volume and compressibility.'},{t:'Edge-case sort',d:'Sort jelly, ice, sand and sponge — defend one tricky item.'}]},{k:'brain',q:['Which solid property is easiest to observe without equipment?','When does everyday language (soft, squishy) clash with science language?','How do particles explain why a brick keeps its shape?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L2D — Solid or not? Defend your call',
+  eyebrow:'Week 1 · Lesson 2 · Secure / Prove / Reflect', eyebrowR:'Lesson 2 · Screen D',
+  title:'Solid or not? Defend your call',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Solid checklist',points:['A solid keeps its own shape and volume.','Particle picture: packed, vibrating, not sliding past each other.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Three-bullet card',d:'Write how I know it is a solid in three bullet points.'},{t:'Point and prove',d:'Point to a solid nearby and name shape + volume.'},{t:'Fix a misconception',d:'Explain why sand is not a liquid.'},{t:'Exit ready',d:'Complete exit check — include particle words.'}]}],
+  right:[{k:'html',html:`<div class="card dark"><span class="tag try">SORT</span><p style="margin-top:8px">Sort these into <b>clear solid</b> vs <b>tricky case</b>:</p><div class="sort-grid"><div class="sort-col"><b>Items</b>ice cube, honey, play dough, oxygen, desk</div><div class="sort-col"><b>Your call</b>Write solid / not solid + one reason each</div></div></div>`},{k:'exit',items:['describe how particles are arranged in a solid','explain why a solid keeps its shape','classify objects as solids using evidence','use the words fixed, vibrate, rigid']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 3 ============================ */
 SLIDES.push({ nav:'L3A — Why does honey pour slowly?',
   eyebrow:'Week 2 · Lesson 3 · Learn / Read / Notice', eyebrowR:'Lesson 3 · Screen A',
   title:'Why does honey pour so slowly?',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', heading:'Particles that slide', body:[
     'In a <b>liquid</b>, particles are still close together, but they\'re no longer locked in place — they can <b>slide and roll</b> past each other. So a liquid <b>flows</b> and takes the shape of its container, but keeps the <b>same volume</b>. Pour 200&nbsp;mL of juice into any cup: still 200&nbsp;mL.',
     'Some liquids flow easily (water); others ooze (honey, golden syrup). How runny a liquid is, is its <b>viscosity</b>. Warm honey is runnier than cold honey — temperature changes viscosity.'
   ], notice:'Liquids take the shape of the container but keep the same volume.'},
     {k:'img', src:'honey-pour.jpeg', cap:'Thick, slow-pouring honey has a high viscosity.'}],
-  right:[{k:'hook', q:'Both are liquids — so why does honey pour slower than water?'},
+  right:[{k:'win15', can:'describe how liquid particles move differently from solids', prove:'Act it out or sketch packed-but-sliding particles in 30 seconds.'},{k:'hook', q:'Both are liquids — so why does honey pour slower than water?'},
     {k:'wp', list:[{t:'liquid',d:'flows; fixed volume, no fixed shape'},{t:'flow',d:'move and spread out'},{t:'viscosity',d:'how thick/runny a liquid is'},{t:'surface',d:'the top level of a liquid'},{t:'volume',d:'amount of space it fills'},{t:'temperature',d:'how hot or cold something is'}]},
     {k:'brain', q:[
       'Pour 250 mL of water between five cups — does the amount change? Why does it look different each time?',
@@ -471,7 +538,7 @@ SLIDES.push({ nav:'L3A — Why does honey pour slowly?',
 SLIDES.push({ nav:'L3B — Viscosity race',
   eyebrow:'Week 2 · Lesson 3 · Practise / Test / Share', eyebrowR:'Lesson 3 · Screen B',
   title:'Viscosity race',
-  screenlbl:'Student screen 2 of 2',
+  screenlbl:'Student screen 2 of 4',
   left:[{k:'steps', label:'Do this (with an adult)', rows:[
     {t:'Predict first', d:'Of water, honey and cooking oil — which will win a downhill race?'},
     {t:'Set the track', d:'Tilt a plate or tray. Put one drop of each at the top line.'},
@@ -486,17 +553,34 @@ SLIDES.push({ nav:'L3B — Viscosity race',
     {k:'exit', items:['explain how liquid particles move','say what stays the same and what changes for a liquid','use the word viscosity correctly','make and check a prediction']}],
   notes:`<h4>Task (25 min)</h4><p>Mini fair test — same drop size, same slope, same start line. Name those "same" things: this seeds <b>controlled variables</b> for Part B.</p>` });
 
+SLIDES.push({ nav:'L3C — Liquid behaviour lab talk',
+  eyebrow:'Week 2 · Lesson 3 · Explore / Stretch / Share', eyebrowR:'Lesson 3 · Screen C',
+  title:'Liquid behaviour lab talk',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Liquid behaviour — same state, different flow',points:['Liquids have a fixed <b>volume</b> but take the <b>shape of their container</b>.','Particles are close together but can slide and flow past each other.','<b>Viscosity</b> describes how thick or runny a liquid is — honey vs water.','Temperature often changes viscosity (warm honey pours faster).']},{k:'discuss',title:'Pouring and flowing',label:'DISCUSS',prompts:['Why does honey pour more slowly than water if both are liquids?','Does a liquid always look flat on top? Think of dome-shaped droplets.','How could you fairly compare how fast two liquids pour?','What particle movement explains why liquids spill?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Viscosity race',d:'Time water vs another liquid down a ramp. Keep angle the same.'},{t:'Container test',d:'Pour 50 mL into three different shaped containers. What changes?'},{t:'Particle sketch',d:'Draw liquid particles — close, random, sliding.'},{t:'Caption it',d:'Write one sentence linking viscosity to particle movement.'}]},{k:'brain',q:['What is the difference between volume and the shape you see?','Why is fair testing important in a viscosity race?','Which liquid in your home would win a slow-pour competition?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L3D — Liquid checklist',
+  eyebrow:'Week 2 · Lesson 3 · Secure / Prove / Reflect', eyebrowR:'Lesson 3 · Screen D',
+  title:'Liquid checklist',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Liquid evidence',points:['Liquids flow, keep volume, and fill the bottom of a container.','Viscosity is a measurable property of liquids.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Checklist',d:'Write three ways I know it is a liquid.'},{t:'Fair test',d:'State one variable you would change and one you would keep.'},{t:'Real example',d:'Name a liquid at home and one property you can observe.'},{t:'Exit ready',d:'Peer-check vocabulary: viscosity, volume, particles.'}]}],
+  right:[{k:'discuss',title:'Liquid lab talk',label:'DISCUSS',prompts:['What result surprised you in the viscosity race?','How would particles move differently in thick vs runny liquids?','Is toothpaste a liquid? Build an argument both ways.','What would you measure if you repeated the test?']},{k:'exit',items:['explain how liquid particles move','say what stays the same and what changes for a liquid','use the word viscosity correctly','make and check a prediction']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 4 ============================ */
 SLIDES.push({ nav:'L4A — Where does the fizz go?',
   eyebrow:'Week 2 · Lesson 4 · Learn / Read / Notice', eyebrowR:'Lesson 4 · Screen A',
   title:'Where does the fizz go?',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', wow:true, heading:'Particles set free', body:[
     'In a <b>gas</b>, particles have lots of energy and <b>zoom around freely</b>, far apart, bouncing off everything. A gas has <b>no fixed shape and no fixed volume</b> — it spreads to fill any container completely, and can be squeezed (<b>compressed</b>) into a smaller space.',
     'Open a fizzy drink and the "fizz" is <b>carbon dioxide</b> gas escaping. Spray perfume in one corner and soon the whole room smells it — gas particles spreading out is called <b>diffusion</b>.'
   ], notice:'Gases spread out to fill their container and can be compressed.'},
     {k:'img', src:'fizz.jpeg', cap:'The "fizz" is carbon dioxide gas escaping and spreading into the air.'}],
-  right:[{k:'hook', q:'You can smell dinner from another room. How did the smell travel to your nose?'},
+  right:[{k:'win15', can:'explain why gases fill a container', prove:'Use particle spacing in one clear sentence.'},{k:'hook', q:'You can smell dinner from another room. How did the smell travel to your nose?'},
     {k:'wp', list:[{t:'gas',d:'no fixed shape or volume'},{t:'compress',d:'squeeze into less space'},{t:'diffusion',d:'particles spreading out'},{t:'energy',d:'what makes particles move'},{t:'pressure',d:'particles pushing on walls'},{t:'carbon dioxide',d:'the gas in fizzy drinks'}]},
     {k:'brain', q:[
       'Why can you squeeze lots of air into a tiny bike pump, but you can\'t squeeze water?',
@@ -509,7 +593,7 @@ SLIDES.push({ nav:'L4A — Where does the fizz go?',
 SLIDES.push({ nav:'L4B — Catch a gas',
   eyebrow:'Week 2 · Lesson 4 · Practise / Test / Share', eyebrowR:'Lesson 4 · Screen B',
   title:'Catch a gas',
-  screenlbl:'Student screen 2 of 2',
+  screenlbl:'Student screen 2 of 4',
   left:[{k:'steps', label:'Do this (with an adult)', rows:[
     {t:'Set up', d:'Put 2 tsp bicarb soda in a bottle, and vinegar in a balloon. Fit the balloon over the neck.'},
     {t:'Mix', d:'Lift the balloon so vinegar drops in. Watch closely!'},
@@ -522,17 +606,34 @@ SLIDES.push({ nav:'L4B — Catch a gas',
   notes:`<h4>Task</h4><p>Classic bicarb + vinegar = CO₂ inflates the balloon. Safe, cheap, perfect for home.</p>
   <h4>Link</h4><p>Reinforce the full particle picture (all three states) before classifying in Lesson 5.</p>` });
 
+SLIDES.push({ nav:'L4C — Gas evidence hunt',
+  eyebrow:'Week 2 · Lesson 4 · Explore / Stretch / Share', eyebrowR:'Lesson 4 · Screen C',
+  title:'Gas evidence hunt',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Gas clues without seeing particles',points:['Gases have no fixed shape or volume — they spread to fill all available space.','Gas particles are far apart and move quickly in random directions.','Bubbles, wind, inflation and smell all show gas taking up space.','Compressing a gas is easier than compressing a liquid or solid.']},{k:'discuss',title:'Detect the gas',label:'DISCUSS',prompts:['List three gases you cannot see but can detect in a classroom.','Why does a deflated football need pumping before a game?','What happens to gas particles when you open a fizzy drink?','How is steam similar to and different from the air around you?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Gas hunt',d:'Find three gas clues in the room. Note your evidence for each.'},{t:'Inflate and feel',d:'Press a inflated balloon vs flat — what are you feeling?'},{t:'Fizz observation',d:'Watch bubbles rise. Sketch where gas goes when it escapes.'},{t:'Compare',d:'Complete a sentence: Gas particles are ___ apart than liquid particles.'}]},{k:'brain',q:['Which gas clue is the most convincing for someone who says gases are not real?','Why do gases fill a container but liquids only fill the bottom?','What everyday danger involves gases spreading invisibly?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L4D — Gas vs liquid showdown',
+  eyebrow:'Week 2 · Lesson 4 · Secure / Prove / Reflect', eyebrowR:'Lesson 4 · Screen D',
+  title:'Gas vs liquid showdown',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Gas vs liquid',points:['Gases compress and expand easily; liquids do not.','Both are made of particles, but spacing and movement differ.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Side-by-side',d:'Choose one gas and one liquid example. Compare shape and volume.'},{t:'Particle sentence',d:'Write how gas particles move differently from liquid particles.'},{t:'Evidence line',d:'One sentence of evidence that gas is matter.'},{t:'Exit ready',d:'Complete exit check cold.'}]}],
+  right:[{k:'html',html:`<div class="card cream"><span class="tag try">PARTICLE DUEL</span><p style="margin-top:8px">Draw two boxes: <b>water vapour</b> vs <b>liquid water</b>. Label spacing, movement and what happens in an open container.</p></div>`},{k:'exit',items:['describe how gas particles move','explain why gases compress and spread','give evidence a gas is present','name the gas made by bicarb + vinegar']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 5 ============================ */
 SLIDES.push({ nav:'L5A — Solid, liquid… or weird?',
   eyebrow:'Week 3 · Lesson 5 · Learn / Read / Notice', eyebrowR:'Lesson 5 · Screen A',
   title:'Solid, liquid… or something weird?',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', wow:true, heading:'The stuff that breaks the rules', body:[
     'Mix cornflour and water and you make <b>oobleck</b>. Punch it and it acts like a <b>solid</b>; relax your hand and it drips like a <b>liquid</b>! <b>Foam</b> (the top of a milkshake) is gas trapped inside a liquid. <b>Sand</b> is millions of tiny solids that pour like a liquid.',
     'When something is hard to classify, scientists look at the <b>particles and behaviour</b> and ask: Does it hold a shape? Does it flow? Can it be squashed? The answers reveal the true state.'
   ], notice:'Classify by behaviour and particles — not just by how something looks.'},
     {k:'img', src:'oobleck.jpeg', cap:'Oobleck: acts solid when you hit it, liquid when you relax.'}],
-  right:[{k:'hook', q:'Is toothpaste a solid or a liquid? It holds a peak AND it squeezes out…'},
+  right:[{k:'win15', can:'sketch solid, liquid and gas particle arrangements', prove:'Draw three quick boxes and label packing + movement.'},{k:'hook', q:'Is toothpaste a solid or a liquid? It holds a peak AND it squeezes out…'},
     {k:'wp', list:[{t:'classify',d:'sort into groups by features'},{t:'behaviour',d:'how something acts'},{t:'oobleck',d:'cornflour + water; acts both ways'},{t:'foam',d:'gas trapped in a liquid'},{t:'evidence',d:'observations that prove your choice'},{t:'justify',d:'give reasons for your answer'}]},
     {k:'brain', q:[
       'Is whipped cream a solid, a liquid or a gas — or a mix? Defend your answer.',
@@ -545,7 +646,7 @@ SLIDES.push({ nav:'L5A — Solid, liquid… or weird?',
 SLIDES.push({ nav:'L5B — Draw the particles',
   eyebrow:'Week 3 · Lesson 5 · Practise / Draw / Share', eyebrowR:'Lesson 5 · Screen B',
   title:'Draw the particles (Part A practice)',
-  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
   left:[{k:'particles'},
     {k:'imgrow', title:'The Part A Q3 objects — classify each one', items:[
       {src:'honey.jpeg', label:'Honey'},{src:'eraser.jpeg', label:'Eraser'},
@@ -559,11 +660,28 @@ SLIDES.push({ nav:'L5B — Draw the particles',
     {k:'exit', items:['classify tricky materials using evidence','draw particle diagrams for each state','identify a physical property','justify a classification with a reason']}],
   notes:`<h4>Direct rehearsal</h4><p>These are the exact Part A Q3 objects. Conference with students on their reasons — push for "because the particles…".</p>` });
 
+SLIDES.push({ nav:'L5C — Particle pictures upgraded',
+  eyebrow:'Week 3 · Lesson 5 · Explore / Stretch / Share', eyebrowR:'Lesson 5 · Screen C',
+  title:'Particle pictures upgraded',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Particle pictures that tell the truth',points:['Solids: tightly packed, regular pattern, vibrate in place.','Liquids: close but irregular, slide past each other.','Gases: far apart, random, fast movement in all directions.','Arrows on diagrams should show movement, not just dots.']},{k:'discuss',title:'Read the diagram',label:'DISCUSS',prompts:['What is wrong if a gas diagram shows particles touching?','Why do scientists use circles instead of drawing real atoms?','How would heating change particle movement in each state?','Can one substance be solid, liquid and gas? Give an example.']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Three boxes',d:'Draw solid, liquid, gas for water. Add arrows for movement.'},{t:'Caption each',d:'Write one caption per box using packed / slide / spread.'},{t:'Oobleck check',d:'Where would oobleck sit on a state diagram — and why is it tricky?'},{t:'Peer audit',d:'Swap diagrams — find one thing to improve.'}]},{k:'brain',q:['Which state is hardest to draw accurately — and why?','How does a particle diagram help more than a photo?','What mistake do cartoons often make about gases?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L5D — Spot the wrong diagram',
+  eyebrow:'Week 3 · Lesson 5 · Secure / Prove / Reflect', eyebrowR:'Lesson 5 · Screen D',
+  title:'Spot the wrong diagram',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Fix the diagram',points:['Good diagrams show spacing, arrangement and movement.','Same substance can change state when heated or cooled.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Spot the error',d:'Fix a deliberately wrong gas diagram and explain why.'},{t:'State change',d:'Show ice, water and steam as three particle boxes.'},{t:'Teach Year 4',d:'Use your diagram to explain one state in 30 seconds.'},{t:'Exit ready',d:'Exit check with particle vocabulary underlined.'}]}],
+  right:[{k:'discuss',title:'Diagram defence',label:'DISCUSS',prompts:['What is the most common error in student particle drawings?','How does adding heat change the story your diagram tells?','Why is oobleck a useful exception to simple sorting?','Which state would you choose to teach first — and why?']},{k:'exit',items:['classify tricky materials using evidence','draw particle diagrams for each state','identify a physical property','justify a classification with a reason']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 6 ============================ */
 SLIDES.push({ nav:'L6A — The language of matter',
   eyebrow:'Week 3 · Lesson 6 · Learn / Read / Notice', eyebrowR:'Lesson 6 · Screen A',
   title:'The language of matter',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', heading:'Words scientists use', body:[
     'Scientists describe matter using its <b>properties</b> — features you can observe or measure. Does it have a fixed shape? A fixed volume? Can it be poured, squashed or stretched? Strong science writing uses exact words.',
     'Use this comparison to lock in the differences before Part A:'
@@ -573,7 +691,7 @@ SLIDES.push({ nav:'L6A — The language of matter',
     <tr><td>Fixed volume?</td><td>Yes</td><td>Yes</td><td>No</td></tr>
     <tr><td>Can it flow?</td><td>No</td><td>Yes</td><td>Yes</td></tr>
     <tr><td>Can it be compressed?</td><td>No</td><td>Barely</td><td>Yes</td></tr></table></div>`}],
-  right:[{k:'hook', q:'Which single test best separates a gas from a liquid?'},
+  right:[{k:'win15', can:'use property language to classify one mystery sample', prove:'Say solid/liquid/gas + one property that proves it.'},{k:'hook', q:'Which single test best separates a gas from a liquid?'},
     {k:'wp', list:[{t:'shape',d:'the form something takes'},{t:'volume',d:'space it fills'},{t:'melt',d:'solid → liquid (add heat)'},{t:'freeze',d:'liquid → solid (remove heat)'},{t:'heat',d:'energy that warms things'},{t:'cool',d:'to remove heat'}]},
     {k:'brain', q:[
       'With only a sealed syringe, how could you tell if it held gas or liquid?',
@@ -585,7 +703,7 @@ SLIDES.push({ nav:'L6A — The language of matter',
 SLIDES.push({ nav:'L6B — Vocabulary cloze',
   eyebrow:'Week 3 · Lesson 6 · Practise / Write / Share', eyebrowR:'Lesson 6 · Screen B',
   title:'Vocabulary cloze (Part A practice)',
-  screenlbl:'Student screen 2 of 2',
+  screenlbl:'Student screen 2 of 4',
   left:[{k:'html', html:`<div class="card cream"><span class="tag try">FILL THE GAPS</span>
     <div class="bank"><span>heat</span><span>solids</span><span>freezer</span><span>shape</span><span>volume</span><span>cool</span><span>melts</span></div>
     <p style="margin-top:12px">a) Liquids change their __________ when you move them to a new container.</p>
@@ -602,6 +720,23 @@ SLIDES.push({ nav:'L6B — Vocabulary cloze',
     ]}],
   notes:`<h4>Answers</h4><p>a) shape · b) solids · c) volume · d) heat · e) cool / freezer · f) melts.</p>
   <h4>Bridge</h4><p>Next lesson is Part A. Reassure: it\'s test conditions but everything has been practised.</p>` });
+
+SLIDES.push({ nav:'L6C — Classification clinic',
+  eyebrow:'Week 3 · Lesson 6 · Explore / Stretch / Share', eyebrowR:'Lesson 6 · Screen C',
+  title:'Classification clinic',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Classification with science language',points:['Use <b>properties</b> (shape, volume, compressibility, flow) not just names.','Part A-style answers need a claim plus a reason linked to evidence.','Mystery samples are classified by what you observe, not what you guess.','Mass and volume apply to all states of matter.']},{k:'discuss',title:'Build a Part A reason',label:'DISCUSS',prompts:['How is saying it looks like a liquid different from testing flow?','What property would prove a mystery sample is a gas?','Why should you avoid saying it is obviously… without evidence?','Which words from today belong in a formal science answer?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Mystery bag',d:'Classify one sample using two observable properties.'},{t:'Sentence frame',d:'I think it is a ___ because it ___ and ___.'},{t:'Word bank',d:'Use: particles, volume, compress, flow, vibrate.'},{t:'Partner challenge',d:'Give your partner a sample — can they classify it?'}]},{k:'brain',q:['What is the difference between observation and inference here?','Which property separates gases from liquids most clearly?','How would you improve a weak classification sentence?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L6D — Part A warm-up',
+  eyebrow:'Week 3 · Lesson 6 · Secure / Prove / Reflect', eyebrowR:'Lesson 6 · Screen D',
+  title:'Part A warm-up',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Part A warm-up',points:['Strong answers: state + property + particle link.','Assessment language should be precise and evidence-based.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Self-check',d:'Tick mass, volume and particle talk in your draft.'},{t:'Glow and grow',d:'Swap with a partner — one strength, one improvement.'},{t:'Cold call prep',d:'Be ready to classify an item in one sentence.'},{t:'Exit ready',d:'Complete exit check.'}]}],
+  right:[{k:'html',html:`<div class="card dark"><span class="tag try">CRITERIA</span><p style="margin-top:8px"><b>Excellent</b> names the state, cites two properties, uses particle words.<br><b>Developing</b> names the state with one reason.<br>Score your work honestly before submitting.</p></div>`},{k:'exit',items:['use matter vocabulary correctly','complete a cloze about states of matter','explain melting and freezing in words','feel ready for Part A']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
 
 /* ===================== PART A CHECKPOINT ===================== */
 SLIDES.push({ type:'checkpoint', nav:'★ Part A Assessment (Week 4)',
@@ -630,13 +765,13 @@ SLIDES.push({ type:'divider', nav:'Phase 2 — Inquiry & Investigating',
 SLIDES.push({ nav:'L8A — Ice → water → vanish?',
   eyebrow:'Week 4 · Lesson 8 · Learn / Read / Notice', eyebrowR:'Lesson 8 · Screen A',
   title:'What makes ice turn to water — then vanish?',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', wow:true, heading:'The energy story', body:[
     'Add <b>heat energy</b> and particles move faster. A solid\'s particles break free and start to slide — it <b>melts</b> into a liquid. Add more heat and they escape into the air — it <b>evaporates</b> into a gas. Remove heat and it runs backwards: gas <b>condenses</b> to liquid, liquid <b>freezes</b> to solid.',
     'The amazing part? It is the <b>same particles</b> the whole time — only their energy and arrangement change. Ice, water and steam are all just water (H₂O).'
   ], notice:'Melting, freezing, evaporating and condensing are changes of state caused by adding or removing heat.'},
     {k:'img', src:'melting-ice.jpeg', cap:'Heat energy frees the particles — the solid melts into liquid water.'}],
-  right:[{k:'hook', q:'Where does a puddle go on a hot day? It does not leak away…'},
+  right:[{k:'win15', can:'name one fair-test idea for melting ice', prove:'Say what you would change and what you would keep the same.'},{k:'hook', q:'Where does a puddle go on a hot day? It does not leak away…'},
     {k:'wp', list:[{t:'melt',d:'solid → liquid (add heat)'},{t:'evaporate',d:'liquid → gas (add heat)'},{t:'condense',d:'gas → liquid (remove heat)'},{t:'freeze',d:'liquid → solid (remove heat)'},{t:'heat energy',d:'what makes particles move faster'},{t:'change of state',d:'switching between solid/liquid/gas'}]},
     {k:'brain', q:[
       'Dry ice turns straight from solid to gas — no liquid (sublimation). Where could that be useful?',
@@ -649,7 +784,7 @@ SLIDES.push({ nav:'L8A — Ice → water → vanish?',
 SLIDES.push({ nav:'L8B — Melt watch',
   eyebrow:'Week 4 · Lesson 8 · Practise / Observe / Share', eyebrowR:'Lesson 8 · Screen B',
   title:'Melt watch (warm-up for Part B)',
-  screenlbl:'Student screen 2 of 2',
+  screenlbl:'Student screen 2 of 4',
   left:[{k:'steps', label:'Do this at home', rows:[
     {t:'Two ice cubes', d:'Place one on a plate in the sun, one in the shade.'},
     {t:'Predict', d:'Which melts first? Roughly how much faster?'},
@@ -664,16 +799,33 @@ SLIDES.push({ nav:'L8B — Melt watch',
     {k:'exit', items:['name the four changes of state','explain the role of heat energy','describe melting using particles','spot what changed and what stayed the same']}],
   notes:`<h4>Task</h4><p>Low-stakes rehearsal of the real investigation. Draw out the words "same" and "different" — seeds of controlled vs independent variables.</p>` });
 
+SLIDES.push({ nav:'L8C — Variables workshop',
+  eyebrow:'Week 4 · Lesson 8 · Explore / Stretch / Share', eyebrowR:'Lesson 8 · Screen C',
+  title:'Variables workshop',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Fair tests and variables',points:['<b>Independent variable</b>: what you change on purpose.','<b>Dependent variable</b>: what you measure (e.g. melting time).','<b>Controlled variables</b>: what you keep the same for fairness.','Only one thing should change in a fair test.']},{k:'discuss',title:'Design a fair ice test',label:'DISCUSS',prompts:['If you test melting time, what must stay the same about each ice cube?','Why would different-sized cubes make results unreliable?','What could you measure besides time?','How does shade vs sun change variables in a real investigation?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Card sort',d:'Sort statements into change / measure / keep same.'},{t:'Question upgrade',d:'Turn Which melts faster? into a testable question.'},{t:'Plan seed',d:'List 4 equipment items and why each is needed.'},{t:'Fairness fix',d:'Spot the unfair step in a sample method and rewrite it.'}]},{k:'brain',q:['What is the most common fairness mistake in student investigations?','Why do scientists repeat measurements?','How does shade change the independent variable in the ice-sun lesson?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L8D — Question into investigation',
+  eyebrow:'Week 4 · Lesson 8 · Secure / Prove / Reflect', eyebrowR:'Lesson 8 · Screen D',
+  title:'Question into investigation',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Investigation planner',points:['A testable question names what changes and what is measured.','Fair tests control variables that could confuse results.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Variable table',d:'Fill: I change… I measure… I keep the same…'},{t:'Prediction link',d:'Write I predict… because… tied to your variable.'},{t:'Risk check',d:'Name one safety or fairness risk and how to manage it.'},{t:'Exit ready',d:'Exit check — include fair test vocabulary.'}]}],
+  right:[{k:'discuss',title:'Variables clinic',label:'DISCUSS',prompts:['What would you change if results looked too random?','Why is size of ice a controlled variable, not something you ignore?','How is this different from just watching ice melt for fun?','What question would you ask if shade made ice last longer?']},{k:'exit',items:['name the four changes of state','explain the role of heat energy','describe melting using particles','spot what changed and what stayed the same']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 9 ============================ */
 SLIDES.push({ nav:'L9A — A question a test can answer',
   eyebrow:'Week 5 · Lesson 9 · Learn / Read / Notice', eyebrowR:'Lesson 9 · Screen A',
   title:'Asking a question a test can answer',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', heading:'From wonder to investigation', body:[
     'Scientists turn a wondering into a <b>testable question</b> — one you can answer by changing ONE thing and measuring what happens. "Why is ice cool?" is interesting but hard to test. "<b>Does adding salt change how fast an ice cube melts?</b>" can be tested!',
     'A good <b>prediction</b> (hypothesis) says what you think will happen AND gives a <b>reason</b>: "I predict the salted ice melts faster <i>because</i> salt lowers the melting point." The reason is what earns top marks.'
   ], notice:'A testable question changes one variable and measures the effect. A strong prediction gives a reason.'}],
-  right:[{k:'hook', q:'Turn this wondering into a testable question: "Ice melts in my drink really fast."'},
+  right:[{k:'win15', can:'write one measurable prediction', prove:'Use \'I predict… because…\' with a unit of time or size.'},{k:'hook', q:'Turn this wondering into a testable question: "Ice melts in my drink really fast."'},
     {k:'wp', list:[{t:'testable',d:'can be answered by an experiment'},{t:'predict',d:'say what you think will happen'},{t:'hypothesis',d:'a prediction with a reason'},{t:'variable',d:'something that can change'},{t:'reason',d:'the "because" behind a prediction'},{t:'investigation',d:'a planned scientific test'}]},
     {k:'brain', q:[
       'Which is more testable: "Is water wet?" or "Does warm water melt ice faster?" Why?',
@@ -686,7 +838,7 @@ SLIDES.push({ nav:'L9A — A question a test can answer',
 SLIDES.push({ nav:'L9B — Build your question',
   eyebrow:'Week 5 · Lesson 9 · Practise / Write / Share', eyebrowR:'Lesson 9 · Screen B',
   title:'Build your Part B question',
-  screenlbl:'Student screen 2 of 2',
+  screenlbl:'Student screen 2 of 4',
   left:[{k:'steps', label:'Do this', rows:[
     {t:'Pick a variable', d:'salt? · water temperature? · sun vs shade? · wrapping? · crushed vs whole?'},
     {t:'Write the question', d:'"Does ______ change the time it takes for an ice cube to melt?"'},
@@ -703,16 +855,33 @@ SLIDES.push({ nav:'L9B — Build your question',
     {k:'exit', items:['write a testable question','make a prediction with a reason','identify the variable I will change','use the words hypothesis and variable']}],
   notes:`<h4>Outcome</h4><p>Every student leaves with a chosen variable + testable question + reasoned prediction — the spine of Part B.</p>` });
 
+SLIDES.push({ nav:'L9C — Prediction craft',
+  eyebrow:'Week 5 · Lesson 9 · Explore / Stretch / Share', eyebrowR:'Lesson 9 · Screen C',
+  title:'Prediction craft',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Predictions that scientists can test',points:['A prediction says what you <b>think will happen</b> and <b>why</b>.','Measurable predictions use units: minutes, millimetres, degrees.','Because should link to a science idea (heat, surface area, shade).','Predictions are not guesses — they use what you already know.']},{k:'discuss',title:'Upgrade weak predictions',label:'DISCUSS',prompts:['Why is I think it will melt soon weaker than I predict 8 minutes because…?','What unit fits melting time? What unit does not?','How does shade give you a reason for a prediction?','Can two sensible predictions disagree? When is that okay?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Weak → strong',d:'Rewrite three vague predictions with numbers and reasons.'},{t:'Gallery walk',d:'Read a partner prediction — is it measurable?'},{t:'Link to variables',d:'Match each prediction to what changes.'},{t:'Because check',d:'Highlight the science reason in each prediction.'}]},{k:'brain',q:['What makes a because clause scientific rather than a story?','How can you test whether a prediction was close?','Why write predictions before you measure?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L9D — Prediction gallery',
+  eyebrow:'Week 5 · Lesson 9 · Secure / Prove / Reflect', eyebrowR:'Lesson 9 · Screen D',
+  title:'Prediction gallery',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Prediction gallery',points:['Format: I predict… [measurement] because… [science reason].','Peer critique strengthens thinking before testing.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Final prediction',d:'Write one polished prediction for the ice investigation.'},{t:'Critique partner',d:'Does their because link to heat or variables?'},{t:'Self-score',d:'Tick measurable, because, and unit.'},{t:'Exit ready',d:'Exit check cold.'}]}],
+  right:[{k:'html',html:`<div class="card cream"><span class="tag try">GALLERY</span><p style="margin-top:8px">Post your best prediction. Stars for: clear unit, strong because, links to fair test.</p></div>`},{k:'exit',items:['write a testable question','make a prediction with a reason','identify the variable I will change','use the words hypothesis and variable']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 10 ============================ */
 SLIDES.push({ nav:'L10A — What makes a test FAIR?',
   eyebrow:'Week 5 · Lesson 10 · Learn / Read / Notice', eyebrowR:'Lesson 10 · Screen A',
   title:'What makes a test <i>fair</i>?',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', wow:true, heading:'Change one thing, keep the rest the same', body:[
     'A <b>fair test</b> changes only ONE thing — the <b>independent variable</b> (what you change). You measure the <b>dependent variable</b> (here, the melting time). Everything else must stay the same: the <b>controlled variables</b>. Change two things at once and you will not know which one caused the result!',
     'To test salt fairly: every ice cube the same size, same starting temperature, same room, same surface — only the salt is different.'
   ], notice:'Fair test = change ONE variable, measure ONE, control ALL the rest.'}],
-  right:[{k:'hook', q:'If one ice cube is bigger than the others, why does that wreck your results?'},
+  right:[{k:'win15', can:'list equipment for a simple ice investigation', prove:'Name 4 items and why each is needed.'},{k:'hook', q:'If one ice cube is bigger than the others, why does that wreck your results?'},
     {k:'wp', list:[{t:'independent',d:'the one thing you change'},{t:'dependent',d:'the thing you measure'},{t:'controlled',d:'things kept the same'},{t:'fair test',d:'only one variable changes'},{t:'valid',d:'actually tests the question'},{t:'reliable',d:'repeats give similar results'}]},
     {k:'brain', q:[
       'You test sun vs shade but one cube is twice as big. Can you trust the result? Why not?',
@@ -725,7 +894,7 @@ SLIDES.push({ nav:'L10A — What makes a test FAIR?',
 SLIDES.push({ nav:'L10B — Plan your variables',
   eyebrow:'Week 5 · Lesson 10 · Practise / Plan / Share', eyebrowR:'Lesson 10 · Screen B',
   title:'Plan your variables (Part B booklet)',
-  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
   left:[{k:'html', html:`<div class="card cream"><span class="tag try">FILL IN FOR YOUR TEST</span>
     <table class="dt"><tr><th>Variable type</th><th>For my investigation</th></tr>
     <tr><td><b>Independent</b><br><small>what I change</small></td><td></td></tr>
@@ -739,16 +908,33 @@ SLIDES.push({ nav:'L10B — Plan your variables',
     {k:'exit', items:['identify independent, dependent & controlled variables','explain why a test must be fair','list 3+ controlled variables','explain why I repeat trials']}],
   notes:`<h4>Outcome</h4><p>A completed variables plan. Push for at least three controlled variables — directly lifts the Planning grade.</p>` });
 
+SLIDES.push({ nav:'L10C — Method builder',
+  eyebrow:'Week 5 · Lesson 10 · Explore / Stretch / Share', eyebrowR:'Lesson 10 · Screen C',
+  title:'Method builder',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Methods someone else could follow',points:['Numbered steps help others repeat your test fairly.','Equipment list matches what you actually use — no extras.','Timing methods should say when the stopwatch starts and stops.','A good method controls variables explicitly.']},{k:'discuss',title:'Build the method',label:'DISCUSS',prompts:['What detail is missing if a method says melt ice but not how much?','Why list the same size ice cubes in the equipment?','When should the timer start for melting in the sun?','What makes a method unfair without saying cheat?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Equipment four',d:'Name four items and why each is essential.'},{t:'Step order',d:'Write six numbered steps a partner could follow.'},{t:'Unfair spot',d:'Find and fix one unfair instruction.'},{t:'Read-aloud test',d:'Partner follows your method — note confusion.'}]},{k:'brain',q:['What is the difference between a shopping list and a method?','Which step do students most often forget to time fairly?','How does equipment link to controlled variables?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L10D — Risk & fairness check',
+  eyebrow:'Week 5 · Lesson 10 · Secure / Prove / Reflect', eyebrowR:'Lesson 10 · Screen D',
+  title:'Risk & fairness check',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Risk and fairness audit',points:['Scientists check methods before collecting data.','Sun investigations need shade breaks and water trays.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Audit',d:'Highlight controlled variables in your method.'},{t:'Safety',d:'Add one sun-safety or spill instruction.'},{t:'Partner follow',d:'Did your partner get the same result? If not, why?'},{t:'Exit ready',d:'Exit check.'}]}],
+  right:[{k:'discuss',title:'Method defence',label:'DISCUSS',prompts:['Which step would confuse a new student most?','How would you make results more reliable?','What is one thing you would standardise if you repeated this?','When is it fair to stop timing?']},{k:'exit',items:['identify independent, dependent & controlled variables','explain why a test must be fair','list 3+ controlled variables','explain why I repeat trials']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 11 ============================ */
 SLIDES.push({ nav:'L11A — Measure like a scientist',
   eyebrow:'Week 6 · Lesson 11 · Learn / Read / Notice', eyebrowR:'Lesson 11 · Screen A',
   title:'Measure it like a scientist',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', heading:'Accuracy, safety and good data', body:[
     'Good data comes from careful measuring. Use the <b>same timer</b> and the <b>same way of deciding</b> when ice is "fully melted". Record straight into a <b>table</b> as you go — never trust your memory. Accurate, repeated measurements make your results <b>reliable</b>.',
     'Stay safe: wipe up spills so no one slips, handle very cold ice with care, and ask an adult before using hot water. Listing safety steps is part of your marks.'
   ], notice:'Reliable results come from accurate, repeated measurements recorded in a clear table.'}],
-  right:[{k:'hook', q:'Two people time the same ice cube and get different times. What could cause that?'},
+  right:[{k:'win15', can:'record one observation with units', prove:'Write time + what changed in a table-ready line.'},{k:'hook', q:'Two people time the same ice cube and get different times. What could cause that?'},
     {k:'wp', list:[{t:'accurate',d:'close to the true value'},{t:'reliable',d:'repeats agree with each other'},{t:'measure',d:'find a value with a tool'},{t:'units',d:'e.g. minutes & seconds'},{t:'record',d:'write data as you go'},{t:'safety',d:'steps that prevent harm'}]},
     {k:'brain', q:[
       'How will you decide the EXACT moment an ice cube is "fully melted"? Why does that matter?',
@@ -761,7 +947,7 @@ SLIDES.push({ nav:'L11A — Measure like a scientist',
 SLIDES.push({ nav:'L11B — Build your results table',
   eyebrow:'Week 6 · Lesson 11 · Practise / Plan / Share', eyebrowR:'Lesson 11 · Screen B',
   title:'Build your results table',
-  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
   left:[{k:'html', html:`<div class="card cream"><span class="tag try">YOUR DATA TABLE</span>
     <table class="dt"><tr><th>Condition</th><th>Trial 1</th><th>Trial 2</th><th>Trial 3</th><th>Average</th></tr>
     <tr><td>(e.g. no salt)</td><td></td><td></td><td></td><td></td></tr>
@@ -775,16 +961,33 @@ SLIDES.push({ nav:'L11B — Build your results table',
     {k:'exit', items:['design a clear results table','measure time accurately with units','plan to repeat trials for reliability','list safety steps for my method']}],
   notes:`<h4>Outcome</h4><p>Students leave with a ready-to-use table + averaging method + safety steps — exactly what Part B requires.</p>` });
 
+SLIDES.push({ nav:'L11C — Data habits',
+  eyebrow:'Week 6 · Lesson 11 · Explore / Stretch / Share', eyebrowR:'Lesson 11 · Screen C',
+  title:'Data habits',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Data habits that scientists keep',points:['Record <b>observations</b> with units and honest times.','Tables need headings: what you changed and what you measured.','Repeats help spot odd results — anomalies are not failures.','Observation is what you see; inference is what you think it means.']},{k:'discuss',title:'Honest recording',label:'DISCUSS',prompts:['Why write 4:32 instead of about five minutes?','What do you do if one repeat looks nothing like the others?','How is a table better than a paragraph for melting times?','What is the difference between see and conclude?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Table build',d:'Create headings for shade vs sun melting data.'},{t:'One line',d:'Write time + observation in table-ready format.'},{t:'Sort statements',d:'Observation vs inference card sort.'},{t:'Repeat rule',d:'Explain why scientists repeat measurements.'}]},{k:'brain',q:['When is it okay to leave out an odd result?','How do units prevent arguments about results?','What makes a conclusion too big for the data you have?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L11D — Observation vs inference',
+  eyebrow:'Week 6 · Lesson 11 · Secure / Prove / Reflect', eyebrowR:'Lesson 11 · Screen D',
+  title:'Observation vs inference',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Observation vs inference',points:['Observations are measurable; inferences interpret observations.','Conclusions must be supported by your table.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Sort',d:'Classify five statements as see or think.'},{t:'Data line',d:'Record one real or sample row with units.'},{t:'Mini conclusion',d:'One sentence supported only by your numbers.'},{t:'Exit ready',d:'Exit check.'}]}],
+  right:[{k:'html',html:`<div class="card dark"><span class="tag try">TABLE</span><p style="margin-top:8px">Sample table: Location | Time to melt (min) | Notes<br>Add one row from today's investigation or the sample data.</p></div>`},{k:'exit',items:['design a clear results table','measure time accurately with units','plan to repeat trials for reliability','list safety steps for my method']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 12 ============================ */
 SLIDES.push({ nav:'L12A — Make your data speak',
   eyebrow:'Week 6 · Lesson 12 · Learn / Read / Notice', eyebrowR:'Lesson 12 · Screen A',
   title:'Make your data speak',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', wow:true, heading:'A graph reveals the pattern', body:[
     'Numbers in a table are useful, but a <b>graph</b> lets the pattern jump out. To compare conditions (salt vs no salt), a <b>bar graph</b> works best. Label both axes, add units, and give it a title. Then read the pattern: which condition melted fastest?',
     'Top scientists do not just show data — they <b>explain</b> the pattern and <b>compare it to their prediction</b>, with a reason. That is the A-grade move.'
   ], notice:'Build the graph using conventions (title, labelled axes, units), then describe AND explain the pattern.'}],
-  right:[{k:'hook', q:'What kind of graph best compares "salt" vs "no salt" melting times — and why?'},
+  right:[{k:'win15', can:'choose a graph type for melting-time data', prove:'Say bar or line and why in one sentence.'},{k:'hook', q:'What kind of graph best compares "salt" vs "no salt" melting times — and why?'},
     {k:'wp', list:[{t:'data',d:'the information you collect'},{t:'bar graph',d:'bars compare separate groups'},{t:'axis',d:'a labelled side of a graph'},{t:'pattern',d:'a repeating relationship'},{t:'trend',d:'the overall direction'},{t:'explain',d:'say WHY using a reason'}]},
     {k:'brain', q:[
       'Could the same data tell two different stories depending on how you draw the graph?',
@@ -796,7 +999,7 @@ SLIDES.push({ nav:'L12A — Make your data speak',
 SLIDES.push({ nav:'L12B — Graph it & read it',
   eyebrow:'Week 6 · Lesson 12 · Practise / Graph / Share', eyebrowR:'Lesson 12 · Screen B',
   title:'Graph it & read the pattern',
-  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
   left:[{k:'steps', label:'Graph checklist', rows:[
     {t:'Pick the graph', d:'Bar graph to compare your conditions.'},
     {t:'Label everything', d:'Title + both axes + units.'},
@@ -810,6 +1013,23 @@ SLIDES.push({ nav:'L12B — Graph it & read it',
     • "A reason for this is ______."</p></div>`},
     {k:'exit', items:['construct a graph using conventions','describe the pattern in my data','compare my result with my prediction','suggest a reason for the pattern']}],
   notes:`<h4>Outcome</h4><p>Students can turn a table into a labelled bar graph and verbalise the pattern with a reason — rehearsal for the real write-up.</p>` });
+
+SLIDES.push({ nav:'L12C — Graph clinic',
+  eyebrow:'Week 6 · Lesson 12 · Explore / Stretch / Share', eyebrowR:'Lesson 12 · Screen C',
+  title:'Graph clinic',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Graphs that tell the story',points:['Bar graphs compare categories; line graphs often show change over time.','Axes need labels with units; scales should start sensibly.','The story: as X increases, Y… should match the data.','Graphs make patterns visible that tables hide.']},{k:'discuss',title:'Choose and read',label:'DISCUSS',prompts:['Why might melting time vs location be a bar graph?','What goes on each axis — what you change or what you measure?','How can a graph mislead if the scale jumps oddly?','Say the pattern aloud: Ice in sun melted ___ than ice in shade.']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Graph pick',d:'Choose bar or line for melting data — justify in one sentence.'},{t:'Label axes',d:'Draft axis titles with units.'},{t:'Read aloud',d:'Describe the pattern without inventing numbers.'},{t:'Sketch',d:'Quick bar graph from class or sample data.'}]},{k:'brain',q:['When would a line graph be better than a bar graph here?','What is the story your graph tells a person who cannot see the experiment?','How do labels help someone else read your work?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L12D — Read a graph aloud',
+  eyebrow:'Week 6 · Lesson 12 · Secure / Prove / Reflect', eyebrowR:'Lesson 12 · Screen D',
+  title:'Read a graph aloud',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Graph story',points:['Pattern language: faster, slower, more, less, compared to.','Excellent graphs are labelled, scaled and honest.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Type + why',d:'State graph type and reason in one sentence.'},{t:'Story sentence',d:'As location changed, melting time…'},{t:'Peer read',d:'Can a partner retell your graph story?'},{t:'Exit ready',d:'Exit check.'}]}],
+  right:[{k:'discuss',title:'Graph clinic',label:'DISCUSS',prompts:['What would confuse a reader about your axes?','How is a graph different from a drawing?','If results were close, how would the graph look?','What next question does your graph suggest?']},{k:'exit',items:['construct a graph using conventions','describe the pattern in my data','compare my result with my prediction','suggest a reason for the pattern']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
 
 /* ===================== PART B CHECKPOINT ===================== */
 SLIDES.push({ type:'checkpoint', nav:'★ Part B Assessment (Week 7)',
@@ -901,12 +1121,12 @@ SLIDES.push({ type:'divider', nav:'Phase 3 — Evaluate & Showcase',
 SLIDES.push({ nav:'L15A — How good was my test?',
   eyebrow:'Week 8 · Lesson 15 · Learn / Read / Notice', eyebrowR:'Lesson 15 · Screen A',
   title:'Great scientists are honest about flaws',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', heading:'Evaluating: how good was my test?', body:[
     '<b>Evaluating</b> means judging how well your investigation worked and how to make it better. Real scientists are honest about weaknesses: maybe the cubes were not exactly equal, or the room warmed up. Spotting these and suggesting <b>specific fixes</b> is a sign of strong scientific thinking — and it earns the top marks.',
     'Ask yourself: Was it fair? Were my measurements accurate? Did I repeat enough times? What single change would make the biggest improvement?'
   ], notice:'Evaluating = describe effective, specific ways to improve the fairness and accuracy of your test.'}],
-  right:[{k:'hook', q:'If you could run your ice experiment one more time, what is the ONE thing you would change?'},
+  right:[{k:'win15', can:'restate Part B success criteria in my own words', prove:'Tick three things an excellent booklet must show.'},{k:'hook', q:'If you could run your ice experiment one more time, what is the ONE thing you would change?'},
     {k:'wp', list:[{t:'evaluate',d:'judge how well it worked'},{t:'fairness',d:'only one variable changed'},{t:'accuracy',d:'how close to the true value'},{t:'improve',d:'make better next time'},{t:'limitation',d:'a weakness in the method'},{t:'reliable',d:'repeats agree'}]},
     {k:'brain', q:[
       'Is an experiment a failure if your prediction turned out wrong? Why or why not?',
@@ -919,7 +1139,7 @@ SLIDES.push({ nav:'L15A — How good was my test?',
 SLIDES.push({ nav:'L15B — Upgrade your investigation',
   eyebrow:'Week 8 · Lesson 15 · Practise / Reflect / Share', eyebrowR:'Lesson 15 · Screen B',
   title:'Upgrade your investigation',
-  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
   left:[{k:'steps', label:'Do this', rows:[
     {t:'Spot a weakness', d:'Name one thing that was hard to keep fair or accurate.'},
     {t:'Suggest a specific fix', d:'Describe exactly what you would change.'},
@@ -931,17 +1151,34 @@ SLIDES.push({ nav:'L15B — Upgrade your investigation',
     {k:'exit', items:['judge how fair my test was','describe specific improvements','explain why each improvement helps','reflect on what I learned']}],
   notes:`<h4>Outcome</h4><p>Each student writes at least one specific, justified improvement — the exact skill the Evaluating A-descriptor names.</p>` });
 
+SLIDES.push({ nav:'L15C — Booklet quality control',
+  eyebrow:'Week 8 · Lesson 15 · Explore / Stretch / Share', eyebrowR:'Lesson 15 · Screen C',
+  title:'Booklet quality control',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Booklet quality control',points:['Excellent booklets link <b>method, data, graph and conclusion</b>.','Conclusions answer the inquiry question using evidence.','Peer feedback uses criteria — not just nice work.','Reflection names skills grown, not only whether it was fun.']},{k:'discuss',title:'Improve together',label:'DISCUSS',prompts:['What is missing if a booklet has data but no conclusion?','How is a glow different from good job?','Which Science Inquiry Skill did you use when measuring fairly?','What would you add to a weak sample conclusion?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Criteria tick',d:'Tick three things an excellent booklet must show.'},{t:'Glow/grow',d:'Improve a sample paragraph with one specific grow.'},{t:'Link skills',d:'Match investigation steps to inquiry skills.'},{t:'Checklist',d:'Self-assess your draft against the guide.'}]},{k:'brain',q:['What is the difference between describing and concluding?','Which part of your booklet is strongest so far?','How does peer feedback improve scientific work?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L15D — Peer feedback protocol',
+  eyebrow:'Week 8 · Lesson 15 · Secure / Prove / Reflect', eyebrowR:'Lesson 15 · Screen D',
+  title:'Peer feedback protocol',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Peer feedback protocol',points:['Glow = specific strength linked to criteria.','Grow = one actionable next step.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Partner swap',d:'Give one glow and one grow using criteria words.'},{t:'Revision plan',d:'List two edits before final submit.'},{t:'Skill sentence',d:'I improved my ___ skill by…'},{t:'Exit ready',d:'Exit check.'}]}],
+  right:[{k:'discuss',title:'Feedback round',label:'DISCUSS',prompts:['Which grow from a partner will you act on first?','How is scientific feedback different from social chat?','What does excellent evidence look like in a conclusion?','What skill will you carry to next term?']},{k:'exit',items:['judge how fair my test was','describe specific improvements','explain why each improvement helps','reflect on what I learned']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
+
 /* ============================ LESSON 16 ============================ */
 SLIDES.push({ nav:'L16A — Matter across the universe',
   eyebrow:'Week 8 · Lesson 16 · Learn / Read / Wonder', eyebrowR:'Lesson 16 · Screen A',
   title:'States of matter across the universe',
-  screenlbl:'Student screen 1 of 2', wideLeft:true,
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
   left:[{k:'read', wow:true, heading:'Beyond solid, liquid, gas', body:[
     'There are more than three states! Add huge energy and a gas becomes <b>plasma</b> — the glowing state of lightning, neon signs and the Sun. Cool atoms to almost <b>absolute zero</b> and they form a Bose–Einstein condensate, where particles act as one. On Saturn\'s moon <b>Titan</b> it rains liquid methane into lakes!',
     'You began by asking if an empty glass is really empty. Now you can classify almost any "stuff" in the universe — and test your own ideas like a real scientist.'
   ], notice:'Solid, liquid and gas are just the beginning — curiosity keeps the science going.'},
     {k:'img', src:'plasma.jpeg', cap:'Plasma — the glowing 4th state — powers lightning, neon signs and the Sun.'}],
-  right:[{k:'hook', q:'If the Sun is not solid, liquid or gas — then what is it?'},
+  right:[{k:'win15', can:'name one improvement I would make next time', prove:'Link the improvement to a Science Inquiry Skill.'},{k:'hook', q:'If the Sun is not solid, liquid or gas — then what is it?'},
     {k:'wp', list:[{t:'plasma',d:'super-energetic 4th state'},{t:'absolute zero',d:'the coldest possible temperature'},{t:'sublimation',d:'solid → gas, skipping liquid'},{t:'state',d:'a form matter takes'},{t:'energy',d:'drives state changes'},{t:'universe',d:'everything that exists'}]},
     {k:'brain', q:[
       'Could there be a state of matter humans have not discovered yet? How would we know?',
@@ -953,7 +1190,7 @@ SLIDES.push({ nav:'L16A — Matter across the universe',
 SLIDES.push({ nav:'L16B — Showcase & wonder',
   eyebrow:'Week 8 · Lesson 16 · Share / Reflect / Celebrate', eyebrowR:'Lesson 16 · Screen B',
   title:'Showcase your science',
-  screenlbl:'Student screen 2 of 2', wideLeft:true,
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
   left:[{k:'steps', label:'Share with the class', rows:[
     {t:'Your best moment', d:'Your coolest result, finding or "aha".'},
     {t:'Explain the science', d:'Use at least 3 unit words correctly.'},
@@ -963,6 +1200,23 @@ SLIDES.push({ nav:'L16B — Showcase & wonder',
     <p style="color:var(--ink);font-size:15px;line-height:1.7">Matter has mass &amp; takes up space → it is made of particles → particles arrange differently in <b>solids, liquids &amp; gases</b> → <b>heat energy</b> changes their state → scientists <b>question, predict, fair-test, measure, graph &amp; evaluate</b> to find out how the world works.</p></div>`},
     {k:'exit', items:['explain states beyond solid/liquid/gas','use unit vocabulary to share my learning','reflect on my growth as a scientist','ask a new scientific question']}],
   notes:`<h4>Celebrate</h4><p>Showcase via the class board / live call. Invite a "wonder wall" of new questions to carry into the next unit.</p>` });
+
+SLIDES.push({ nav:'L16C — Reflection that counts',
+  eyebrow:'Week 8 · Lesson 16 · Explore / Stretch / Share', eyebrowR:'Lesson 16 · Screen C',
+  title:'Reflection that counts',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'know',label:'KNOWLEDGE',heading:'Matter across the universe',points:['The same particle ideas explain matter on Earth and in space.','Stars contain plasma — extremely hot gas where particles are ionised.','Water exists as ice on moons, vapour in atmospheres, and liquid where conditions allow.','Science models help us understand what we cannot visit directly.']},{k:'discuss',title:'Wonder and connect',label:'DISCUSS',prompts:['How is steam in your kitchen similar to clouds on Jupiter?','Why do scientists care about ice on other worlds?','What state of matter is the Sun mostly made of?','How has your particle picture changed since Lesson 1?']}],
+  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Cosmic examples',d:'Name solid, liquid, gas (or plasma) beyond Earth.'},{t:'Model limits',d:'What can particle diagrams not show well?'},{t:'Skill reflection',d:'Which inquiry skill grew most this unit?'},{t:'Teach-back',d:'Explain states of matter to Year 4 with one space example.'}]},{k:'brain',q:['What surprised you most about matter in space?','How do models help when we cannot do classroom tests?','Which vocabulary word will you remember in Year 6?']}],
+  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+
+SLIDES.push({ nav:'L16D — Celebration & next steps',
+  eyebrow:'Week 8 · Lesson 16 · Secure / Prove / Reflect', eyebrowR:'Lesson 16 · Screen D',
+  title:'Celebration & next steps',
+  screenlbl:'Student screen 4 of 4',
+  left:[{k:'know',label:'SUMMARY',heading:'Celebration and next steps',points:['Reflection should name evidence of learning, not feelings alone.','You can classify, investigate, record, graph and conclude.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Skill growth',d:'Name one Science Inquiry Skill you grew — with evidence.'},{t:'Improvement',d:'One thing you would do differently next investigation.'},{t:'Share',d:'30-second celebration of your best booklet moment.'},{t:'Exit ready',d:'Exit check.'}]}],
+  right:[{k:'html',html:`<div class="card cream"><span class="tag try">NEXT STEPS</span><p style="margin-top:8px">Write one goal for Year 6 science using today's vocabulary: particles, fair test, variables, conclusion.</p></div>`},{k:'exit',items:['explain states beyond solid/liquid/gas','use unit vocabulary to share my learning','reflect on my growth as a scientist','ask a new scientific question']}],
+  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+
 
 /* ============================ CLOSING ============================ */
 SLIDES.push({ type:'cover', nav:'Keep wondering',
@@ -990,6 +1244,29 @@ function readCard(r){
     <h3>${r.heading}</h3>${(r.body||[]).map(p=>`<p style="margin-bottom:10px">${p}</p>`).join('')}
     ${r.notice?`<div class="notice"><b>Notice:</b> ${r.notice}</div>`:''}</div>`;
 }
+
+function win15(b){
+  return `<div class="win15"><div class="lbl">⏱ By 15 minutes · demonstrable win</div>
+    <p class="can">I can ${b.can}</p>
+    <p class="prove"><b>Prove it:</b> ${b.prove}</p></div>`;
+}
+
+
+function knowCard(k){
+  const body=(k.body||[]).map(p=>`<p style="margin-bottom:8px;line-height:1.4">${p}</p>`).join('');
+  const pts=(k.points||[]).map(p=>`<li>${p}</li>`).join('');
+  return `<div class="card cream know-card"><span class="tag read">${k.label||'KNOWLEDGE'}</span>
+    ${k.heading?`<h3>${k.heading}</h3>`:''}${body}
+    ${pts?`<ul class="know-list">${pts}</ul>`:''}
+    ${k.fact?`<div class="notice"><b>Key idea:</b> ${k.fact}</div>`:''}</div>`;
+}
+function discussCard(d){
+  return `<div class="card dark discuss-card"><span class="tag try">${d.label||'DISCUSS'}</span>
+    <h3>${d.title||'Talk it through'}</h3>
+    <ul class="discuss-list">${(d.prompts||[]).map((p,i)=>`<li><span class="n">${i+1}</span><span>${p}</span></li>`).join('')}</ul>
+    ${d.tip?`<p class="discuss-tip">${d.tip}</p>`:''}</div>`;
+}
+
 function exitCheck(items){
   return `<div class="exit"><h4>Exit check — I can…</h4><div class="exit-grid">${
     items.map(i=>`<div class="echk"><span class="bx">✓</span><span>${i}</span></div>`).join('')}</div></div>`;
@@ -1058,6 +1335,9 @@ function renderBlock(b){
     case 'wp': return wordpower(b.list);
     case 'brain': return bq(b.q);
     case 'steps': return steps(b);
+    case 'win15': return win15(b);
+    case 'know': return knowCard(b);
+    case 'discuss': return discussCard(b);
     case 'exit': return exitCheck(b.items);
     case 'particles': return particles();
     case 'img': return `<div class="imgframe"><img src="${b.src}" alt="${b.alt||''}" loading="lazy">${b.cap?`<div class="cap">${b.cap}</div>`:''}</div>`;
