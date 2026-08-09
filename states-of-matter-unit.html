@@ -134,6 +134,26 @@
   }
   .win15 .prove b{ color:var(--ink); }
 
+  /* paced live-lesson blocks */
+  .lesson-run{display:flex;flex-direction:column;gap:8px}
+  .run-row{display:grid;grid-template-columns:72px 1fr;gap:10px;align-items:start;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+  .run-time{color:var(--amber2);font-weight:900;font-size:12px;letter-spacing:.04em}
+  .run-row b{display:block;font-size:15px;margin-bottom:3px}
+  .run-row span{font-size:13.5px;line-height:1.35;color:var(--ink-dim)}
+  .response-call{border-radius:14px;padding:13px 15px;margin-top:2px;border:2px solid}
+  .response-call.iboard{background:rgba(120,182,255,.12);border-color:#78b6ff}
+  .response-call.onenote{background:rgba(114,213,176,.12);border-color:#72d5b0}
+  .response-call .response-label{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+  .response-call.iboard .response-label{color:#a9d2ff}
+  .response-call.onenote .response-label{color:#9aebcc}
+  .response-call p{font-size:14px;line-height:1.4;margin:0}
+  .scenario-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+  .scenario-tile{background:#f2e8d8;border:1px solid #dacbb7;border-radius:11px;padding:10px;color:var(--cream-ink);font-size:13.5px;line-height:1.35}
+  .scenario-tile b{color:#245f6b}
+  .option-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin-top:8px}
+  .option-card{background:#f2e8d8;border:1px solid #dacbb7;border-radius:12px;padding:11px;color:var(--cream-ink);font-size:13px;line-height:1.35}
+  .option-card b{display:block;color:#245f6b;font-size:15px;margin-bottom:4px}
+
   /* exit check */
   .exit{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); padding:16px 18px; }
   .exit h4{ font-size:20px; margin-bottom:12px; }
@@ -778,192 +798,179 @@ SLIDES.push({ nav:'L8D — Prove the change of state',
 /* ============================ LESSON 9 ============================ */
 SLIDES.push({ nav:'L9A — A question a test can answer',
   eyebrow:'Week 5 · Lesson 9 · Learn / Read / Notice', eyebrowR:'Lesson 9 · Screen A',
-  title:'Asking a question a test can answer',
+  title:'From a wondering to a <i>testable</i> question',
   screenlbl:'Student screen 1 of 4', wideLeft:true,
-  left:[{k:'read', heading:'From wonder to investigation', body:[
-    'Scientists turn a wondering into a <b>testable question</b> — one you can answer by changing ONE thing and measuring what happens. "Why is ice cool?" is interesting but hard to test. "<b>Does adding salt change how fast an ice cube melts?</b>" can be tested!',
-    'A good <b>prediction</b> (hypothesis) says what you think will happen AND gives a <b>reason</b>: "I predict the salted ice melts faster <i>because</i> salt lowers the melting point." The reason is what earns top marks.'
-  ], notice:'A testable question changes one variable and measures the effect. A strong prediction gives a reason.'}],
-  right:[{k:'win15', can:'write one measurable prediction', prove:'Use \'I predict… because…\' with a unit of time or size.'},{k:'hook', q:'Turn this wondering into a testable question: "Ice melts in my drink really fast."'},
-    {k:'wp', list:[{t:'testable',d:'can be answered by an experiment'},{t:'predict',d:'say what you think will happen'},{t:'hypothesis',d:'a prediction with a reason'},{t:'variable',d:'something that can change'},{t:'reason',d:'the "because" behind a prediction'},{t:'investigation',d:'a planned scientific test'}]}],
-  notes:`<h4>Criterion</h4><p>Questioning &amp; predicting. A-grade = <b>reasoned</b> predictions about the effect of changing variables.</p>
-  <h4>Key move</h4><p>Insist on the "because…". A prediction without a reason caps the grade.</p>` });
+  left:[{k:'read', heading:'A scientific question has moving parts', body:[
+    'A <b>scientific wondering</b> can be broad: “Why does ice disappear?” A <b>testable question</b> is narrower. It names the one factor you will change and the outcome you will measure. It must also be safe and possible with the time and equipment you have.',
+    'Use this frame: <b>How does [the thing I change] affect [the thing I measure], measured in [units]?</b> For example: “How does location — sun or shade — affect the time in minutes for equal ice cubes to melt?”'
+  ], notice:'Testable = one deliberate change + one measurable outcome + a fair, feasible comparison.'},
+  {k:'html',html:`<div class="card cream"><span class="tag try">QUESTION ANATOMY</span><div class="scenario-grid">
+    <div class="scenario-tile"><b>Change</b>Location: sun or shade</div><div class="scenario-tile"><b>Measure</b>Melting time</div>
+    <div class="scenario-tile"><b>Unit</b>Minutes and seconds</div><div class="scenario-tile"><b>Compare fairly</b>Equal ice cubes</div></div></div>`}],
+  right:[{k:'win15', can:'tell whether a question is testable', prove:'Name what changes, what is measured and the unit.'},
+    {k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">0–3 min</div><div><b>Notice</b><span>What is the difference between “Why is ice cold?” and the sun/shade question?</span></div></div><div class="run-row"><div class="run-time">3–8 min</div><div><b>Read and unpack</b><span>Find the change, measurement, unit and fair comparison in the model.</span></div></div><div class="run-row"><div class="run-time">8–12 min</div><div><b>Repair it</b><span>Rewrite “Ice melts quickly” as a question a class could actually test.</span></div></div><div class="run-row"><div class="run-time">12–15 min</div><div><b>Submit</b><span>Post your repaired question and label its parts.</span></div></div></div>
+      <div class="response-call iboard"><div class="response-label">iBoard check 1 · everyone responds</div><p>Rewrite <b>“Ice melts quickly”</b> as a testable question. Then add: <b>change = … / measure = … / unit = …</b></p></div>`}],
+  notes:`<h4>Timing: 15 minutes</h4><p>0–3 hook; 3–8 explicit teaching; 8–12 repair; 12–15 iBoard response.</p><h4>Listen for</h4><p>A question—not a prediction—with one change and a measurable outcome. Accept melting time in seconds or minutes.</p><h4>Evidence sweep</h4><p>Scan iBoard for all three labels. Follow up students who post a broad wondering, change two factors, or omit a unit.</p>` });
 
 SLIDES.push({ nav:'L9B — Build your question',
-  eyebrow:'Week 5 · Lesson 9 · Practise / Write / Share', eyebrowR:'Lesson 9 · Screen B',
-  title:'Build your Part B question',
-  screenlbl:'Student screen 2 of 4',
-  left:[{k:'steps', label:'Do this', rows:[
-    {t:'Pick a variable', d:'salt? · water temperature? · sun vs shade? · wrapping? · crushed vs whole?'},
-    {t:'Write the question', d:'"Does ______ change the time it takes for an ice cube to melt?"'},
-    {t:'Predict + reason', d:'"I predict ______ because ______."'}
-  ]}],
-  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">Choose your own (all home-friendly)</h4>
-    <div class="bank"><span>salt vs none</span><span>warm vs cold surface</span><span>sun vs shade</span><span>foil wrap vs none</span><span>crushed vs whole</span></div>
-    <p style="color:var(--ink-dim);font-size:13.5px;margin-top:10px">Pick the one that excites YOU — you will run this for real in Part B.</p></div>`},
-    {k:'brain', q:[
-      'Which variable do you predict will make the BIGGEST difference? Why?',
-      'Which would be hardest to keep fair? Why?',
-      'Could two variables be linked (change together)? Give an example.'
-    ]}],
-  notes:`<h4>Outcome</h4><p>Every student leaves with a chosen variable + testable question + reasoned prediction — the spine of Part B.</p>` });
+  eyebrow:'Week 5 · Lesson 9 · Question clinic', eyebrowR:'Lesson 9 · Screen B',
+  title:'Question clinic: test it, reject it, repair it',
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">SIX QUESTIONS</span><div class="scenario-grid">
+    <div class="scenario-tile"><b>1</b>Why is ice cold?</div><div class="scenario-tile"><b>2</b>Does adding 5 g of salt change melting time?</div>
+    <div class="scenario-tile"><b>3</b>Which ice cube is best?</div><div class="scenario-tile"><b>4</b>Does crushed ice melt faster than a whole cube?</div>
+    <div class="scenario-tile"><b>5</b>What happens to ice?</div><div class="scenario-tile"><b>6</b>How does the surface material affect melting time?</div></div></div>`},
+    {k:'read',heading:'The question clinic rules',body:['A question is not strong merely because it ends with a question mark. Ask: <b>Can I deliberately change one factor? Can I measure the result? Can I keep the comparison safe and fair?</b>','Question 4 is testable, but it hides a fairness trap: crushed ice and a whole cube must start with the <b>same mass</b>. Question 6 needs named surfaces and a unit before it is fully ready.'],notice:'A testable idea can still need repairing before it becomes a strong investigation question.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">15–19</div><div><b>Silent sort</b><span>Mark each question T (testable now), R (repair) or U (unsuitable for this test).</span></div></div><div class="run-row"><div class="run-time">19–24</div><div><b>Defend</b><span>Choose two and explain your judgement using change, measure, unit or fairness.</span></div></div><div class="run-row"><div class="run-time">24–28</div><div><b>Repair</b><span>Upgrade questions 3 and 5 so they name a change and melting-time measurement.</span></div></div><div class="run-row"><div class="run-time">28–30</div><div><b>Submit</b><span>Post your classification and strongest repair.</span></div></div></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 2 · question diagnosis</div><p>Post <b>1–6 as T, R or U</b>. Then repair either question 3 or 5 and label its <b>independent variable (IV)</b> and <b>dependent variable (DV)</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 15–30</h4><p>15–19 classify; 19–24 justify; 24–28 repair; 28–30 iBoard.</p><h4>Suggested judgements</h4><p>1 U/R; 2 T (if unit added to outcome); 3 R; 4 R because equal starting mass must be stated; 5 R; 6 R because surfaces and units need specifying. Reward defensible reasoning over a rigid letter.</p><h4>Evidence sweep</h4><p>Look for the causal structure: IV affects DV. Students should not list melting time as the IV.</p>` });
 
 SLIDES.push({ nav:'L9C — Prediction craft',
-  eyebrow:'Week 5 · Lesson 9 · Explore / Stretch / Share', eyebrowR:'Lesson 9 · Screen C',
-  title:'Prediction craft',
+  eyebrow:'Week 5 · Lesson 9 · Evidence / Explain / Improve', eyebrowR:'Lesson 9 · Screen C',
+  title:'A prediction is more than a guess',
   screenlbl:'Student screen 3 of 4', wideLeft:true,
-  left:[{k:'know',label:'KNOWLEDGE',heading:'Sharpen the prediction you already wrote',points:['A prediction says what you <b>think will happen</b> and <b>why</b>.','Measurable predictions use units: minutes, millimetres, degrees.','<b>Because</b> should link to a science idea (heat, surface area, shade).','Take the prediction from Screen B and make it measurable and reasoned.']},{k:'discuss',title:'Upgrade your Screen B prediction',label:'DISCUSS',prompts:['Read your Screen B prediction — does it have a number and a because?','Why is I think it will melt soon weaker than I predict 8 minutes because…?','What unit fits melting time? What unit does not?','How does your chosen variable give you a reason for the prediction?']}],
-  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Rewrite yours',d:'Rewrite your Screen B prediction with a number and a reason.'},{t:'Weak → strong',d:'Fix two more vague predictions with units and reasons.'},{t:'Gallery walk',d:'Read a partner prediction — is it measurable?'},{t:'Because check',d:'Highlight the science reason in each prediction.'}]},{k:'brain',q:['What makes a because clause scientific rather than a story?','How can you test whether a prediction was close?','Why write predictions before you measure?']}],
-  notes:`<h4>Screen C — deepen</h4><p>Students sharpen the exact prediction they wrote in Screen B — measurable + reasoned.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+  left:[{k:'read',heading:'Direction + comparison + science reason',body:['A <b>prediction</b> states the pattern you expect before seeing the results. A strong prediction names which condition will melt faster or slower and explains why using science. You do not need to invent an exact time unless earlier evidence supports it.','Useful science ideas depend on the investigation: sunlight transfers more energy to the ice; crushing exposes more surface area; insulation can slow energy transfer; salt changes the temperature at which water freezes and encourages melting at the ice surface.'],notice:'Strong: “I predict X will melt in less time than Y because [relevant science mechanism].”'},
+    {k:'html',html:`<div class="card cream"><span class="tag try">WEAK → STRONG</span><p><b>Weak:</b> The salty one will win.</p><p><b>Better:</b> The salted cube will melt faster.</p><p><b>Strong:</b> I predict the cube with 5 g of salt will melt in less time than the cube with no salt because salt lowers the freezing point of water and promotes melting at the surface.</p></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">30–34</div><div><b>Compare</b><span>Underline what improves from weak to strong in the model.</span></div></div><div class="run-row"><div class="run-time">34–39</div><div><b>Match reasons</b><span>Connect sun/shade, crushed/whole, wrapped/unwrapped and salt/no salt to the correct science idea.</span></div></div><div class="run-row"><div class="run-time">39–43</div><div><b>Upgrade</b><span>Improve: “The sunny ice melts quick because it is hot.” Make the comparison precise.</span></div></div><div class="run-row"><div class="run-time">43–45</div><div><b>Submit</b><span>Post the improved sentence and identify its science mechanism.</span></div></div></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 3 · prediction upgrade</div><p>Improve <b>“The sunny ice melts quick because it is hot.”</b> Your sentence must name both conditions, expected direction and a heat-energy reason.</p></div>`}],
+  notes:`<h4>Timing: minutes 30–45</h4><p>30–34 compare models; 34–39 match mechanisms; 39–43 upgrade; 43–45 iBoard.</p><h4>Model answer</h4><p>I predict the equal ice cube in sunlight will melt in less time than the cube in shade because it receives more radiant energy, increasing particle motion until the solid changes to liquid.</p><h4>Misconception alert</h4><p>Do not require invented exact times. Measurable refers to an outcome that can be measured, not a fabricated number.</p>` });
 
 SLIDES.push({ nav:'L9D — Prediction gallery',
-  eyebrow:'Week 5 · Lesson 9 · Secure / Prove / Reflect', eyebrowR:'Lesson 9 · Screen D',
-  title:'Prediction gallery',
-  screenlbl:'Student screen 4 of 4',
-  left:[{k:'know',label:'SUMMARY',heading:'Prediction gallery',points:['Format: I predict… [measurement] because… [science reason].','Peer critique strengthens thinking before testing.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Final prediction',d:'Write one polished prediction for the ice investigation.'},{t:'Critique partner',d:'Does their because link to heat or variables?'},{t:'Self-score',d:'Tick measurable, because, and unit.'},{t:'Exit ready',d:'Exit check cold.'}]}],
-  right:[{k:'html',html:`<div class="card cream"><span class="tag try">GALLERY</span><p style="margin-top:8px">Post your best prediction. Stars for: clear unit, strong because, links to fair test.</p></div>`},{k:'exit',items:['write a testable question','make a prediction with a reason','identify the variable I will change','use the words hypothesis and variable']}],
-  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+  eyebrow:'Week 5 · Lesson 9 · Create / Check / Submit', eyebrowR:'Lesson 9 · Screen D',
+  title:'Write your investigation proposal',
+  screenlbl:'Student screen 4 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">ONENOTE EVIDENCE · USE THESE HEADINGS</span><ol style="line-height:1.6;margin:10px 0 0 20px"><li><b>My wondering</b> — the broad idea that interested me.</li><li><b>My testable question</b> — name the change, measurement and unit.</li><li><b>Independent variable</b> — exactly what I will change.</li><li><b>Dependent variable</b> — what I will measure and its unit.</li><li><b>Prediction</b> — expected comparison or direction.</li><li><b>Scientific reason</b> — explain the mechanism.</li><li><b>Feasible and safe</b> — why this can be done with available equipment.</li></ol></div>`},
+    {k:'know',label:'QUALITY CHECK',heading:'Before you submit',points:['The question compares clear conditions—not “best” or “what happens”.','Only one factor is deliberately changed.','The outcome can be measured in a stated unit.','The prediction answers the question and the reason uses relevant science.']}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">45–48</div><div><b>Choose</b><span>Select a safe ice-melting variable you can test later.</span></div></div><div class="run-row"><div class="run-time">48–55</div><div><b>Draft in OneNote</b><span>Complete all seven proposal headings in full sentences.</span></div></div><div class="run-row"><div class="run-time">55–58</div><div><b>Peer audit</b><span>Partner checks: one change, measurable DV, unit, direction and science reason.</span></div></div><div class="run-row"><div class="run-time">58–60</div><div><b>Exit</b><span>Post the compressed five-part version to iBoard.</span></div></div></div>
+    <div class="response-call onenote"><div class="response-label">OneNote · durable evidence</div><p>Create a page titled <b>Science L9 — Investigation proposal</b>. Complete all seven headings shown on this screen.</p></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 4 · exit ticket</div><p>Post: <b>question / IV / DV + unit / prediction / scientific reason</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 45–60</h4><p>45–48 choose; 48–55 OneNote draft; 55–58 peer audit; 58–60 iBoard exit.</p><h4>Evidence sweep</h4><p>Use the iBoard exit to identify who is ready for Lesson 10. The OneNote page is the durable artefact. Confer first with students whose question changes two things or whose reason merely repeats the prediction.</p>` });
 
 
 /* ============================ LESSON 10 ============================ */
 SLIDES.push({ nav:'L10A — What makes a test FAIR?',
   eyebrow:'Week 5 · Lesson 10 · Learn / Read / Notice', eyebrowR:'Lesson 10 · Screen A',
-  title:'What makes a test <i>fair</i>?',
+  title:'Fair, valid and reliable are not the same',
   screenlbl:'Student screen 1 of 4', wideLeft:true,
-  left:[{k:'read', wow:true, heading:'Change one thing, keep the rest the same', body:[
-    'A <b>fair test</b> changes only ONE thing — the <b>independent variable</b> (what you change). You measure the <b>dependent variable</b> (here, the melting time). Everything else must stay the same: the <b>controlled variables</b>. Change two things at once and you will not know which one caused the result!',
-    'To test salt fairly: every ice cube the same size, same starting temperature, same room, same surface — only the salt is different.'
-  ], notice:'Fair test = change ONE variable, measure ONE, control ALL the rest.'}],
-  right:[{k:'win15', can:'name the independent variable and one controlled variable', prove:'Say what I change and one thing I keep the same.'},{k:'hook', q:'If one ice cube is bigger than the others, why does that wreck your results?'},
-    {k:'wp', list:[{t:'independent',d:'the one thing you change'},{t:'dependent',d:'the thing you measure'},{t:'controlled',d:'things kept the same'},{t:'fair test',d:'only one variable changes'},{t:'valid',d:'actually tests the question'},{t:'reliable',d:'repeats give similar results'}]}],
-  notes:`<h4>Criterion</h4><p>Planning &amp; conducting. A-grade plans <b>manage risks</b> and produce <b>accurate &amp; reliable</b> data.</p>
-  <h4>Anchor</h4><p>Use the three-word frame everywhere: change / measure / keep the same.</p>` });
+  left:[{k:'read',wow:true,heading:'The deliberately terrible ice test',body:['A student asks whether salt changes melting time. They put a <b>small salted cube on a metal tray in sunlight</b> and a <b>large unsalted cube on a plastic plate in shade</b>. The salted cube melts first. Can the student claim salt caused the result? No—size, surface and location also changed.','A test is <b>fair</b> when only the independent variable changes. It is <b>valid</b> when the method actually answers the question. It becomes more <b>reliable</b> when repeated trials give a similar pattern.'],notice:'Fair: one change. Valid: answers the question. Reliable: repeated evidence agrees.'},
+    {k:'html',html:`<div class="card cream"><span class="tag try">CAUSE OR CONFUSION?</span><p>Possible causes of faster melting: <b>salt · smaller mass · metal surface · sunlight</b>. Because four factors changed, the evidence cannot isolate salt.</p></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">0–4 min</div><div><b>Spot the flaws</b><span>List every difference between the two cubes.</span></div></div><div class="run-row"><div class="run-time">4–9 min</div><div><b>Learn</b><span>Sort each idea under fair, valid or reliable.</span></div></div><div class="run-row"><div class="run-time">9–13 min</div><div><b>Repair</b><span>Redesign the terrible test so salt is the only planned difference.</span></div></div><div class="run-row"><div class="run-time">13–15 min</div><div><b>Submit</b><span>Name the variables and explain why the original claim was weak.</span></div></div></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 1 · fairness diagnosis</div><p>Post: <b>IV / DV + unit / four controls / why the original test cannot prove salt caused the result</b>.</p></div>`}],
+  notes:`<h4>Timing: 15 minutes</h4><p>0–4 flaw hunt; 4–9 teach terms; 9–13 repair; 13–15 iBoard.</p><h4>Answer guide</h4><p>IV should be salt amount or salt/no salt; DV is melting time in min:s; controls can include starting mass, starting temperature, surface, location, container and start time. The original is confounded because several variables changed.</p>` });
 
 SLIDES.push({ nav:'L10B — Plan your variables',
-  eyebrow:'Week 5 · Lesson 10 · Practise / Plan / Share', eyebrowR:'Lesson 10 · Screen B',
-  title:'Plan your variables (Part B booklet)',
+  eyebrow:'Week 5 · Lesson 10 · Specify / Plan / Defend', eyebrowR:'Lesson 10 · Screen B',
+  title:'Turn “keep it the same” into a precise plan',
   screenlbl:'Student screen 2 of 4', wideLeft:true,
-  left:[{k:'html', html:`<div class="card cream"><span class="tag try">FILL IN FOR YOUR TEST</span>
-    <table class="dt"><tr><th>Variable type</th><th>For my investigation</th></tr>
-    <tr><td><b>Independent</b><br><small>what I change</small></td><td></td></tr>
-    <tr><td><b>Dependent</b><br><small>what I measure</small></td><td>time to melt (min : sec)</td></tr>
-    <tr><td><b>Controlled</b><br><small>kept the same</small></td><td>(list at least 3)</td></tr></table></div>`}],
-  right:[{k:'steps', label:'Check it is fair', rows:[
-    {t:'Only one change', d:'Is just your independent variable different?'},
-    {t:'Same everything else', d:'List 3+ controlled variables (size, start temp, room, surface…).'},
-    {t:'Repeat plan', d:'Decide how many trials (3 is great) for reliability.'}
-  ]}],
-  notes:`<h4>Outcome</h4><p>A completed variables plan. Push for at least three controlled variables — directly lifts the Planning grade.</p>` });
+  left:[{k:'html',html:`<div class="card cream"><span class="tag try">VARIABLES LAB</span><table class="dt"><tr><th>Role</th><th>Vague</th><th>Precise</th></tr><tr><td><b>Change</b></td><td>salt</td><td>0 g or 5 g table salt</td></tr><tr><td><b>Measure</b></td><td>melting</td><td>time until no solid ice remains, min:s</td></tr><tr><td><b>Control</b></td><td>same ice</td><td>20 g cubes from the same freezer, removed together</td></tr><tr><td><b>Repeat</b></td><td>do it again</td><td>3 trials for each condition</td></tr></table></div>`},
+    {k:'read',heading:'Why precision matters',body:['“Same size” sounds fair, but two cubes can look alike and have different masses. A controlled variable becomes useful when the method says <b>how</b> it will be kept constant.','Repeats do not repair an unfair test. First make every comparison fair; then repeat each condition enough times to see whether the pattern is consistent.'],notice:'Name each control and state exactly how you will hold it constant.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">15–19</div><div><b>Upgrade</b><span>Turn “same ice, same place, same timer” into measurable controls.</span></div></div><div class="run-row"><div class="run-time">19–24</div><div><b>Apply</b><span>Open your Lesson 9 question. Identify its IV and DV with exact conditions and units.</span></div></div><div class="run-row"><div class="run-time">24–28</div><div><b>Control</b><span>Write at least four controls and how each will be kept the same.</span></div></div><div class="run-row"><div class="run-time">28–30</div><div><b>Reliability</b><span>Add three trials per condition and post your plan.</span></div></div></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 2 · your variable plan</div><p>For your Lesson 9 question, post: <b>IV with conditions / DV + unit / four precise controls / number of trials</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 15–30</h4><p>15–19 precision upgrade; 19–24 IV/DV; 24–28 controls; 28–30 iBoard.</p><h4>Evidence sweep</h4><p>Flag students whose IV contains two changes, whose DV has no unit or endpoint, or whose controls are nouns without a method for keeping them constant.</p>` });
 
 SLIDES.push({ nav:'L10C — Method builder',
-  eyebrow:'Week 5 · Lesson 10 · Explore / Stretch / Share', eyebrowR:'Lesson 10 · Screen C',
-  title:'Method builder',
+  eyebrow:'Week 5 · Lesson 10 · Sequence / Specify / Repeat', eyebrowR:'Lesson 10 · Screen C',
+  title:'Write a method another scientist can repeat',
   screenlbl:'Student screen 3 of 4', wideLeft:true,
-  left:[{k:'know',label:'KNOWLEDGE',heading:'Turn your variables plan into a method',points:['Take the <b>independent</b> and <b>controlled</b> variables you named in Screen B and write them as steps.','Numbered steps let someone else repeat your test fairly.','Your equipment list should match the controlled variables — same-size cubes, same surface.','Say exactly when the stopwatch starts and stops.']},{k:'discuss',title:'From plan to method',label:'DISCUSS',prompts:['Look at your Screen B plan — which controlled variable is easiest to forget in the steps?','What detail is missing if a method says melt ice but not how much?','When should the timer start for melting in the sun?','How do your equipment items lock in the variables you kept the same?']}],
-  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Lift your variables',d:'Copy your independent + 3 controlled variables from Screen B.'},{t:'Step order',d:'Write six numbered steps a partner could follow using those variables.'},{t:'Unfair spot',d:'Find and fix one step that would break a controlled variable.'},{t:'Read-aloud test',d:'Partner follows your method — note any confusion.'}]},{k:'brain',q:['What is the difference between a shopping list and a method?','Which controlled variable from your plan is hardest to hold steady?','How does equipment link to the variables you kept the same?']}],
-  notes:`<h4>Screen C — deepen</h4><p>Stretch directly from the Screen B variables plan — students turn their own plan into numbered steps.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">PRECISION CLINIC</span><div class="scenario-grid"><div class="scenario-tile"><b>Vague</b>Get some ice.</div><div class="scenario-tile"><b>Repeatable</b>Measure two 20 g ice samples.</div><div class="scenario-tile"><b>Vague</b>Time it.</div><div class="scenario-tile"><b>Repeatable</b>Start both timers when the cubes touch the trays; stop when no solid ice remains.</div><div class="scenario-tile"><b>Vague</b>Do it again.</div><div class="scenario-tile"><b>Repeatable</b>Repeat steps 1–6 twice more for each condition.</div></div></div>`},
+    {k:'know',label:'A COMPLETE METHOD',heading:'Your method must lock in the variables',points:['List equipment with quantities, sizes or measuring ranges.','Use numbered action steps in the order they occur.','State the starting conditions and exact IV conditions.','Define when timing starts and the observable endpoint when it stops.','Record each result immediately in a table, then repeat each condition.']}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">30–34</div><div><b>Sequence</b><span>Order: prepare equal samples; set conditions; start timer; observe; stop at endpoint; record; repeat.</span></div></div><div class="run-row"><div class="run-time">34–39</div><div><b>Upgrade</b><span>Repair four vague instructions by adding amounts, tools, timing or endpoints.</span></div></div><div class="run-row"><div class="run-time">39–43</div><div><b>Stress-test</b><span>Would a classmate know exactly what to do without asking you a question?</span></div></div><div class="run-row"><div class="run-time">43–45</div><div><b>Submit</b><span>Post your start rule, stop rule and repeat rule.</span></div></div></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 3 · method precision</div><p>Write three exact instructions: <b>when timing starts / when timing stops / how trials are repeated</b>. Include at least one quantity or unit.</p></div>`}],
+  notes:`<h4>Timing: minutes 30–45</h4><p>30–34 sequence; 34–39 precision clinic; 39–43 partner stress-test; 43–45 iBoard.</p><h4>Look for</h4><p>An observable endpoint such as “no solid ice remains”, not “when melted enough”. If tests run simultaneously, students need a timer per condition or a reliable way to capture both endpoints.</p>` });
 
 SLIDES.push({ nav:'L10D — Risk & fairness check',
-  eyebrow:'Week 5 · Lesson 10 · Secure / Prove / Reflect', eyebrowR:'Lesson 10 · Screen D',
-  title:'Risk & fairness check',
-  screenlbl:'Student screen 4 of 4',
-  left:[{k:'know',label:'SUMMARY',heading:'Risk and fairness audit',points:['Scientists check methods before collecting data.','Sun investigations need shade breaks and water trays.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Audit',d:'Highlight controlled variables in your method.'},{t:'Safety',d:'Add one sun-safety or spill instruction.'},{t:'Partner follow',d:'Did your partner get the same result? If not, why?'},{t:'Exit ready',d:'Exit check.'}]}],
-  right:[{k:'discuss',title:'Method defence',label:'DISCUSS',prompts:['Which step would confuse a new student most?','How would you make results more reliable?','What is one thing you would standardise if you repeated this?','When is it fair to stop timing?']},{k:'exit',items:['identify independent, dependent & controlled variables','explain why a test must be fair','list 3+ controlled variables','explain why I repeat trials']}],
-  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+  eyebrow:'Week 5 · Lesson 10 · Audit / Protect / Submit', eyebrowR:'Lesson 10 · Screen D',
+  title:'The pre-investigation safety and quality audit',
+  screenlbl:'Student screen 4 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">ONENOTE EVIDENCE · FAIR-TEST PLAN</span><ol style="line-height:1.58;margin:10px 0 0 20px"><li>Testable question and reasoned prediction</li><li>Equipment list with quantities</li><li>IV and its exact conditions</li><li>DV, unit and clear endpoint</li><li>At least four controlled variables and how each stays constant</li><li>Numbered, repeatable method</li><li>Risk → possible harm → control measure</li><li>Three trials per condition and results-table headings</li></ol></div>`},
+    {k:'html',html:`<div class="card dark"><h4>Risk is not the same as a hazard</h4><p><b>Hazard:</b> spilled meltwater. <b>Possible harm:</b> someone slips. <b>Control:</b> work over a tray and wipe spills immediately. Other checks: prolonged sun exposure, very cold ice, salt near eyes or mouth, glass containers and electrical devices near water.</p></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">45–49</div><div><b>Risk scan</b><span>Identify two realistic hazards, harms and control measures.</span></div></div><div class="run-row"><div class="run-time">49–56</div><div><b>Build in OneNote</b><span>Assemble the complete fair-test plan using all eight headings.</span></div></div><div class="run-row"><div class="run-time">56–58</div><div><b>Audit</b><span>Partner finds one fairness gap, one unclear instruction and one safety gap.</span></div></div><div class="run-row"><div class="run-time">58–60</div><div><b>Exit</b><span>Compress the plan into change, measure, controls, risk and reliability.</span></div></div></div>
+    <div class="response-call onenote"><div class="response-label">OneNote · durable evidence</div><p>Create <b>Science L10 — Fair-test plan</b>. Complete all eight headings shown on this screen and revise after the audit.</p></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 4 · ready-to-test exit</div><p>Post: <b>change / measure + unit / two controls / one risk control / how repeats improve confidence</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 45–60</h4><p>45–49 risk scan; 49–56 OneNote plan; 56–58 partner audit; 58–60 iBoard exit.</p><h4>Evidence sweep</h4><p>OneNote provides the full planning evidence; iBoard shows who can explain the logic independently. Do not approve testing until IV conditions, endpoint, key controls and realistic risk controls are clear.</p><h4>Reliability answer</h4><p>Repeats reveal unusual results and show whether the same pattern occurs consistently; they do not make an unfair design fair.</p>` });
 
 
 /* ============================ LESSON 11 ============================ */
 SLIDES.push({ nav:'L11A — Measure like a scientist',
   eyebrow:'Week 6 · Lesson 11 · Learn / Read / Notice', eyebrowR:'Lesson 11 · Screen A',
-  title:'Measure it like a scientist',
+  title:'The same experiment can produce different data',
   screenlbl:'Student screen 1 of 4', wideLeft:true,
-  left:[{k:'read', heading:'Accuracy, safety and good data', body:[
-    'Good data comes from careful measuring. Use the <b>same timer</b> and the <b>same way of deciding</b> when ice is "fully melted". Record straight into a <b>table</b> as you go — never trust your memory. Accurate, repeated measurements make your results <b>reliable</b>.',
-    'Stay safe: wipe up spills so no one slips, handle very cold ice with care, and ask an adult before using hot water. Listing safety steps is part of your marks.'
-  ], notice:'Reliable results come from accurate, repeated measurements recorded in a clear table.'}],
-  right:[{k:'win15', can:'record one observation with units', prove:'Write time + what changed in a table-ready line.'},{k:'hook', q:'Two people time the same ice cube and get different times. What could cause that?'},
-    {k:'wp', list:[{t:'accurate',d:'close to the true value'},{t:'reliable',d:'repeats agree with each other'},{t:'measure',d:'find a value with a tool'},{t:'units',d:'e.g. minutes & seconds'},{t:'record',d:'write data as you go'},{t:'safety',d:'steps that prevent harm'}]}],
-  notes:`<h4>Criterion</h4><p>Planning &amp; conducting — safe, systematic, accurate &amp; reliable use of equipment.</p>
-  <h4>Discuss</h4><p>Define "fully melted" precisely (no visible ice). Consistency = accuracy.</p>` });
+  left:[{k:'read', heading:'Measurement rules must be agreed before testing', body:[
+    'Imagine two students time the same ice cube. One starts the timer when the cube leaves the freezer; the other starts when it touches the tray. One stops when a puddle appears; the other waits until <b>no solid ice remains</b>. Their numbers disagree because their measurement rules disagree.',
+    '<b>Accuracy</b> improves when the correct tool is used carefully. <b>Precision</b> means recording to a consistent level of detail, such as the nearest second. <b>Reliability</b> is about whether repeated trials show a similar pattern. These ideas are connected, but they are not interchangeable.'
+  ], notice:'A fair method needs one start rule, one observable endpoint, one unit and one recording routine.'},
+  {k:'html',html:`<div class="card cream"><span class="tag try">FOUR DECISIONS</span><div class="scenario-grid"><div class="scenario-tile"><b>Start</b>When both cubes touch their trays</div><div class="scenario-tile"><b>Stop</b>When no solid ice remains</div><div class="scenario-tile"><b>Precision</b>Nearest second</div><div class="scenario-tile"><b>Record</b>Immediately in the results table</div></div></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">0–3 min</div><div><b>Spot the disagreement</b><span>Why could two careful people get different times for the same cube?</span></div></div><div class="run-row"><div class="run-time">3–8 min</div><div><b>Learn the terms</b><span>Distinguish accurate, precise and reliable using the reading.</span></div></div><div class="run-row"><div class="run-time">8–12 min</div><div><b>Write rules</b><span>Create one start, stop, unit and recording rule for an ice test.</span></div></div><div class="run-row"><div class="run-time">12–15 min</div><div><b>Diagnose</b><span>Explain the likely error in three measurement scenarios.</span></div></div></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 1 · measurement diagnosis</div><p>Student A records <b>“about 5 minutes”</b>; B records <b>5:17</b>; C starts timing 30 seconds late. Which result is least precise? Which is least accurate? Explain.</p></div>`}],
+  notes:`<h4>Timing: 15 minutes</h4><p>0–3 hook; 3–8 explicit teaching; 8–12 measurement rules; 12–15 iBoard.</p><h4>Answer guide</h4><p>A is least precise because it is rounded vaguely. C is likely least accurate because the late start causes a systematic underestimate. B is precise, but precision alone cannot prove accuracy.</p><h4>Evidence sweep</h4><p>Look for students who use accurate, precise and reliable as synonyms; address this before practical work.</p>` });
 
 SLIDES.push({ nav:'L11B — Build your results table',
-  eyebrow:'Week 6 · Lesson 11 · Practise / Plan / Share', eyebrowR:'Lesson 11 · Screen B',
-  title:'Build your results table',
+  eyebrow:'Week 6 · Lesson 11 · Organise / Calculate / Check', eyebrowR:'Lesson 11 · Screen B',
+  title:'Build a table that prevents lost data',
   screenlbl:'Student screen 2 of 4', wideLeft:true,
-  left:[{k:'html', html:`<div class="card cream"><span class="tag try">YOUR DATA TABLE</span>
-    <table class="dt"><tr><th>Condition</th><th>Trial 1</th><th>Trial 2</th><th>Trial 3</th><th>Average</th></tr>
-    <tr><td>(e.g. no salt)</td><td></td><td></td><td></td><td></td></tr>
-    <tr><td>(e.g. with salt)</td><td></td><td></td><td></td><td></td></tr></table>
-    <p style="color:#4a5a54;font-size:13.5px;margin-top:8px">Times in minutes : seconds. Average = add the trials ÷ how many.</p></div>`}],
-  right:[{k:'steps', label:'Make it count', rows:[
-    {t:'Clear columns', d:'Condition · Trial 1 · Trial 2 · Trial 3 · Average.'},
-    {t:'Add units', d:'Always write the units (min : sec).'},
-    {t:'Two safety steps', d:'Write 2 safety steps for your method.'}
-  ]}],
-  notes:`<h4>Outcome</h4><p>Students leave with a ready-to-use table + averaging method + safety steps — exactly what Part B requires.</p>` });
+  left:[{k:'html', html:`<div class="card cream"><span class="tag try">SAMPLE RESULTS</span><table class="dt"><tr><th>Salt condition</th><th>Trial 1 (s)</th><th>Trial 2 (s)</th><th>Trial 3 (s)</th><th>Mean (s)</th></tr><tr><td>0 g</td><td>700</td><td>680</td><td>690</td><td>690</td></tr><tr><td>5 g</td><td>500</td><td>520</td><td>510</td><td>510</td></tr></table><p style="color:#4a5a54;font-size:13.5px;margin-top:8px">690 s = 11 min 30 s. &nbsp; 510 s = 8 min 30 s.</p></div>`},
+    {k:'read',heading:'Why use total seconds?',body:['Times written as minutes:seconds cannot be averaged as if the colon were a decimal point. Convert every time to <b>total seconds</b>, add the trials, divide by the number of trials, then convert back if needed.','A useful table puts the <b>independent variable and its conditions</b> in the first column. Each measurement heading names the dependent variable and includes its unit. Record every result—even one that looks surprising.'],notice:'Mean = total of the trial values ÷ number of trials. Keep the unit attached.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">15–19</div><div><b>Read the table</b><span>Identify IV conditions, DV, unit, repeats and mean.</span></div></div><div class="run-row"><div class="run-time">19–24</div><div><b>Convert</b><span>Change 4:35, 5:05 and 4:50 into total seconds.</span></div></div><div class="run-row"><div class="run-time">24–28</div><div><b>Calculate</b><span>Find the mean of the three times, then convert it back to min:s.</span></div></div><div class="run-row"><div class="run-time">28–30</div><div><b>Justify</b><span>Explain why units belong in headings, not scattered through cells.</span></div></div></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 2 · data calculation</div><p>For <b>4:35, 5:05 and 4:50</b>, post the three values in seconds, the calculation and the mean in both seconds and min:s.</p></div>`}],
+  notes:`<h4>Timing: minutes 15–30</h4><p>15–19 table anatomy; 19–24 conversions; 24–28 mean; 28–30 iBoard.</p><h4>Answer</h4><p>275 s, 305 s and 290 s. (275 + 305 + 290) ÷ 3 = 290 s = 4 min 50 s.</p><h4>Common error</h4><p>Students may calculate (4.35 + 5.05 + 4.50) ÷ 3. Re-teach that 4:35 is not 4.35 minutes.</p>` });
 
 SLIDES.push({ nav:'L11C — Data habits',
-  eyebrow:'Week 6 · Lesson 11 · Explore / Stretch / Share', eyebrowR:'Lesson 11 · Screen C',
-  title:'Data habits',
+  eyebrow:'Week 6 · Lesson 11 · Observe / Infer / Investigate', eyebrowR:'Lesson 11 · Screen C',
+  title:'Odd data is a clue—not rubbish',
   screenlbl:'Student screen 3 of 4', wideLeft:true,
-  left:[{k:'know',label:'KNOWLEDGE',heading:'Data habits that scientists keep',points:['Record <b>observations</b> with units and honest times.','Tables need headings: what you changed and what you measured.','Repeats help spot odd results — anomalies are not failures.','Observation is what you see; inference is what you think it means.']},{k:'discuss',title:'Honest recording',label:'DISCUSS',prompts:['Why write 4:32 instead of about five minutes?','What do you do if one repeat looks nothing like the others?','How is a table better than a paragraph for melting times?','What is the difference between see and conclude?']}],
-  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Table build',d:'Create headings for shade vs sun melting data.'},{t:'One line',d:'Write time + observation in table-ready format.'},{t:'Sort statements',d:'Observation vs inference card sort.'},{t:'Repeat rule',d:'Explain why scientists repeat measurements.'}]},{k:'brain',q:['When is it okay to leave out an odd result?','How do units prevent arguments about results?','What makes a conclusion too big for the data you have?']}],
-  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+  left:[{k:'read',heading:'Observation, inference and anomaly',body:['An <b>observation</b> reports what was directly seen or measured: “Trial 2 took 920 s.” An <b>inference</b> offers a possible explanation: “The cube may have been larger.” The inference may be sensible, but it is not a measured fact.','An <b>anomaly</b> is a result noticeably different from the others. Scientists keep it, check the procedure and repeat the test. They only exclude data when they can give a recorded, defensible reason—such as the timer stopping unexpectedly.'],notice:'Never secretly delete an inconvenient value. Record it, investigate it and explain any decision.'},
+    {k:'html',html:`<div class="card cream"><span class="tag do">DATA DETECTIVE</span><table class="dt"><tr><th>Trial</th><th>0 g salt (s)</th><th>5 g salt (s)</th></tr><tr><td>1</td><td>700</td><td>500</td></tr><tr><td>2</td><td>920</td><td>520</td></tr><tr><td>3</td><td>690</td><td>510</td></tr></table><p>Trial 2 for 0 g salt is unusual. What should happen next?</p></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">30–34</div><div><b>Notice</b><span>Describe the odd result without explaining it yet.</span></div></div><div class="run-row"><div class="run-time">34–38</div><div><b>Separate</b><span>Classify six statements as observation or inference.</span></div></div><div class="run-row"><div class="run-time">38–42</div><div><b>Investigate</b><span>List possible causes and the evidence needed to check each one.</span></div></div><div class="run-row"><div class="run-time">42–45</div><div><b>Decide honestly</b><span>Write what to do now and what not to do.</span></div></div></div>
+    <div class="response-call iboard"><div class="response-label">iBoard check 3 · anomaly protocol</div><p>Post: <b>observation / one possible inference / next action / why deleting 920 s without evidence would be poor science</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 30–45</h4><p>30–34 observe; 34–38 sort; 38–42 investigate; 42–45 iBoard.</p><h4>Model response</h4><p>Observation: trial 2 is 220–230 s longer than the other 0 g trials. Inference: the cube may have had a greater starting mass. Next: check notes/equipment and run another trial under the same controls. It cannot be deleted merely because it is inconvenient.</p>` });
 
 SLIDES.push({ nav:'L11D — Observation vs inference',
-  eyebrow:'Week 6 · Lesson 11 · Secure / Prove / Reflect', eyebrowR:'Lesson 11 · Screen D',
-  title:'Observation vs inference',
-  screenlbl:'Student screen 4 of 4',
-  left:[{k:'know',label:'SUMMARY',heading:'Observation vs inference',points:['Observations are measurable; inferences interpret observations.','Conclusions must be supported by your table.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Sort',d:'Classify five statements as see or think.'},{t:'Data line',d:'Record one real or sample row with units.'},{t:'Mini conclusion',d:'One sentence supported only by your numbers.'},{t:'Exit ready',d:'Exit check.'}]}],
-  right:[{k:'html',html:`<div class="card dark"><span class="tag try">TABLE</span><p style="margin-top:8px">Sample table: Location | Time to melt (min) | Notes<br>Add one row from today's investigation or the sample data.</p></div>`},{k:'exit',items:['design a clear results table','measure time accurately with units','plan to repeat trials for reliability','list safety steps for my method']}],
-  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+  eyebrow:'Week 6 · Lesson 11 · Prepare / Audit / Submit', eyebrowR:'Lesson 11 · Screen D',
+  title:'Create your data-collection protocol',
+  screenlbl:'Student screen 4 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">ONENOTE EVIDENCE · USE THESE HEADINGS</span><ol style="line-height:1.58;margin:10px 0 0 20px"><li><b>My measurement rule</b> — start, stop, tool, unit and precision.</li><li><b>My blank results table</b> — IV conditions, three trials and mean; units in headings.</li><li><b>My calculation example</b> — convert min:s to seconds and find a mean.</li><li><b>My observation notes</b> — what will be recorded besides time?</li><li><b>My anomaly protocol</b> — what I will do if one result looks unusual.</li><li><b>My safety routine</b> — hazard, possible harm and control.</li></ol></div>`},
+    {k:'know',label:'FINAL AUDIT',heading:'Could another student collect comparable data?',points:['The endpoint is observable rather than based on opinion.','The table matches the IV conditions and DV unit.','Every trial will be recorded immediately and honestly.','The repeat and anomaly rules are written before results are known.']}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">45–48</div><div><b>Retrieve</b><span>Open your Lesson 10 fair-test plan and copy the measurement details.</span></div></div><div class="run-row"><div class="run-time">48–55</div><div><b>Build in OneNote</b><span>Complete all six data-collection headings.</span></div></div><div class="run-row"><div class="run-time">55–58</div><div><b>Audit</b><span>Partner checks endpoint, units, trials, mean and anomaly rule.</span></div></div><div class="run-row"><div class="run-time">58–60</div><div><b>Exit</b><span>Post the protocol in one compressed line.</span></div></div></div>
+    <div class="response-call onenote"><div class="response-label">OneNote · durable evidence</div><p>Create <b>Science L11 — Data-collection protocol</b>. Complete all six headings and include your blank table.</p></div><div class="response-call iboard"><div class="response-label">iBoard check 4 · ready-to-measure exit</div><p>Post: <b>start rule / stop rule / unit + precision / repeats / anomaly action</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 45–60</h4><p>45–48 retrieve; 48–55 OneNote; 55–58 peer audit; 58–60 iBoard.</p><h4>Evidence sweep</h4><p>The OneNote page is the durable planning artefact. Use the exit response to find students who still lack a shared endpoint or intend to discard odd results automatically.</p>` });
 
 
 /* ============================ LESSON 12 ============================ */
 SLIDES.push({ nav:'L12A — Make your data speak',
   eyebrow:'Week 6 · Lesson 12 · Learn / Read / Notice', eyebrowR:'Lesson 12 · Screen A',
-  title:'Make your data speak',
+  title:'Choose the graph that matches the question',
   screenlbl:'Student screen 1 of 4', wideLeft:true,
-  left:[{k:'read', wow:true, heading:'A graph reveals the pattern', body:[
-    'Numbers in a table are useful, but a <b>graph</b> lets the pattern jump out. To compare conditions (salt vs no salt), a <b>bar graph</b> works best. Label both axes, add units, and give it a title. Then read the pattern: which condition melted fastest?',
-    'Top scientists do not just show data — they <b>explain</b> the pattern and <b>compare it to their prediction</b>, with a reason. That is the A-grade move.'
-  ], notice:'Build the graph using conventions (title, labelled axes, units), then describe AND explain the pattern.'}],
-  right:[{k:'win15', can:'choose a graph type for melting-time data', prove:'Say bar or line and why in one sentence.'},{k:'hook', q:'What kind of graph best compares "salt" vs "no salt" melting times — and why?'},
-    {k:'wp', list:[{t:'data',d:'the information you collect'},{t:'bar graph',d:'bars compare separate groups'},{t:'axis',d:'a labelled side of a graph'},{t:'pattern',d:'a repeating relationship'},{t:'trend',d:'the overall direction'},{t:'explain',d:'say WHY using a reason'}]}],
-  notes:`<h4>Criterion</h4><p>Processing &amp; analysing — conventions for tables/graphs + <b>reasoned</b> explanation of patterns vs predictions.</p>` });
+  left:[{k:'read', wow:true, heading:'Bar graph or line graph?', body:['Use a <b>bar graph</b> to compare separate categories, such as sun/shade, wrapped/unwrapped or 0 g/5 g of salt. Use a <b>line graph</b> when the independent variable is a continuous number and you want to show how the dependent variable changes across it—for example, melting time at 0 g, 2 g, 4 g, 6 g and 8 g of salt.','The independent variable belongs on the <b>horizontal x-axis</b>. The dependent variable belongs on the <b>vertical y-axis</b> with its unit. Graph the mean for each condition rather than every trial unless you are asked to show the spread.'],notice:'Graph type follows the data: categories → bars; ordered continuous values → line.'},
+    {k:'html',html:`<div class="card cream"><span class="tag try">GRAPH DECISIONS</span><div class="scenario-grid"><div class="scenario-tile"><b>Sun vs shade</b>Bar graph</div><div class="scenario-tile"><b>0, 2, 4, 6, 8 g salt</b>Line graph</div><div class="scenario-tile"><b>x-axis</b>What was changed</div><div class="scenario-tile"><b>y-axis</b>What was measured + unit</div></div></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">0–4 min</div><div><b>Choose</b><span>Select bar or line for four investigations and justify each choice.</span></div></div><div class="run-row"><div class="run-time">4–8 min</div><div><b>Place variables</b><span>Identify the x-axis, y-axis and unit for each example.</span></div></div><div class="run-row"><div class="run-time">8–12 min</div><div><b>Apply</b><span>Choose the graph for your own investigation and draft both axis labels.</span></div></div><div class="run-row"><div class="run-time">12–15 min</div><div><b>Defend</b><span>Post the decision using the words category or continuous.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 1 · graph choice</div><p>For your investigation, post: <b>graph type / why / x-axis label / y-axis label + unit</b>.</p></div>`}],
+  notes:`<h4>Timing: 15 minutes</h4><p>0–4 graph sort; 4–8 axes; 8–12 apply; 12–15 iBoard.</p><h4>Evidence sweep</h4><p>Most two-condition home tests need a bar graph. Accept a line graph only where ordered numerical IV values are sufficiently numerous and meaningful.</p>` });
 
 SLIDES.push({ nav:'L12B — Graph it & read it',
-  eyebrow:'Week 6 · Lesson 12 · Practise / Graph / Share', eyebrowR:'Lesson 12 · Screen B',
-  title:'Graph it & read the pattern',
+  eyebrow:'Week 6 · Lesson 12 · Scale / Plot / Audit', eyebrowR:'Lesson 12 · Screen B',
+  title:'A graph is a measuring instrument—not decoration',
   screenlbl:'Student screen 2 of 4', wideLeft:true,
-  left:[{k:'steps', label:'Graph checklist', rows:[
-    {t:'Pick the graph', d:'Bar graph to compare your conditions.'},
-    {t:'Label everything', d:'Title + both axes + units.'},
-    {t:'Plot accurately', d:'One bar per condition, height = average time.'},
-    {t:'Read the pattern', d:'"The ______ melted fastest because ______."'}
-  ]},
-    {k:'img', src:'graph-grid.jpg', cap:'Use a grid like this: label both axes, add units and a title.'}],
-  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:10px">Sentence builders</h4>
-    <p style="color:var(--ink);font-size:15.5px;line-height:1.6">• "My graph shows that ______ melted the fastest."<br>
-    • "This pattern matches / does not match my prediction because ______."<br>
-    • "A reason for this is ______."</p></div>`}],
-  notes:`<h4>Outcome</h4><p>Students can turn a table into a labelled bar graph and verbalise the pattern with a reason — rehearsal for the real write-up.</p>` });
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">PLOT THIS SAMPLE</span><table class="dt"><tr><th>Condition</th><th>Mean melting time (s)</th></tr><tr><td>0 g salt</td><td>690</td></tr><tr><td>5 g salt</td><td>510</td></tr></table><div class="option-grid"><div class="option-card"><b>Title</b>Effect of salt on ice-melting time</div><div class="option-card"><b>x-axis</b>Salt condition (g)</div><div class="option-card"><b>y-axis</b>Mean melting time (s)</div><div class="option-card"><b>Scale</b>Equal intervals that include 690</div></div></div>`},
+    {k:'read',heading:'Six conventions make the graph readable',body:['Use a specific title, label both axes, include the unit, choose equal scale intervals, plot accurately and keep bars equal in width with gaps between categories. A line graph uses plotted points joined in order.','A scale can mislead when intervals change size or when the axis break exaggerates a small difference. Before drawing, work out the highest value and choose a scale that uses most of the available grid.'],notice:'Every position on an axis must represent a consistent numerical value.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">15–19</div><div><b>Plan</b><span>Choose a sensible y-axis maximum and equal intervals for 510 s and 690 s.</span></div></div><div class="run-row"><div class="run-time">19–24</div><div><b>Sketch</b><span>Draw and label the sample bar graph on paper or a OneNote practice space.</span></div></div><div class="run-row"><div class="run-time">24–28</div><div><b>Error hunt</b><span>Find six faults: missing unit, swapped axes, uneven scale, no title, unequal bars and inaccurate height.</span></div></div><div class="run-row"><div class="run-time">28–30</div><div><b>Audit aloud</b><span>State the conventions you would check before accepting a graph.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 2 · graph audit</div><p>Propose a y-axis scale for the sample, then post <b>six graph conventions</b> a classmate must check.</p></div>`}],
+  notes:`<h4>Timing: minutes 15–30</h4><p>15–19 scale; 19–24 sketch; 24–28 error hunt; 28–30 iBoard.</p><h4>Scale guide</h4><p>0–700 s in 100 s intervals is simple and honest. A scale beginning near 500 can exaggerate the visual difference and is less suitable at this level unless an axis break is made explicit.</p>` });
 
 SLIDES.push({ nav:'L12C — Graph clinic',
-  eyebrow:'Week 6 · Lesson 12 · Explore / Stretch / Share', eyebrowR:'Lesson 12 · Screen C',
-  title:'Graph clinic',
+  eyebrow:'Week 6 · Lesson 12 · Describe / Explain / Conclude', eyebrowR:'Lesson 12 · Screen C',
+  title:'Move from “what happened” to “what the evidence means”',
   screenlbl:'Student screen 3 of 4', wideLeft:true,
-  left:[{k:'know',label:'KNOWLEDGE',heading:'Graphs that tell the story',points:['Bar graphs compare categories; line graphs often show change over time.','Axes need labels with units; scales should start sensibly.','The story: as X increases, Y… should match the data.','Graphs make patterns visible that tables hide.']},{k:'discuss',title:'Choose and read',label:'DISCUSS',prompts:['Why might melting time vs location be a bar graph?','What goes on each axis — what you change or what you measure?','How can a graph mislead if the scale jumps oddly?','Say the pattern aloud: Ice in sun melted ___ than ice in shade.']}],
-  right:[{k:'steps',label:'Explore / Stretch',rows:[{t:'Graph pick',d:'Choose bar or line for melting data — justify in one sentence.'},{t:'Label axes',d:'Draft axis titles with units.'},{t:'Read aloud',d:'Describe the pattern without inventing numbers.'},{t:'Sketch',d:'Quick bar graph from class or sample data.'}]},{k:'brain',q:['When would a line graph be better than a bar graph here?','What is the story your graph tells a person who cannot see the experiment?','How do labels help someone else read your work?']}],
-  notes:`<h4>Screen C — deepen</h4><p>Pair talk before independent work. Circulate and listen for precise vocabulary.</p><h4>Teacher tip</h4><p>Cold-call one student per discuss prompt. Capture a strong sentence on the board.</p>` });
+  left:[{k:'html',html:`<div class="card cream"><span class="tag try">THREE LEVELS OF THINKING</span><p><b>Describe:</b> The 5 g salt condition had a mean melting time of 510 s, which was 180 s less than the 0 g condition.</p><p><b>Explain:</b> Salt promoted melting at the ice surface by lowering water’s freezing point.</p><p><b>Conclude:</b> In this investigation, adding 5 g of salt reduced the mean time for the ice to melt, supporting the prediction.</p></div>`},
+    {k:'read',heading:'Claims must stay inside the evidence',body:['A description reports the pattern with numbers. An explanation connects that pattern to a scientific idea. A conclusion answers the testable question and states whether the prediction was supported.','Use cautious language. Two conditions and three trials support a claim about <b>this investigation</b>; they do not prove that every amount of salt will always produce exactly the same effect. “Supported” is usually more scientific than “proved”.'],notice:'Evidence → pattern → scientific reason → answer to the question.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">30–34</div><div><b>Separate</b><span>Label statements D (describe), E (explain) or C (conclude).</span></div></div><div class="run-row"><div class="run-time">34–39</div><div><b>Quantify</b><span>Calculate the 180 s difference and express which condition was faster.</span></div></div><div class="run-row"><div class="run-time">39–43</div><div><b>Challenge claims</b><span>Repair “Salt always makes all ice melt 180 seconds faster.”</span></div></div><div class="run-row"><div class="run-time">43–45</div><div><b>Build a paragraph</b><span>Combine description, explanation and conclusion.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 3 · evidence paragraph</div><p>Using 690 s and 510 s, post three sentences: <b>describe with numbers / explain scientifically / conclude and compare with the prediction</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 30–45</h4><p>30–34 classify; 34–39 quantify; 39–43 limit claims; 43–45 iBoard.</p><h4>Evidence sweep</h4><p>Students often describe twice instead of explaining. The explanation must introduce a relevant mechanism; the conclusion must answer the original question and refer to whether the prediction was supported.</p>` });
 
 SLIDES.push({ nav:'L12D — Read a graph aloud',
-  eyebrow:'Week 6 · Lesson 12 · Secure / Prove / Reflect', eyebrowR:'Lesson 12 · Screen D',
-  title:'Read a graph aloud',
-  screenlbl:'Student screen 4 of 4',
-  left:[{k:'know',label:'SUMMARY',heading:'Graph story',points:['Pattern language: faster, slower, more, less, compared to.','Excellent graphs are labelled, scaled and honest.']},{k:'steps',label:'Secure / Prove',rows:[{t:'Type + why',d:'State graph type and reason in one sentence.'},{t:'Story sentence',d:'As location changed, melting time…'},{t:'Peer read',d:'Can a partner retell your graph story?'},{t:'Exit ready',d:'Exit check.'}]}],
-  right:[{k:'discuss',title:'Graph clinic',label:'DISCUSS',prompts:['What would confuse a reader about your axes?','How is a graph different from a drawing?','If results were close, how would the graph look?','What next question does your graph suggest?']},{k:'exit',items:['construct a graph using conventions','describe the pattern in my data','compare my result with my prediction','suggest a reason for the pattern']}],
-  notes:`<h4>Screen D — prove</h4><p>Students work independently first, then peer-check. Run exit check cold.</p><h4>Teacher tip</h4><p>Re-teach if fewer than 75% can state the 15-minute win.</p>` });
+  eyebrow:'Week 6 · Lesson 12 · Communicate / Evaluate / Submit', eyebrowR:'Lesson 12 · Screen D',
+  title:'Produce a complete evidence story',
+  screenlbl:'Student screen 4 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">ONENOTE EVIDENCE · RESULTS STORY</span><ol style="line-height:1.58;margin:10px 0 0 20px"><li><b>Question and prediction</b></li><li><b>Results table</b> with raw trials, units and means</li><li><b>Graph</b> with title, correct type, labelled axes, units, even scale and accurate plots</li><li><b>Pattern</b> described using comparative numbers</li><li><b>Scientific explanation</b> for the pattern</li><li><b>Conclusion</b> answering the question and judging the prediction</li><li><b>Evidence limit</b> — one reason the claim should remain cautious</li></ol></div>`},
+    {k:'know',label:'PEER REVIEW',heading:'Can the evidence be followed?',points:['The numbers agree across the table, calculations, graph and paragraph.','The graph communicates the IV–DV relationship accurately.','Description, explanation and conclusion each do a different job.','The claim is no broader than the investigation supports.']}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">45–48</div><div><b>Assemble</b><span>Bring your question, prediction, table and chosen graph together.</span></div></div><div class="run-row"><div class="run-time">48–55</div><div><b>Create in OneNote</b><span>Complete all seven results-story sections using real or sample data.</span></div></div><div class="run-row"><div class="run-time">55–58</div><div><b>Cross-check</b><span>Partner traces one value from raw trial to mean, graph and conclusion.</span></div></div><div class="run-row"><div class="run-time">58–60</div><div><b>Exit</b><span>Post the evidence chain without looking at the headings.</span></div></div></div><div class="response-call onenote"><div class="response-label">OneNote · durable evidence</div><p>Create <b>Science L12 — Results story</b>. Complete all seven sections using your own results or the sample dataset.</p></div><div class="response-call iboard"><div class="response-label">iBoard check 4 · analysis exit</div><p>Post: <b>graph choice / numerical pattern / scientific reason / prediction supported or not / one evidence limit</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 45–60</h4><p>45–48 assemble; 48–55 OneNote; 55–58 cross-check; 58–60 iBoard.</p><h4>Evidence sweep</h4><p>The OneNote page captures the complete processing-and-analysis product. The exit response reveals who can independently connect representation, pattern, mechanism and claim.</p>` });
 
 
 /* ===================== PART B CHECKPOINT ===================== */
@@ -976,67 +983,77 @@ SLIDES.push({ type:'checkpoint', nav:'★ Part B Assessment (Week 7)',
 
 /* ============================ LESSON 13 (Part B) ============================ */
 SLIDES.push({ nav:'L13A — Part B: Plan',
-  eyebrow:'Week 7 · Lesson 13 · Plan your investigation', eyebrowR:'Part B · Screen A',
-  title:'Part B — Plan your investigation',
-  screenlbl:'Booklet: pages 1–5', wideLeft:true,
-  left:[{k:'steps', label:'Complete in your booklet', rows:[
-    {t:'Question', d:'"Does ______ change the time it takes an ice cube to melt?"'},
-    {t:'Prediction + reason', d:'"I predict ______ because ______."'},
-    {t:'Variables', d:'Independent (change) · Dependent (melt time) · Controlled (3+ same).'},
-    {t:'Materials & method', d:'List equipment; number your steps so anyone could copy them.'},
-    {t:'Safety', d:'Write at least two safety considerations.'}
-  ]}],
-  right:[{k:'win15', can:'plan a fair test with a question, prediction and variables', prove:'Show my question, a prediction with a because, and 3 controlled variables.'},{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">A-grade reminders</h4>
-    <p style="color:var(--ink);font-size:15px;line-height:1.6">✓ Prediction has a <b>because</b><br>✓ <b>3+ controlled</b> variables listed<br>✓ Method is <b>numbered &amp; repeatable</b><br>✓ Safety risks are <b>managed</b>, not just named</p></div>`}],
-  notes:`<h4>Conference focus</h4><p>Check the prediction reason and the controlled-variable list before they start the practical.</p>` });
+  eyebrow:'Week 7 · Lesson 13 · Approve / Prepare / Begin', eyebrowR:'Part B · Screen A',
+  title:'Part B launch: pass the four gates before testing',
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">THE FOUR-GATE CHECK</span><div class="option-grid"><div class="option-card"><b>1 · Valid</b>The method actually answers the question; the DV and unit match.</div><div class="option-card"><b>2 · Fair</b>Only the IV changes; key controls are specific.</div><div class="option-card"><b>3 · Measurable</b>Start, endpoint, tool, precision and results table are ready.</div><div class="option-card"><b>4 · Safe</b>Each realistic hazard has a control measure.</div></div></div>`},
+    {k:'read',heading:'Approval is scientific—not just administrative',body:['Scientists inspect a plan before collecting data because a poorly designed test can waste materials and produce evidence that cannot answer the question. Once the results are known, changing the question, prediction or rules to fit them would be unfair.','Read the plan as if you were a classmate who had never seen it. Every quantity, condition and action should be clear enough to repeat. If a gate fails, pause and repair the plan before touching the equipment.'],notice:'Plan first, approve second, test third. Never redesign the rules after seeing the answer.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">0–3 min</div><div><b>Retrieve</b><span>Open your question, fair-test plan and data-collection protocol from Lessons 9–11.</span></div></div><div class="run-row"><div class="run-time">3–8 min</div><div><b>Gate audit</b><span>Check valid, fair, measurable and safe; mark each green, amber or red.</span></div></div><div class="run-row"><div class="run-time">8–12 min</div><div><b>Repair</b><span>Fix every red or amber item without changing the purpose of the question.</span></div></div><div class="run-row"><div class="run-time">12–15 min</div><div><b>Seek approval</b><span>Post a compact plan for teacher review before practical work.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 1 · test approval</div><p>Post: <b>question / IV conditions / DV + unit / two key controls / highest risk + control</b>. Finish with <b>READY</b> or name the repair still needed.</p></div>`}],
+  notes:`<h4>Timing: 15 minutes</h4><p>0–3 retrieve; 3–8 four-gate audit; 8–12 repairs; 12–15 iBoard approval.</p><h4>Teacher triage</h4><p>Approve only when the IV has clear conditions, the DV has an observable endpoint and unit, the most influential controls are operationalised, and risks are managed. Reply first to red/amber students.</p><h4>Evidence</h4><p>The iBoard post gives a rapid whole-class readiness map. The full plan remains in the booklet/OneNote.</p>` });
 
 SLIDES.push({ nav:'L13B — Part B: Conduct',
-  eyebrow:'Week 7 · Lesson 13 · Conduct & record', eyebrowR:'Part B · Screen B',
-  title:'Part B — Conduct & record',
-  screenlbl:'Booklet: results table', wideLeft:true,
-  left:[{k:'steps', label:'Run your test', rows:[
-    {t:'Set up fairly', d:'Same size cubes, same start, only your variable changes.'},
-    {t:'Time each trial', d:'Use the same timer and the same "fully melted" rule.'},
-    {t:'Record as you go', d:'Write each time straight into your table.'},
-    {t:'Repeat 3 times', d:'Then calculate the average for each condition.'}
-  ]}],
-  right:[{k:'html', html:`<div class="card cream"><span class="tag try">RECORD HERE</span>
-    <table class="dt"><tr><th>Condition</th><th>T1</th><th>T2</th><th>T3</th><th>Avg</th></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr>
-    <tr><td></td><td></td><td></td><td></td><td></td></tr></table></div>`},
-    {k:'exit', items:['conduct a fair test safely','measure melting time accurately','record results in my table','repeat trials and average them']}],
-  notes:`<h4>Conduct</h4><p>If melting is slow, students can do it across the lesson or at home and bring data. Reinforce identical "fully melted" judgement.</p>` });
+  eyebrow:'Week 7 · Lesson 13 · Set up / Rehearse / Check', eyebrowR:'Part B · Screen B',
+  title:'A dry run catches problems before the timer starts',
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag try">60-SECOND DRY RUN</span><ol style="line-height:1.58;margin:10px 0 0 20px"><li>Lay out every item in method order.</li><li>Show how each sample will start equally.</li><li>Point to the exact IV conditions.</li><li>Say the timer start and stop rules aloud.</li><li>Show where raw data will be written immediately.</li><li>Demonstrate the spill or other risk control.</li></ol></div>`},
+    {k:'read',heading:'Set-up decisions can change the result',body:['Equal-looking ice cubes may have different masses. Two trays may be made of different materials. A sunny location can shift into shade during the trial. These are not tiny details: they could provide alternative explanations for the result.','A pilot or dry run checks whether the equipment, timing rule and table work as intended. It is not a hidden first trial. If you collect pilot data, label it clearly and do not mix it with the planned trials unless the procedure was identical.'],notice:'Check the system before collecting evidence. Label pilot data honestly.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">15–19</div><div><b>Lay out</b><span>Arrange equipment in method order without beginning the experiment.</span></div></div><div class="run-row"><div class="run-time">19–23</div><div><b>Dry run</b><span>Rehearse sample preparation, timing, endpoint and recording.</span></div></div><div class="run-row"><div class="run-time">23–27</div><div><b>Partner challenge</b><span>Your partner asks one question that exposes a missing quantity or unclear step.</span></div></div><div class="run-row"><div class="run-time">27–30</div><div><b>Final correction</b><span>Record the correction before starting trial 1.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 2 · pre-flight correction</div><p>Post: <b>one weakness the dry run exposed / the exact correction / which quality it improves—validity, fairness, accuracy or safety</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 15–30</h4><p>15–19 set-up; 19–23 dry run; 23–27 partner challenge; 27–30 iBoard.</p><h4>Remote-learning option</h4><p>If equipment or adult supervision is unavailable, students can perform a spoken/tabletop rehearsal and schedule the practical. Do not encourage unsafe improvisation.</p><h4>Evidence sweep</h4><p>Look for a specific correction, such as weighing 20 g samples or moving both trays to the same surface—not “be more careful”.</p>` });
+
+SLIDES.push({ nav:'L13C — Part B: Run the test',
+  eyebrow:'Week 7 · Lesson 13 · Conduct / Observe / Record', eyebrowR:'Part B · Screen C',
+  title:'Collect raw data without changing the rules',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">LIVE TRIAL ROUTINE</span><div class="option-grid"><div class="option-card"><b>Before</b>Confirm samples, conditions and table row.</div><div class="option-card"><b>Start</b>Apply the agreed rule equally.</div><div class="option-card"><b>Observe</b>Watch without interfering; note relevant changes.</div><div class="option-card"><b>Stop</b>Use the same visible endpoint.</div><div class="option-card"><b>Record</b>Write the raw value immediately with its unit.</div><div class="option-card"><b>Reset</b>Restore controlled conditions before repeating.</div></div></div>`},
+    {k:'read',heading:'Raw data is evidence, not a performance',body:['Do not round a time because it “looks nicer”, replace an unexpected value, or adjust the method to make the prediction come true. A prediction can be unsupported and still be scientifically useful.','Record interruptions and unusual events beside the result: a timer stopped, a tray moved into shade, a sample broke or someone touched the ice. These notes help you judge the evidence later.'],notice:'Honest unexpected data is more valuable than tidy invented data.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">30–33</div><div><b>Final call</b><span>Read the IV conditions, start rule and endpoint aloud.</span></div></div><div class="run-row"><div class="run-time">33–41</div><div><b>Conduct</b><span>Begin or continue the planned trials; record times and observations live.</span></div></div><div class="run-row"><div class="run-time">41–43</div><div><b>Integrity pause</b><span>Check that no rule has quietly changed between conditions or trials.</span></div></div><div class="run-row"><div class="run-time">43–45</div><div><b>Status report</b><span>Post only data already observed; label incomplete work honestly.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 3 · live evidence status</div><p>Post: <b>trial completed or in progress / latest raw measurement + unit / one direct observation / any unexpected event</b>. Write <b>none</b> if there was no event.</p></div>`}],
+  notes:`<h4>Timing: minutes 30–45</h4><p>30–33 final call; 33–41 practical; 41–43 integrity pause; 43–45 iBoard status.</p><h4>Pacing reality</h4><p>Ice may not melt within this screen. Students should continue safely across the remaining lesson or complete scheduled trials later. The response asks for status, not a fabricated finished result.</p><h4>Teacher monitoring</h4><p>Use live statuses to identify missing units, vague observations and procedural changes while they can still be documented.</p>` });
+
+SLIDES.push({ nav:'L13D — Part B: Secure the evidence',
+  eyebrow:'Week 7 · Lesson 13 · Verify / Store / Schedule', eyebrowR:'Part B · Screen D',
+  title:'Leave the lesson with an evidence trail',
+  screenlbl:'Student screen 4 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">ONENOTE / BOOKLET EVIDENCE</span><ol style="line-height:1.58;margin:10px 0 0 20px"><li><b>Approved plan</b> — include any correction made after the dry run.</li><li><b>Raw results table</b> — never replace raw values with averages.</li><li><b>Observation log</b> — direct observations and unexpected events.</li><li><b>Photo or labelled set-up diagram</b> — show the two conditions and key controls.</li><li><b>Completion schedule</b> — list unfinished trials and when they will be run safely.</li><li><b>Integrity statement</b> — identify any method change and how it affects comparison.</li></ol></div>`},
+    {k:'know',label:'DATA LOCK',heading:'Before calculating anything',points:['Every observed value is recorded with a unit.','Raw trials remain visible even when a mean is later calculated.','Incomplete cells are labelled—not filled from memory or guessed.','Procedural changes and anomalous events are attached to the relevant trial.']}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">45–50</div><div><b>Continue or close safely</b><span>Finish active timing where practical; secure equipment and wipe spills.</span></div></div><div class="run-row"><div class="run-time">50–55</div><div><b>Store evidence</b><span>Transfer the six evidence components to the booklet/OneNote.</span></div></div><div class="run-row"><div class="run-time">55–58</div><div><b>Data audit</b><span>Partner checks raw values, units, notes and unfinished-trial labels.</span></div></div><div class="run-row"><div class="run-time">58–60</div><div><b>Exit</b><span>State what is complete, what remains and the next safe action.</span></div></div></div><div class="response-call onenote"><div class="response-label">OneNote · durable evidence</div><p>Create or update <b>Science L13 — Part B practical evidence</b>. Include all six components; photographs are optional, but a labelled diagram is required if no photo is used.</p></div><div class="response-call iboard"><div class="response-label">iBoard check 4 · evidence handover</div><p>Post: <b>trials completed / trials remaining / one control maintained / one unexpected event or “none” / next action</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 45–60</h4><p>45–50 safely finish/close; 50–55 evidence storage; 55–58 audit; 58–60 iBoard.</p><h4>Evidence sweep</h4><p>This screen prevents invisible unfinished work. Use the exit to distinguish complete data, safely scheduled completion and students needing direct follow-up.</p>` });
 
 /* ============================ LESSON 14 (Part B) ============================ */
 SLIDES.push({ nav:'L14A — Part B: Process & graph',
-  eyebrow:'Week 7 · Lesson 14 · Process your data', eyebrowR:'Part B · Screen A',
-  title:'Part B — Process & graph your data',
-  screenlbl:'Booklet: graph page', wideLeft:true,
-  left:[{k:'steps', label:'Turn data into a graph', rows:[
-    {t:'Choose the graph', d:'Bar graph comparing your conditions.'},
-    {t:'Follow conventions', d:'Title · both axes labelled · units.'},
-    {t:'Plot the averages', d:'Bar height = average melting time.'},
-    {t:'Describe the pattern', d:'"My graph shows ______ melted fastest."'}
-  ]},
-    {k:'img', src:'graph-grid.jpg', cap:'Plot your averages as bars on a grid like this.'}],
-  right:[{k:'win15', can:'turn my results into a graph that follows the conventions', prove:'Point to my title, both labelled axes and units.'},{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">Explain like an A-grader</h4>
-    <p style="color:var(--ink);font-size:15px;line-height:1.6">• Name the pattern in your data.<br>• Compare it to your <b>prediction</b>.<br>• Give a <b>reason</b> for what you see.</p></div>`}],
-  notes:`<h4>Processing</h4><p>Watch for labelled axes + units (easy marks). Push the explanation beyond "describe" to "explain with a reason".</p>` });
+  eyebrow:'Week 7 · Lesson 14 · Verify / Calculate / Preserve', eyebrowR:'Part B · Screen A',
+  title:'Process the data without “cleaning away” the truth',
+  screenlbl:'Student screen 1 of 4', wideLeft:true,
+  left:[{k:'read',heading:'Raw data first, processed data second',body:['Begin with the raw table exactly as recorded. Check that every value has a condition, trial number and unit. Convert all min:s times to total seconds before calculating a mean. Keep the raw values visible beside the mean so a reader can check your working.','Circle an anomaly; do not erase it. Add a note explaining any known event. If a trial is missing, label it missing and complete it if possible—never estimate the value or quietly divide by the planned number of trials.'],notice:'Processing organises evidence; it must not rewrite evidence.'},
+    {k:'html',html:`<div class="card cream"><span class="tag try">DATA CHECKSUM</span><div class="scenario-grid"><div class="scenario-tile"><b>Identity</b>Condition + trial</div><div class="scenario-tile"><b>Unit</b>Consistent total seconds</div><div class="scenario-tile"><b>Working</b>Sum ÷ number actually completed</div><div class="scenario-tile"><b>Integrity</b>Raw values and notes preserved</div></div></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">0–4 min</div><div><b>Completeness check</b><span>Mark each planned trial complete, missing or affected by an event.</span></div></div><div class="run-row"><div class="run-time">4–9 min</div><div><b>Convert</b><span>Change each min:s result into total seconds and show the working.</span></div></div><div class="run-row"><div class="run-time">9–13 min</div><div><b>Calculate</b><span>Find one mean for each condition using completed trials.</span></div></div><div class="run-row"><div class="run-time">13–15 min</div><div><b>Verify</b><span>Post one calculation for teacher checking.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 1 · calculation proof</div><p>Post one condition’s <b>raw trials / conversion to seconds / sum / division / mean + unit</b>. Label any missing or anomalous value.</p></div>`}],
+  notes:`<h4>Timing: 15 minutes</h4><p>0–4 audit; 4–9 convert; 9–13 calculate; 13–15 iBoard proof.</p><h4>Teacher check</h4><p>Verify the divisor equals the number of completed trials and that students have not treated min:s as decimal minutes. Do not let them erase raw values when adding means.</p>` });
 
-SLIDES.push({ nav:'L14B — Part B: Evaluate & conclude',
-  eyebrow:'Week 7 · Lesson 14 · Evaluate & conclude', eyebrowR:'Part B · Screen B',
-  title:'Part B — Evaluate & conclude',
-  screenlbl:'Booklet: evaluation & conclusion', wideLeft:true,
-  left:[{k:'steps', label:'Finish strong', rows:[
-    {t:'Conclusion', d:'Answer your question using your data. Was your prediction correct?'},
-    {t:'Was it fair?', d:'What did you do well to keep it fair?'},
-    {t:'Improve it', d:'Describe ways to improve the fairness next time.'},
-    {t:'What next?', d:'What new question would you investigate now?'}
-  ]}],
-  right:[{k:'html', html:`<div class="card dark"><h4 style="margin-bottom:8px">Evaluation sentence starters</h4>
-    <p style="color:var(--ink);font-size:15px;line-height:1.6">• "My investigation showed that ______."<br>• "It was fair because ______."<br>• "To improve the fairness I would ______."<br>• "I now wonder what would happen if ______."</p></div>`},
-    {k:'exit', items:['write a conclusion from my data','compare my result with my prediction','describe ways to improve fairness','pose a new question to investigate']}],
-  notes:`<h4>Evaluating criterion</h4><p>A-grade = <b>thorough description of effective ways to improve fairness</b>. Encourage specific, actionable improvements (e.g. "use identical-mass cubes measured on scales").</p>` });
+SLIDES.push({ nav:'L14B — Part B: Build the graph',
+  eyebrow:'Week 7 · Lesson 14 · Choose / Scale / Plot', eyebrowR:'Part B · Screen B',
+  title:'Graph the means and make every convention earn its place',
+  screenlbl:'Student screen 2 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">GRAPH BUILD ORDER</span><ol style="line-height:1.58;margin:10px 0 0 20px"><li>Choose bar graph for categories or line graph for continuous IV values.</li><li>Write a specific title naming the IV and DV.</li><li>Put IV conditions on the x-axis.</li><li>Put mean DV and unit on the y-axis.</li><li>Choose equal scale intervals that include the highest mean.</li><li>Plot means accurately; use equal bars and category gaps where needed.</li></ol></div>`},
+    {k:'html',html:`<div class="card dark"><h4>Cross-check rule</h4><p>Point to a mean in the table, trace across to its condition and then find the same value on the graph. If one representation disagrees, stop and correct it before analysing the pattern.</p></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">15–18</div><div><b>Plan</b><span>Write graph type, title, axis labels and proposed scale before drawing.</span></div></div><div class="run-row"><div class="run-time">18–25</div><div><b>Construct</b><span>Plot the mean for every condition carefully.</span></div></div><div class="run-row"><div class="run-time">25–28</div><div><b>Convention audit</b><span>Use the six-step list to find omissions or misleading choices.</span></div></div><div class="run-row"><div class="run-time">28–30</div><div><b>Cross-check</b><span>Verify one plotted value against the table and report it.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 2 · graph proof</div><p>Post: <b>graph type + reason / title / x-axis / y-axis + unit / scale / one table mean matched to its plotted value</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 15–30</h4><p>15–18 plan; 18–25 construct; 25–28 audit; 28–30 iBoard.</p><h4>Evidence sweep</h4><p>Check the graph displays means rather than a mixture of raw trials, axes are not reversed, intervals are equal, and the plotted values agree with the table.</p>` });
+
+SLIDES.push({ nav:'L14C — Part B: Explain & conclude',
+  eyebrow:'Week 7 · Lesson 14 · Describe / Explain / Judge', eyebrowR:'Part B · Screen C',
+  title:'Write a conclusion that follows the evidence',
+  screenlbl:'Student screen 3 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag try">CLAIM–EVIDENCE–REASONING</span><p><b>Claim:</b> Answer the investigation question.</p><p><b>Evidence:</b> Compare the condition means using exact values and the difference.</p><p><b>Reasoning:</b> Use heat energy, particle motion, surface area, insulation or freezing point to explain the pattern.</p><p><b>Prediction:</b> State whether it was supported, partly supported or not supported.</p></div>`},
+    {k:'read',heading:'A result is not “wrong” because the prediction missed',body:['The purpose of an investigation is to learn from evidence, not to make the prediction win. If the results do not support the prediction, say so and investigate possible scientific or methodological reasons.','Avoid claims such as “This proves salt always melts ice faster.” Your data supports a narrower statement about the conditions and trials you tested. A careful conclusion is stronger than an exaggerated one.'],notice:'Answer the question with numbers, explain the pattern and judge the prediction honestly.'}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">30–34</div><div><b>Claim</b><span>Answer your exact question in one sentence without adding a reason yet.</span></div></div><div class="run-row"><div class="run-time">34–38</div><div><b>Evidence</b><span>Insert both means and calculate their numerical difference.</span></div></div><div class="run-row"><div class="run-time">38–42</div><div><b>Reason</b><span>Explain the pattern with the most relevant science mechanism.</span></div></div><div class="run-row"><div class="run-time">42–45</div><div><b>Prediction judgement</b><span>State supported, partly supported or not supported—and why.</span></div></div></div><div class="response-call iboard"><div class="response-label">iBoard check 3 · CER conclusion</div><p>Post four labelled lines: <b>claim / numerical evidence / scientific reasoning / prediction judgement</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 30–45</h4><p>30–34 claim; 34–38 evidence; 38–42 reasoning; 42–45 iBoard.</p><h4>Teacher feedback</h4><p>Identify whether a weak response is missing numbers, mechanism or alignment with the original question. Do not reward certainty beyond the evidence.</p>` });
+
+SLIDES.push({ nav:'L14D — Part B: Evaluate & submit',
+  eyebrow:'Week 7 · Lesson 14 · Evaluate / Improve / Evidence', eyebrowR:'Part B · Screen D',
+  title:'Evaluate the investigation—not yourself',
+  screenlbl:'Student screen 4 of 4', wideLeft:true,
+  left:[{k:'html',html:`<div class="card cream"><span class="tag do">ONENOTE / BOOKLET FINAL EVIDENCE</span><ol style="line-height:1.55;margin:10px 0 0 20px"><li><b>Raw and processed table</b> with trials, units, working and means</li><li><b>Graph</b> following all conventions</li><li><b>CER conclusion</b> and prediction judgement</li><li><b>Validity</b> — did the method answer the question?</li><li><b>Fairness</b> — one control managed well and one limitation</li><li><b>Reliability</b> — what repeats/anomalies suggest</li><li><b>Specific improvement</b> — action + how it improves the evidence</li><li><b>Next question</b> — a logical new investigation</li></ol></div>`},
+    {k:'html',html:`<div class="card dark"><h4>Weak → scientific evaluation</h4><p><b>Weak:</b> Next time I would be more careful.</p><p><b>Scientific:</b> I would weigh every ice sample to 20 g using the same scales. This would control starting mass more precisely, so differences in melting time are more likely to be caused by the salt condition.</p></div>`}],
+  right:[{k:'html',html:`<div class="lesson-run"><div class="run-row"><div class="run-time">45–49</div><div><b>Judge quality</b><span>Write one evidence-based statement each about validity, fairness and reliability.</span></div></div><div class="run-row"><div class="run-time">49–54</div><div><b>Improve</b><span>Turn one real limitation into a specific action and explain its benefit.</span></div></div><div class="run-row"><div class="run-time">54–58</div><div><b>Assemble</b><span>Complete the eight-part final evidence record in the booklet/OneNote.</span></div></div><div class="run-row"><div class="run-time">58–60</div><div><b>Exit</b><span>Defend your most important improvement.</span></div></div></div><div class="response-call onenote"><div class="response-label">OneNote · durable evidence</div><p>Create or update <b>Science L14 — Part B results and evaluation</b>. Include all eight sections; the booklet remains the assessment source if your teacher requires it.</p></div><div class="response-call iboard"><div class="response-label">iBoard check 4 · evaluation exit</div><p>Post: <b>real limitation / specific improvement / whether it improves validity, fairness, accuracy or reliability / how it helps</b>.</p></div>`}],
+  notes:`<h4>Timing: minutes 45–60</h4><p>45–49 quality judgement; 49–54 improvement; 54–58 final evidence; 58–60 iBoard.</p><h4>Evidence sweep</h4><p>Reject vague improvements such as “try harder” or “be more careful”. Strong responses name an equipment or procedure change and explain which aspect of evidence quality improves.</p><h4>Assessment integrity</h4><p>OneNote can provide visible progress evidence, but retain the required booklet submission and conditions.</p>` });
 
 /* ===================== PHASE 3 DIVIDER ===================== */
 SLIDES.push({ type:'divider', nav:'Phase 3 — Evaluate & Showcase',
@@ -1303,7 +1320,18 @@ function detachNotes(){
   w.document.close();
 }
 let savedIdxForOverlay=null;
-function openOverlay(){ savedIdxForOverlay=idx; document.getElementById('overlay').classList.add('open'); }
+let assessmentLoaded=false;
+function ensureAssessmentLoaded(){
+  if(assessmentLoaded) return;
+  document.getElementById('pane-task').innerHTML = ASSESS_TASK;
+  document.getElementById('pane-guide').innerHTML = ASSESS_GUIDE;
+  assessmentLoaded=true;
+}
+function openOverlay(){
+  savedIdxForOverlay=idx;
+  ensureAssessmentLoaded();
+  document.getElementById('overlay').classList.add('open');
+}
 function closeOverlay(){ document.getElementById('overlay').classList.remove('open');
   if(savedIdxForOverlay!=null){ show(savedIdxForOverlay); } }
 
@@ -1372,10 +1400,6 @@ document.addEventListener('keydown',e=>{
     closeOverlay();
   }
 });
-
-/* assessment overlay content */
-document.getElementById('pane-task').innerHTML = ASSESS_TASK;
-document.getElementById('pane-guide').innerHTML = ASSESS_GUIDE;
 
 buildJump(); show(0);
 </script>
